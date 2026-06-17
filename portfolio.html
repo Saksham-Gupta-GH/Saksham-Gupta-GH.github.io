@@ -598,10 +598,32 @@
             background: var(--bg)
         }
 
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-            gap: 1rem
+        .projects-tree {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        /* The central trunk */
+        .projects-tree::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 4px;
+            background: var(--border2);
+            transform: translateX(-50%);
+            border-radius: 2px;
+            z-index: 0;
+        }
+
+        .projects-tree .project-card {
+            width: calc(50% - 2.5rem);
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 1;
         }
 
         .project-card {
@@ -611,9 +633,79 @@
             padding: 1.75rem;
             display: flex;
             flex-direction: column;
-            position: relative;
             overflow: hidden;
-            transition: all 0.3s
+            transition: all 0.3s;
+        }
+
+        .project-card:hover {
+            box-shadow: var(--shadow3);
+            border-color: var(--blue);
+            transform: translateY(-2px);
+        }
+
+        .projects-tree .project-card:last-child {
+            margin-bottom: 0;
+        }
+
+        /* Even children on the right */
+        .projects-tree .project-card:nth-child(even) {
+            margin-left: auto;
+        }
+
+        /* Odd children on the left */
+        .projects-tree .project-card:nth-child(odd) {
+            margin-right: auto;
+        }
+
+        /* The branch connecting card to trunk */
+        .projects-tree .project-card::before {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            width: 2.5rem;
+            height: 2px;
+            background: var(--border2);
+            z-index: -1;
+            transition: all 0.3s;
+        }
+
+        .projects-tree .project-card:hover::before {
+            background: var(--blue);
+        }
+
+        .projects-tree .project-card:nth-child(even)::before {
+            left: -2.5rem;
+        }
+
+        .projects-tree .project-card:nth-child(odd)::before {
+            right: -2.5rem;
+        }
+
+        /* The dot on the trunk */
+        .projects-tree .project-card::after {
+            content: '';
+            position: absolute;
+            top: calc(2rem - 6px);
+            width: 14px;
+            height: 14px;
+            background: var(--white);
+            border-radius: 50%;
+            border: 3px solid var(--blue);
+            z-index: 2;
+            transition: all 0.3s;
+        }
+
+        .projects-tree .project-card:hover::after {
+            background: var(--blue);
+            box-shadow: 0 0 0 4px var(--blue-light);
+        }
+
+        .projects-tree .project-card:nth-child(even)::after {
+            left: calc(-2.5rem - 7px + 2px);
+        }
+
+        .projects-tree .project-card:nth-child(odd)::after {
+            right: calc(-2.5rem - 7px + 2px);
         }
 
         .project-card:hover {
@@ -918,6 +1010,25 @@
                 gap: 0.5rem;
                 text-align: center
             }
+
+            .projects-tree::before {
+                left: 1rem;
+                transform: translateX(0);
+            }
+            .projects-tree .project-card {
+                width: calc(100% - 3rem);
+                margin-left: auto !important;
+                margin-right: 0 !important;
+            }
+            .projects-tree .project-card::before {
+                left: -2rem !important;
+                right: auto !important;
+                width: 2rem !important;
+            }
+            .projects-tree .project-card::after {
+                left: calc(-2rem - 7px + 2px) !important;
+                right: auto !important;
+            }
         }
     </style>
 </head>
@@ -1151,7 +1262,7 @@
                 <h2>Things I've Built</h2>
                 <p class="section-sub">Every project is live and deployed. Click &#8220;Live&#8221; to try them out.</p>
             </div>
-            <div class="projects-grid">
+            <div class="projects-tree">
                 <div class="project-card reveal">
                     <div class="project-num">01</div>
                     <div class="project-header">
