@@ -82,19 +82,24 @@
             box-shadow:
                 0 0 30px rgba(66, 133, 244, 0.1),
                 0 0 60px rgba(66, 133, 244, 0.05);
+            max-width: 95vw;
         }
 
         canvas {
             display: block;
             background: #0d1117;
+            max-width: 100%;
+            height: auto;
+            touch-action: none;
         }
 
         .hud {
             display: flex;
             justify-content: space-between;
-            width: 100%;
+            width: 95vw;
             max-width: 600px;
             padding: 0 4px;
+            box-sizing: border-box;
         }
 
         .hud-item {
