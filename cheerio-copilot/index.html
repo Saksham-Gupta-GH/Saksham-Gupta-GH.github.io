@@ -8,7 +8,6 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
         body {
             font-family: 'Google Sans Text', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
@@ -20,29 +19,6 @@
         }
         .mono-font {
             font-family: 'Roboto Mono', monospace;
-        }
-        .material-symbols-outlined, .material-symbols-filled {
-            font-family: 'Material Symbols Outlined';
-            font-weight: normal;
-            font-style: normal;
-            font-size: 20px;
-            line-height: 1;
-            letter-spacing: normal;
-            text-transform: none;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            white-space: nowrap;
-            word-wrap: normal;
-            direction: ltr;
-            -webkit-font-feature-settings: 'liga';
-            -webkit-font-smoothing: antialiased;
-        }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-        }
-        .material-symbols-filled {
-            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
         }
         .fade-in {
             animation: fadeIn 0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -74,23 +50,23 @@
             </span>
         </div>
 
-        <!-- Segmented Scenario Control (Google Material 3 Pill Tabs) -->
-        <div class="flex items-center bg-[#f0f4f9] p-1 rounded-full border border-[#e0e2ec] text-xs font-medium shrink-0">
+        <!-- Segmented Scenario Control (Visible when on Templates) -->
+        <div id="topScenarioBar" class="flex items-center bg-[#f0f4f9] p-1 rounded-full border border-[#e0e2ec] text-xs font-medium shrink-0">
             <button id="tabScenario1" onclick="switchScenario('scenario1')" class="px-3.5 py-1.5 rounded-full bg-white text-[#0b57d0] shadow-sm transition inline-flex items-center gap-1.5 font-medium">
-                <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                <svg class="w-3.5 h-3.5 text-[#0b57d0] fill-current" viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
                 <span class="hidden md:inline">Scenario 1: </span>Pre-Flight Linter
             </button>
             <button id="tabScenario2" onclick="switchScenario('scenario2')" class="px-3.5 py-1.5 rounded-full text-[#444746] hover:text-[#1f1f1f] transition inline-flex items-center gap-1.5 font-medium">
-                <span class="material-symbols-outlined text-sm">support_agent</span>
+                <svg class="w-3.5 h-3.5 text-current fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
                 <span class="hidden md:inline">Scenario 2: </span>Escalation Circuit
             </button>
             <button id="tabScenario3" onclick="switchScenario('scenario3')" class="px-3.5 py-1.5 rounded-full text-[#444746] hover:text-[#1f1f1f] transition inline-flex items-center gap-1.5 font-medium">
-                <span class="material-symbols-outlined text-sm">shield</span>
+                <svg class="w-3.5 h-3.5 text-current fill-current" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
                 <span class="hidden md:inline">Scenario 3: </span>Guardrail Refusal
             </button>
         </div>
 
-        <!-- Profile & Account Info -->
+        <!-- Profile & Candidate Info -->
         <div class="flex items-center gap-2.5 text-xs shrink-0">
             <div class="hidden xl:flex flex-col text-right">
                 <span class="font-medium text-[#1f1f1f]">FabJewels D2C</span>
@@ -108,30 +84,39 @@
     <!-- Main Content Layout -->
     <div class="flex-1 flex max-w-7xl w-full mx-auto p-4 md:p-6 gap-6">
 
-        <!-- Left Navigation Drawer (Gmail / Cloud Console Style) -->
-        <aside class="w-60 shrink-0 bg-white border border-[#e0e2ec] rounded-2xl p-3 flex flex-col gap-1 text-xs font-medium h-[640px] shadow-sm">
-            <div class="text-[11px] font-medium text-[#747775] px-3 py-2 uppercase tracking-wider">Campaign Manager</div>
+        <!-- Left Navigation Drawer (All Items Fully Clickable) -->
+        <aside class="w-64 shrink-0 bg-white border border-[#e0e2ec] rounded-2xl p-3 flex flex-col gap-1 text-xs font-medium h-[650px] shadow-sm">
+            <div class="text-[11px] font-medium text-[#747775] px-3.5 py-2 uppercase tracking-wider">Campaign Hub</div>
             
-            <a href="#" class="px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
-                <span class="material-symbols-outlined text-lg">insights</span>
+            <!-- Tab 1: Overview & Analytics -->
+            <button id="navItemAnalytics" onclick="switchNavTab('analytics')" class="w-full text-left px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
+                <svg class="w-4 h-4 text-current fill-current shrink-0" viewBox="0 0 24 24"><path d="M5 9.2h3V19H5zM10.6 5h2.8v14h-2.8zm5.6 8H19v6h-2.8z"/><path d="M19 19H5V5h14v14z" fill="none"/></svg>
                 <span>Overview & Analytics</span>
-            </a>
-            <a href="#" class="px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
-                <span class="material-symbols-outlined text-lg">group</span>
+            </button>
+
+            <!-- Tab 2: Audiences & CSVs -->
+            <button id="navItemAudiences" onclick="switchNavTab('audiences')" class="w-full text-left px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
+                <svg class="w-4 h-4 text-current fill-current shrink-0" viewBox="0 0 24 24"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 3s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
                 <span>Audiences & CSVs</span>
-            </a>
-            <a href="#" class="px-3.5 py-2.5 rounded-full bg-[#d3e3fd] text-[#041e49] font-medium flex items-center gap-3 transition">
-                <span class="material-symbols-outlined text-lg text-[#0b57d0]">forum</span>
+            </button>
+
+            <!-- Tab 3: WhatsApp Templates (Active Default) -->
+            <button id="navItemTemplates" onclick="switchNavTab('templates')" class="w-full text-left px-3.5 py-2.5 rounded-full bg-[#d3e3fd] text-[#041e49] font-medium flex items-center gap-3 transition">
+                <svg class="w-4 h-4 text-[#0b57d0] fill-current shrink-0" viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-1.99.9-1.99 2L2 22l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM6 9h12v2H6V9zm8 5H6v-2h8v2zm4-6H6V6h12v2z"/></svg>
                 <span>WhatsApp Templates</span>
-            </a>
-            <a href="#" class="px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
-                <span class="material-symbols-outlined text-lg">account_tree</span>
+            </button>
+
+            <!-- Tab 4: Automated Bot Flows -->
+            <button id="navItemFlows" onclick="switchNavTab('flows')" class="w-full text-left px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
+                <svg class="w-4 h-4 text-current fill-current shrink-0" viewBox="0 0 24 24"><path d="M22 11V3h-7v3H9V3H2v8h7V8h2v10h4v3h7v-8h-7v3h-2V8h2v3z"/></svg>
                 <span>Automated Bot Flows</span>
-            </a>
-            <a href="#" class="px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
-                <span class="material-symbols-outlined text-lg">extension</span>
+            </button>
+
+            <!-- Tab 5: Cloud Integrations -->
+            <button id="navItemIntegrations" onclick="switchNavTab('integrations')" class="w-full text-left px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
+                <svg class="w-4 h-4 text-current fill-current shrink-0" viewBox="0 0 24 24"><path d="M20.5 11H19V7c0-1.1-.9-2-2-2h-4V3.5C13 2.12 11.88 1 10.5 1S8 2.12 8 3.5V5H4c-1.1 0-1.99.9-1.99 2v3.8H3.5c1.49 0 2.7 1.21 2.7 2.7s-1.21 2.7-2.7 2.7H2V20c0 1.1.9 2 2 2h3.8v-1.5c0-1.49 1.21-2.7 2.7-2.7 1.49 0 2.7 1.21 2.7 2.7V22H17c1.1 0 2-.9 2-2v-4h1.5c1.38 0 2.5-1.12 2.5-2.5s-1.12-2.5-2.5-2.5z"/></svg>
                 <span>Cloud Integrations</span>
-            </a>
+            </button>
 
             <!-- System Telemetry Card -->
             <div class="mt-auto pt-3 border-t border-[#e0e2ec] px-2 text-[11px] text-[#444746] space-y-1.5">
@@ -145,251 +130,513 @@
                 </div>
                 <div class="flex items-center justify-between">
                     <span class="text-[#747775]">Model:</span>
-                    <span class="text-[#0b57d0] font-mono text-[10px]">GPT-4o-mini</span>
+                    <span class="text-[#0b57d0] mono-font text-[10px]">GPT-4o-mini</span>
                 </div>
             </div>
         </aside>
 
-        <!-- Primary Work Area -->
-        <main class="flex-1 bg-white border border-[#e0e2ec] rounded-2xl p-6 relative min-h-[640px] shadow-sm flex flex-col justify-between">
+        <!-- Primary Work Area (Container for all 5 Tabs) -->
+        <main class="flex-1 bg-white border border-[#e0e2ec] rounded-2xl p-6 relative min-h-[650px] shadow-sm flex flex-col justify-between">
 
-            <!-- SCENARIO 1: Template Editor & Auto-Fix -->
-            <div id="viewScenario1" class="fade-in space-y-4">
-                <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
-                    <div>
-                        <h2 class="text-base font-medium text-[#1f1f1f] google-font">Create WhatsApp Message Template</h2>
-                        <p class="text-xs text-[#747775]">Draft and validate messages against Meta Business Cloud API compliance standards.</p>
-                    </div>
-                    <div class="flex items-center gap-2 text-xs">
-                        <span id="validationPill" class="bg-[#fef7e0] text-[#7a4100] border border-[#fce8b2] px-3 py-1 rounded-full font-medium inline-flex items-center gap-1.5">
-                            <span class="material-symbols-outlined text-sm text-[#ea8600]">warning</span>
-                            <span>Policy Risk Flagged by Co-Pilot</span>
-                        </span>
-                    </div>
-                </div>
-
-                <div class="grid grid-cols-5 gap-6">
-                    <!-- Form Fields -->
-                    <div class="col-span-3 space-y-3.5">
+            <!-- ================= VIEW 1: WHATSAPP TEMPLATES (DEFAULT) ================= -->
+            <div id="navViewTemplates" class="space-y-4">
+                
+                <!-- SCENARIO 1: Template Editor & Auto-Fix -->
+                <div id="viewScenario1" class="fade-in space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
                         <div>
-                            <label class="block text-xs font-medium text-[#444746] mb-1">Template Identifier</label>
-                            <input type="text" value="diwali_order_confirmation" class="w-full text-xs px-3.5 py-2.5 border border-[#c4c7c5] rounded-lg bg-[#f8fafd] text-[#1f1f1f] mono-font outline-none" readonly>
+                            <h2 class="text-base font-medium text-[#1f1f1f] google-font">Create WhatsApp Message Template</h2>
+                            <p class="text-xs text-[#747775]">Draft and validate messages against Meta Business Cloud API compliance standards.</p>
                         </div>
+                        <div class="flex items-center gap-2 text-xs">
+                            <span id="validationPill" class="bg-[#fef7e0] text-[#7a4100] border border-[#fce8b2] px-3 py-1 rounded-full font-medium inline-flex items-center gap-1.5">
+                                <svg class="w-3.5 h-3.5 text-[#ea8600] fill-current" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                                <span>Policy Risk Flagged by Co-Pilot</span>
+                            </span>
+                        </div>
+                    </div>
 
-                        <div>
-                            <label class="block text-xs font-medium text-[#444746] mb-1">Assigned Category</label>
-                            <select id="categorySelect" class="w-full text-xs px-3.5 py-2.5 border border-[#ea8600] rounded-lg bg-[#fff8e1] text-[#7a4100] font-medium outline-none">
-                                <option value="UTILITY" selected>Utility (Order updates, Shipping status)</option>
-                                <option value="MARKETING">Marketing (Promotions, Discounts)</option>
-                            </select>
-                            <div class="flex items-center justify-between text-[11px] text-[#7a4100] mt-1">
-                                <span>Utility rate: ₹0.12/msg</span>
-                                <span>Marketing rate: ₹0.78/msg</span>
+                    <div class="grid grid-cols-5 gap-6">
+                        <!-- Form Fields -->
+                        <div class="col-span-3 space-y-3.5">
+                            <div>
+                                <label class="block text-xs font-medium text-[#444746] mb-1">Template Identifier</label>
+                                <input type="text" value="diwali_order_confirmation" class="w-full text-xs px-3.5 py-2.5 border border-[#c4c7c5] rounded-lg bg-[#f8fafd] text-[#1f1f1f] mono-font outline-none" readonly>
                             </div>
-                        </div>
 
-                        <div>
-                            <label class="block text-xs font-medium text-[#444746] mb-1">Message Body</label>
-                            <textarea id="templateBody" rows="4" class="w-full text-xs p-3.5 border border-[#ea8600] rounded-lg mono-font leading-relaxed bg-[#fffdf5] text-[#1f1f1f] outline-none">Hi {{1}}, your order #{{2}} is confirmed! HURRY! Get 50% OFF our Diwali Flash Sale with code FESTIVE50 on your next piece: https://fabjewels.in/sale</textarea>
-                            <div class="flex justify-between items-center text-[11px] text-[#747775] mt-1">
-                                <span>Character count: 168 / 1024</span>
-                                <span id="linterStatus" class="text-[#b3261e] font-medium inline-flex items-center gap-1">
-                                    <span class="material-symbols-outlined text-sm">report</span>
-                                    <span>Meta Risk: 94% Rejection Probability (Category Mismatch)</span>
-                                </span>
-                            </div>
-                        </div>
-
-                        <div class="pt-1 flex gap-3">
-                            <button id="btnSubmitMeta" onclick="alert('Submission intercepted: Cheerio Co-Pilot prevented a Meta compliance failure.')" class="px-5 py-2 bg-[#0b57d0] hover:bg-[#0842a0] text-white rounded-full text-xs font-medium transition shadow-sm inline-flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">send</span>
-                                <span>Submit to Meta</span>
-                            </button>
-                            <button onclick="resetScenario1()" class="px-4 py-2 bg-[#f0f4f9] hover:bg-[#e0e2ec] text-[#444746] rounded-full text-xs font-medium transition inline-flex items-center gap-1">
-                                <span class="material-symbols-outlined text-sm">restart_alt</span>
-                                <span>Reset Demo</span>
-                            </button>
-                        </div>
-                    </div>
-
-                    <!-- Live WhatsApp Phone Preview (Clean Google-spec UI) -->
-                    <div class="col-span-2 flex flex-col items-center">
-                        <div class="text-xs font-medium text-[#747775] mb-2 flex items-center gap-1">
-                            <span class="material-symbols-outlined text-sm">smartphone</span>
-                            <span>Live WhatsApp Preview</span>
-                        </div>
-                        <div class="w-64 bg-[#f0f2f5] border border-[#c4c7c5] rounded-3xl p-3 shadow-md relative min-h-[350px] flex flex-col">
-                            <!-- Phone Top App Bar -->
-                            <div class="bg-[#008069] text-white p-2.5 rounded-t-2xl -mx-3 -mt-3 mb-3 flex items-center gap-2">
-                                <div class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-[10px] font-bold">FJ</div>
-                                <div class="flex-1">
-                                    <div class="text-xs font-medium leading-tight flex items-center gap-1">
-                                        <span>FabJewels</span>
-                                        <svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                                    </div>
-                                    <div class="text-[9px] text-white/80">Official Business Account</div>
+                            <div>
+                                <label class="block text-xs font-medium text-[#444746] mb-1">Assigned Category</label>
+                                <select id="categorySelect" class="w-full text-xs px-3.5 py-2.5 border border-[#ea8600] rounded-lg bg-[#fff8e1] text-[#7a4100] font-medium outline-none">
+                                    <option value="UTILITY" selected>Utility (Order updates, Shipping status)</option>
+                                    <option value="MARKETING">Marketing (Promotions, Discounts)</option>
+                                </select>
+                                <div class="flex items-center justify-between text-[11px] text-[#7a4100] mt-1">
+                                    <span>Utility rate: ₹0.12/msg</span>
+                                    <span>Marketing rate: ₹0.78/msg</span>
                                 </div>
                             </div>
-                            <!-- Message Bubble -->
-                            <div id="previewBubble" class="bg-white p-3 rounded-lg rounded-tl-none shadow-sm text-xs leading-relaxed text-[#1f1f1f] max-w-[95%] relative border border-[#e0e2ec]">
-                                Hi Priya, your order #FJ-9412 is confirmed! HURRY! Get 50% OFF our Diwali Flash Sale with code FESTIVE50 on your next piece: https://fabjewels.in/sale
-                                <span class="block text-[9px] text-[#747775] text-right mt-1.5">10:42 AM</span>
+
+                            <div>
+                                <label class="block text-xs font-medium text-[#444746] mb-1">Message Body</label>
+                                <textarea id="templateBody" rows="4" class="w-full text-xs p-3.5 border border-[#ea8600] rounded-lg mono-font leading-relaxed bg-[#fffdf5] text-[#1f1f1f] outline-none">Hi {{1}}, your order #{{2}} is confirmed! HURRY! Get 50% OFF our Diwali Flash Sale with code FESTIVE50 on your next piece: https://fabjewels.in/sale</textarea>
+                                <div class="flex justify-between items-center text-[11px] text-[#747775] mt-1">
+                                    <span>Character count: 168 / 1024</span>
+                                    <span id="linterStatus" class="text-[#b3261e] font-medium inline-flex items-center gap-1">
+                                        <svg class="w-3.5 h-3.5 text-[#b3261e] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                                        <span>Meta Risk: 94% Rejection Probability (Category Mismatch)</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="pt-1 flex gap-3">
+                                <button id="btnSubmitMeta" onclick="alert('Submission intercepted: Cheerio Co-Pilot prevented a Meta compliance failure.')" class="px-5 py-2 bg-[#0b57d0] hover:bg-[#0842a0] text-white rounded-full text-xs font-medium transition shadow-sm inline-flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                                    <span>Submit to Meta</span>
+                                </button>
+                                <button onclick="resetScenario1()" class="px-4 py-2 bg-[#f0f4f9] hover:bg-[#e0e2ec] text-[#444746] rounded-full text-xs font-medium transition inline-flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M17.65 6.35C16.2 4.9 14.21 4 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08c-.82 2.33-3.04 4-5.65 4-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+                                    <span>Reset Demo</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Live WhatsApp Phone Preview (Clean Google-spec UI) -->
+                        <div class="col-span-2 flex flex-col items-center">
+                            <div class="text-xs font-medium text-[#747775] mb-2 flex items-center gap-1">
+                                <svg class="w-3.5 h-3.5 text-[#747775] fill-current" viewBox="0 0 24 24"><path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 19H7V5h10v14z"/></svg>
+                                <span>Live WhatsApp Preview</span>
+                            </div>
+                            <div class="w-64 bg-[#f0f2f5] border border-[#c4c7c5] rounded-3xl p-3 shadow-md relative min-h-[350px] flex flex-col">
+                                <!-- Phone Top App Bar -->
+                                <div class="bg-[#008069] text-white p-2.5 rounded-t-2xl -mx-3 -mt-3 mb-3 flex items-center gap-2">
+                                    <div class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-[10px] font-bold">FJ</div>
+                                    <div class="flex-1">
+                                        <div class="text-xs font-medium leading-tight flex items-center gap-1">
+                                            <span>FabJewels</span>
+                                            <svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                        </div>
+                                        <div class="text-[9px] text-white/80">Official Business Account</div>
+                                    </div>
+                                </div>
+                                <!-- Message Bubble -->
+                                <div id="previewBubble" class="bg-white p-3 rounded-lg rounded-tl-none shadow-sm text-xs leading-relaxed text-[#1f1f1f] max-w-[95%] relative border border-[#e0e2ec]">
+                                    Hi Priya, your order #FJ-9412 is confirmed! HURRY! Get 50% OFF our Diwali Flash Sale with code FESTIVE50 on your next piece: https://fabjewels.in/sale
+                                    <span class="block text-[9px] text-[#747775] text-right mt-1.5">10:42 AM</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Co-Pilot Diagnostic Box (Gemini / AI Studio Style) -->
+                    <div class="bg-[#f0f4f9] border border-[#d3e3fd] rounded-2xl p-4.5 mt-2">
+                        <div class="flex items-center justify-between mb-2">
+                            <div class="flex items-center gap-2">
+                                <svg class="w-4 h-4 text-[#0b57d0] fill-current" viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5zM19 15l-1.25 2.75L15 19l2.75 1.25L19 23l1.25-2.75L23 19l-2.75-1.25L19 15z"/></svg>
+                                <span class="font-medium text-xs text-[#0b57d0] google-font">Cheerio Co-Pilot Diagnostic</span>
+                                <span class="bg-[#fce8e6] text-[#b3261e] border border-[#fad2cf] text-[10px] font-medium px-2 py-0.5 rounded-full">Meta Code 132015 (Category Mismatch)</span>
+                            </div>
+                            <span class="text-[11px] text-[#747775] mono-font">Latency: 140ms</span>
+                        </div>
+                        <p class="text-xs text-[#444746] mb-3 leading-relaxed">
+                            You selected <strong>Utility</strong>, but phrases like <em>"HURRY! 50% OFF Diwali Flash Sale"</em> are promotional. Meta's automated compliance filter will reject this template immediately. Choose a 1-click remediation:
+                        </p>
+                        <div class="grid grid-cols-2 gap-3" id="copilotActionCards">
+                            <div onclick="applyUtilityFix()" class="border border-[#c4c7c5] hover:border-[#137333] bg-white p-3.5 rounded-xl cursor-pointer transition hover:shadow-sm">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-medium text-xs text-[#137333]">Option A: Clean Utility (₹0.12/msg)</span>
+                                    <span class="text-[10px] bg-[#e6f4ea] text-[#137333] border border-[#ceead6] px-2 py-0.5 rounded-full font-medium">Recommended</span>
+                                </div>
+                                <p class="text-[11px] text-[#747775] mb-3 leading-relaxed">Strips promotional text, preserves order tracking variables, satisfies 100% of Meta utility rules.</p>
+                                <button class="w-full bg-[#137333] hover:bg-[#0e5223] text-white font-medium text-xs py-2 rounded-full transition shadow-sm inline-flex items-center justify-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5z"/></svg>
+                                    <span>1-Click Auto-Fix & Resubmit</span>
+                                </button>
+                            </div>
+                            <div onclick="applyMarketingFix()" class="border border-[#c4c7c5] hover:border-[#0b57d0] bg-white p-3.5 rounded-xl cursor-pointer transition hover:shadow-sm">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="font-medium text-xs text-[#0b57d0]">Option B: Switch to Marketing (₹0.78/msg)</span>
+                                </div>
+                                <p class="text-[11px] text-[#747775] mb-3 leading-relaxed">Retains 50% discount phrasing, automatically shifts template category to Marketing.</p>
+                                <button class="w-full bg-[#0b57d0] hover:bg-[#0842a0] text-white font-medium text-xs py-2 rounded-full transition shadow-sm inline-flex items-center justify-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 4V1L8 5l4 4V6c3.31 0 6 2.69 6 6 0 1.01-.25 1.97-.7 2.8l1.46 1.46C19.54 15.03 20 13.57 20 12c0-4.42-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6 0-1.01.25-1.97.7-2.8L5.24 7.74C4.46 8.97 4 10.43 4 12c0 4.42 3.58 8 8 8v3l4-4-4-4v3z"/></svg>
+                                    <span>Reclassify to Marketing</span>
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Co-Pilot Diagnostic Box (Gemini / AI Studio Style) -->
-                <div class="bg-[#f0f4f9] border border-[#d3e3fd] rounded-2xl p-4.5 mt-2">
-                    <div class="flex items-center justify-between mb-2">
-                        <div class="flex items-center gap-2">
-                            <span class="material-symbols-outlined text-[#0b57d0] text-lg">auto_awesome</span>
-                            <span class="font-medium text-xs text-[#0b57d0] google-font">Cheerio Co-Pilot Diagnostic</span>
-                            <span class="bg-[#fce8e6] text-[#b3261e] border border-[#fad2cf] text-[10px] font-medium px-2 py-0.5 rounded-full">Meta Code 132015 (Category Mismatch)</span>
+                <!-- SCENARIO 2: Circuit Breaker & Human Escalation -->
+                <div id="viewScenario2" class="hidden fade-in space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
+                        <div>
+                            <h2 class="text-base font-medium text-[#1f1f1f] google-font">Edge Case 1: Automated Circuit Breaker & Human Escalation</h2>
+                            <p class="text-xs text-[#747775]">Demonstrates the 2-failed-attempt guardrail to prevent repetitive bot loops.</p>
                         </div>
-                        <span class="text-[11px] text-[#747775] mono-font">Latency: 140ms</span>
+                        <span class="bg-[#fef7e0] text-[#7a4100] border border-[#fce8b2] text-xs font-medium px-3 py-1 rounded-full inline-flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5 text-[#ea8600] fill-current" viewBox="0 0 24 24"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
+                            <span>Attempt 2 of 2 Failed</span>
+                        </span>
                     </div>
-                    <p class="text-xs text-[#444746] mb-3 leading-relaxed">
-                        You selected <strong>Utility</strong>, but phrases like <em>"HURRY! 50% OFF Diwali Flash Sale"</em> are promotional. Meta's automated compliance filter will reject this template immediately. Choose a 1-click remediation:
-                    </p>
-                    <div class="grid grid-cols-2 gap-3" id="copilotActionCards">
-                        <div onclick="applyUtilityFix()" class="border border-[#c4c7c5] hover:border-[#137333] bg-white p-3.5 rounded-xl cursor-pointer transition hover:shadow-sm">
-                            <div class="flex items-center justify-between mb-1.5">
-                                <span class="font-medium text-xs text-[#137333]">Option A: Clean Utility (₹0.12/msg)</span>
-                                <span class="text-[10px] bg-[#e6f4ea] text-[#137333] border border-[#ceead6] px-2 py-0.5 rounded-full font-medium">Recommended</span>
-                            </div>
-                            <p class="text-[11px] text-[#747775] mb-3 leading-relaxed">Strips promotional text, preserves order tracking variables, satisfies 100% of Meta utility rules.</p>
-                            <button class="w-full bg-[#137333] hover:bg-[#0e5223] text-white font-medium text-xs py-2 rounded-full transition shadow-sm inline-flex items-center justify-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">auto_fix_high</span>
-                                <span>1-Click Auto-Fix & Resubmit</span>
-                            </button>
+
+                    <div class="bg-[#f8fafd] border border-[#e0e2ec] rounded-2xl p-4.5 space-y-3.5">
+                        <div class="flex items-center gap-2 text-[#b3261e] font-medium text-xs">
+                            <svg class="w-4 h-4 text-[#b3261e] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                            <span>Unresolved Technical Exception Encountered</span>
                         </div>
-                        <div onclick="applyMarketingFix()" class="border border-[#c4c7c5] hover:border-[#0b57d0] bg-white p-3.5 rounded-xl cursor-pointer transition hover:shadow-sm">
-                            <div class="flex items-center justify-between mb-1.5">
-                                <span class="font-medium text-xs text-[#0b57d0]">Option B: Switch to Marketing (₹0.78/msg)</span>
+                        <p class="text-xs text-[#444746] leading-relaxed">
+                            Merchant attempted to link phone number <code class="mono-font bg-white px-1.5 py-0.5 rounded border border-[#c4c7c5] text-[#1f1f1f]">+91-98765-43210</code>, but Meta Cloud API returned <code class="mono-font bg-white px-1.5 py-0.5 rounded border border-[#c4c7c5] text-[#1f1f1f]">Code 133010: TWO_FACTOR_PHONE_LOCKED</code> twice consecutively. Co-Pilot's automated remediation threshold was safely triggered.
+                        </p>
+
+                        <!-- Diagnostic Telemetry Packet (Google Cloud Logging Style) -->
+                        <div class="bg-[#1f1f1f] text-[#e3e3e3] p-4.5 rounded-xl mono-font text-xs space-y-1.5 border border-[#444746] shadow-sm">
+                            <div class="text-[#a8dab5] font-medium flex items-center justify-between pb-1.5 border-b border-[#444746]">
+                                <span class="inline-flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-[#a8dab5] fill-current" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-5 14H4v-4h11v4zm0-5H4V9h11v4zm5 5h-4V9h4v9z"/></svg>
+                                    <span>STRUCTURED DIAGNOSTIC TELEMETRY PACKET</span>
+                                </span>
+                                <span class="text-[10px] text-[#8e918f]">Dispatched to Tier-2 Support Queue</span>
                             </div>
-                            <p class="text-[11px] text-[#747775] mb-3 leading-relaxed">Retains 50% discount phrasing, automatically shifts template category to Marketing.</p>
-                            <button class="w-full bg-[#0b57d0] hover:bg-[#0842a0] text-white font-medium text-xs py-2 rounded-full transition shadow-sm inline-flex items-center justify-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">sync_alt</span>
-                                <span>Reclassify to Marketing</span>
-                            </button>
+                            <div class="text-[#c4c7c5] pt-1"><span class="text-[#7cacf8]">PACKET_UUID:</span> PKT-2026-CHRIO-8921</div>
+                            <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">MERCHANT_ID:</span> FABJEWELS_D2C (Account #89104)</div>
+                            <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">PHONE_TARGET:</span> +91-98765-43210 (WABA Unlinked)</div>
+                            <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">META_ERROR:</span> 133010 (TWO_FACTOR_PHONE_LOCKED)</div>
+                            <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">FAILED_ATTEMPTS:</span> 2 / 2 (Circuit breaker tripped)</div>
+                            <div class="text-[#fdd663] pt-1"><span class="text-[#f9ab00]">RECOMMENDED_HUMAN_ACTION:</span> "Instruct merchant to navigate to WhatsApp Settings > Account > Delete Account to release 2FA lock from consumer application."</div>
+                        </div>
+
+                        <div class="bg-[#e6f4ea] border border-[#ceead6] p-3.5 rounded-xl flex items-center justify-between">
+                            <div>
+                                <div class="font-medium text-xs text-[#137333] flex items-center gap-1.5">
+                                    <svg class="w-3.5 h-3.5 text-[#137333] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                    <span>Seamless Human Handoff Activated</span>
+                                </div>
+                                <div class="text-[11px] text-[#1e4620] mt-0.5">Support engineer connected with pre-filled context. Merchant never repeats questions.</div>
+                            </div>
+                            <span class="bg-[#137333] text-white font-medium text-xs px-3 py-1 rounded-full">Avg MTTR: &lt; 3 mins</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SCENARIO 3: Guardrail Refusal -->
+                <div id="viewScenario3" class="hidden fade-in space-y-4">
+                    <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
+                        <div>
+                            <h2 class="text-base font-medium text-[#1f1f1f] google-font">Edge Case 2: Strict Refusal Guardrails (Billing & Permanent Bans)</h2>
+                            <p class="text-xs text-[#747775]">Demonstrates clear operational boundaries—preventing hallucinations on financial and compliance topics.</p>
+                        </div>
+                        <span class="bg-[#fce8e6] text-[#b3261e] border border-[#fad2cf] text-xs font-medium px-3 py-1 rounded-full inline-flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5 text-[#b3261e] fill-current" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                            <span>Guardrail Enforced</span>
+                        </span>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-4">
+                        <!-- Case A: Invoicing Dispute -->
+                        <div class="border border-[#e0e2ec] bg-[#f8fafd] rounded-2xl p-4.5 space-y-3">
+                            <div class="font-medium text-xs text-[#1f1f1f] flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-[#0b57d0] fill-current" viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                                <span>Case A: Invoicing & Payment Dispute</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-[#e0e2ec] text-xs text-[#444746] italic">
+                                "I was overcharged ₹4,500 on my credit card this morning. Refund my money immediately!"
+                            </div>
+                            <div class="bg-[#fce8e6] border border-[#fad2cf] p-3.5 rounded-xl text-xs space-y-1.5">
+                                <div class="font-medium text-[#b3261e] flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5 text-[#b3261e] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11H7v-2h10v2z"/></svg>
+                                    <span>AI Action: Refuse & Reroute</span>
+                                </div>
+                                <p class="text-[#601410] text-[11px] leading-relaxed">
+                                    Co-Pilot does not execute financial transactions or hallucinate refund guarantees. It routes directly to the Finance Desk:
+                                </p>
+                                <div class="bg-white p-2.5 rounded-lg border border-[#fad2cf] text-[11px] mono-font text-[#1f1f1f]">
+                                    Routed to: finance@cheerio.in<br>
+                                    Priority: HIGH (Billing Audit attached)
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Case B: Meta Spam Account Suspension -->
+                        <div class="border border-[#e0e2ec] bg-[#f8fafd] rounded-2xl p-4.5 space-y-3">
+                            <div class="font-medium text-xs text-[#1f1f1f] flex items-center gap-1.5">
+                                <svg class="w-4 h-4 text-[#ea8600] fill-current" viewBox="0 0 24 24"><path d="M1 21h4V9H1v12zm22-11c0-1.1-.9-2-2-2h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 1 7.59 7.59C7.22 7.95 7 8.45 7 9v10c0 1.1.9 2 2 2h9c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73v-2z"/></svg>
+                                <span>Case B: Meta Spam Policy Suspension</span>
+                            </div>
+                            <div class="bg-white p-3 rounded-xl border border-[#e0e2ec] text-xs text-[#444746] italic">
+                                "Meta disabled our WhatsApp API for spam. Unban us right now so we can send blasts!"
+                            </div>
+                            <div class="bg-[#fef7e0] border border-[#fce8b2] p-3.5 rounded-xl text-xs space-y-1.5">
+                                <div class="font-medium text-[#7a4100] flex items-center gap-1">
+                                    <svg class="w-3.5 h-3.5 text-[#7a4100] fill-current" viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                                    <span>AI Action: Policy Boundary Protection</span>
+                                </div>
+                                <p class="text-[#7a4100] text-[11px] leading-relaxed">
+                                    Cheerio cannot override Meta compliance algorithms. Instead of false claims, Co-Pilot generates the official appeal dossier:
+                                </p>
+                                <div class="bg-white p-2.5 rounded-lg border border-[#fce8b2] text-[11px] mono-font text-[#1f1f1f]">
+                                    Generated: Meta_WABA_Appeal_Dossier.pdf<br>
+                                    Assigned to: Cheerio Meta Compliance Lead
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SCENARIO 2: Circuit Breaker & Human Escalation -->
-            <div id="viewScenario2" class="hidden fade-in space-y-4">
+            <!-- ================= VIEW 2: OVERVIEW & ANALYTICS ================= -->
+            <div id="navViewAnalytics" class="hidden fade-in space-y-5">
                 <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
                     <div>
-                        <h2 class="text-base font-medium text-[#1f1f1f] google-font">Edge Case 1: Automated Circuit Breaker & Human Escalation</h2>
-                        <p class="text-xs text-[#747775]">Demonstrates the 2-failed-attempt guardrail to prevent repetitive bot loops.</p>
+                        <h2 class="text-base font-medium text-[#1f1f1f] google-font">Support Automation & Resolution Telemetry</h2>
+                        <p class="text-xs text-[#747775]">Live performance metrics across 5,000 active businesses running Cheerio WhatsApp campaigns.</p>
                     </div>
-                    <span class="bg-[#fef7e0] text-[#7a4100] border border-[#fce8b2] text-xs font-medium px-3 py-1 rounded-full inline-flex items-center gap-1">
-                        <span class="material-symbols-outlined text-sm">schedule</span>
-                        <span>Attempt 2 of 2 Failed</span>
+                    <span class="bg-[#e6f4ea] text-[#137333] border border-[#ceead6] px-3 py-1 rounded-full text-xs font-medium inline-flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-[#1e8e3e] animate-pulse"></span>
+                        Real-time Telemetry (Oct 2026)
                     </span>
                 </div>
 
-                <div class="bg-[#f8fafd] border border-[#e0e2ec] rounded-2xl p-4.5 space-y-3.5">
-                    <div class="flex items-center gap-2 text-[#b3261e] font-medium text-xs">
-                        <span class="material-symbols-outlined text-base">error</span>
-                        <span>Unresolved Technical Exception Encountered</span>
+                <!-- 4 Top Cards -->
+                <div class="grid grid-cols-4 gap-4">
+                    <div class="bg-[#f8fafd] border border-[#e0e2ec] rounded-2xl p-4 space-y-1">
+                        <div class="text-[11px] font-medium text-[#747775] uppercase tracking-wider">Autonomous Deflection</div>
+                        <div class="text-2xl font-bold text-[#0b57d0] google-font">65.0%</div>
+                        <div class="text-[11px] text-[#137333] font-medium">11,375 / 17,500 queries/mo</div>
                     </div>
-                    <p class="text-xs text-[#444746] leading-relaxed">
-                        Merchant attempted to link phone number <code class="mono-font bg-white px-1.5 py-0.5 rounded border border-[#c4c7c5] text-[#1f1f1f]">+91-98765-43210</code>, but Meta Cloud API returned <code class="mono-font bg-white px-1.5 py-0.5 rounded border border-[#c4c7c5] text-[#1f1f1f]">Code 133010: TWO_FACTOR_PHONE_LOCKED</code> twice consecutively. Co-Pilot's automated remediation threshold was safely triggered.
-                    </p>
-
-                    <!-- Diagnostic Telemetry Packet (Google Cloud Logging Style) -->
-                    <div class="bg-[#1f1f1f] text-[#e3e3e3] p-4.5 rounded-xl mono-font text-xs space-y-1.5 border border-[#444746] shadow-sm">
-                        <div class="text-[#a8dab5] font-medium flex items-center justify-between pb-1.5 border-b border-[#444746]">
-                            <span class="inline-flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm text-[#a8dab5]">terminal</span>
-                                <span>STRUCTURED DIAGNOSTIC TELEMETRY PACKET</span>
-                            </span>
-                            <span class="text-[10px] text-[#8e918f]">Dispatched to Tier-2 Support Queue</span>
-                        </div>
-                        <div class="text-[#c4c7c5] pt-1"><span class="text-[#7cacf8]">PACKET_UUID:</span> PKT-2026-CHRIO-8921</div>
-                        <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">MERCHANT_ID:</span> FABJEWELS_D2C (Account #89104)</div>
-                        <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">PHONE_TARGET:</span> +91-98765-43210 (WABA Unlinked)</div>
-                        <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">META_ERROR:</span> 133010 (TWO_FACTOR_PHONE_LOCKED)</div>
-                        <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">FAILED_ATTEMPTS:</span> 2 / 2 (Circuit breaker tripped)</div>
-                        <div class="text-[#fdd663] pt-1"><span class="text-[#f9ab00]">RECOMMENDED_HUMAN_ACTION:</span> "Instruct merchant to navigate to WhatsApp Settings > Account > Delete Account to release 2FA lock from consumer application."</div>
+                    <div class="bg-[#f8fafd] border border-[#e0e2ec] rounded-2xl p-4 space-y-1">
+                        <div class="text-[11px] font-medium text-[#747775] uppercase tracking-wider">Net Monthly Savings</div>
+                        <div class="text-2xl font-bold text-[#137333] google-font">₹4,51,500</div>
+                        <div class="text-[11px] text-[#747775]">₹54.18L annualized reduction</div>
                     </div>
+                    <div class="bg-[#f8fafd] border border-[#e0e2ec] rounded-2xl p-4 space-y-1">
+                        <div class="text-[11px] font-medium text-[#747775] uppercase tracking-wider">Blended Cost / Ticket</div>
+                        <div class="text-2xl font-bold text-[#1f1f1f] google-font">₹14.20</div>
+                        <div class="text-[11px] text-[#137333] font-medium">Down from ₹40.00 (-64.5%)</div>
+                    </div>
+                    <div class="bg-[#f8fafd] border border-[#e0e2ec] rounded-2xl p-4 space-y-1">
+                        <div class="text-[11px] font-medium text-[#747775] uppercase tracking-wider">Churn Retention ROI</div>
+                        <div class="text-2xl font-bold text-[#7a4100] google-font">51.4x</div>
+                        <div class="text-[11px] text-[#137333] font-medium">60 merchants saved / month</div>
+                    </div>
+                </div>
 
-                    <div class="bg-[#e6f4ea] border border-[#ceead6] p-3.5 rounded-xl flex items-center justify-between">
-                        <div>
-                            <div class="font-medium text-xs text-[#137333] flex items-center gap-1.5">
-                                <span class="material-symbols-outlined text-sm">support_agent</span>
-                                <span>Seamless Human Handoff Activated</span>
+                <!-- Query Breakdown Bars -->
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="border border-[#e0e2ec] rounded-2xl p-4.5 bg-white space-y-3">
+                        <div class="text-xs font-medium text-[#1f1f1f] google-font">Query Distribution by Technical Category</div>
+                        
+                        <div class="space-y-2.5 text-xs">
+                            <div>
+                                <div class="flex justify-between text-[#444746] mb-1">
+                                    <span>Meta Template Rejection (Category Mismatch)</span>
+                                    <span class="font-medium text-[#0b57d0]">38% (6,650/mo)</span>
+                                </div>
+                                <div class="w-full bg-[#f0f4f9] h-2 rounded-full overflow-hidden">
+                                    <div class="bg-[#0b57d0] h-full rounded-full" style="width: 38%"></div>
+                                </div>
                             </div>
-                            <div class="text-[11px] text-[#1e4620] mt-0.5">Support engineer connected with pre-filled context. Merchant never repeats questions.</div>
+
+                            <div>
+                                <div class="flex justify-between text-[#444746] mb-1">
+                                    <span>WABA 2FA Lockouts & Phone Unlinking</span>
+                                    <span class="font-medium text-[#ea8600]">27% (4,725/mo)</span>
+                                </div>
+                                <div class="w-full bg-[#f0f4f9] h-2 rounded-full overflow-hidden">
+                                    <div class="bg-[#ea8600] h-full rounded-full" style="width: 27%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-[#444746] mb-1">
+                                    <span>CSV Contact Upload & Dial Code Missing</span>
+                                    <span class="font-medium text-[#137333]">19% (3,325/mo)</span>
+                                </div>
+                                <div class="w-full bg-[#f0f4f9] h-2 rounded-full overflow-hidden">
+                                    <div class="bg-[#137333] h-full rounded-full" style="width: 19%"></div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class="flex justify-between text-[#444746] mb-1">
+                                    <span>Billing & Credit Card Inquiries</span>
+                                    <span class="font-medium text-[#747775]">16% (2,800/mo)</span>
+                                </div>
+                                <div class="w-full bg-[#f0f4f9] h-2 rounded-full overflow-hidden">
+                                    <div class="bg-[#747775] h-full rounded-full" style="width: 16%"></div>
+                                </div>
+                            </div>
                         </div>
-                        <span class="bg-[#137333] text-white font-medium text-xs px-3 py-1 rounded-full">Avg MTTR: &lt; 3 mins</span>
+                    </div>
+
+                    <!-- Token Economics Summary -->
+                    <div class="border border-[#e0e2ec] rounded-2xl p-4.5 bg-[#f8fafd] space-y-3">
+                        <div class="text-xs font-medium text-[#1f1f1f] google-font">AI Infrastructure Unit Economics</div>
+                        <div class="text-xs text-[#444746] space-y-2 leading-relaxed">
+                            <div class="flex justify-between pb-1.5 border-b border-[#e0e2ec]">
+                                <span class="text-[#747775]">Underlying LLM:</span>
+                                <span class="font-medium text-[#0b57d0]">OpenAI GPT-4o-mini</span>
+                            </div>
+                            <div class="flex justify-between pb-1.5 border-b border-[#e0e2ec]">
+                                <span class="text-[#747775]">Input / Output Tokens per Session:</span>
+                                <span class="mono-font text-[#1f1f1f]">2,500 in / 500 out</span>
+                            </div>
+                            <div class="flex justify-between pb-1.5 border-b border-[#e0e2ec]">
+                                <span class="text-[#747775]">Raw Token Cost per Query:</span>
+                                <span class="mono-font text-[#1f1f1f]">$0.000675 (~₹0.057)</span>
+                            </div>
+                            <div class="flex justify-between pb-1.5 border-b border-[#e0e2ec]">
+                                <span class="text-[#747775]">Blended Cost (with Serverless Cache):</span>
+                                <span class="font-bold text-[#137333]">₹0.20 / query</span>
+                            </div>
+                            <div class="flex justify-between pt-1">
+                                <span class="text-[#747775]">Total Monthly AI Spend (17.5k queries):</span>
+                                <span class="font-bold text-[#0b57d0]">₹3,500 / month</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SCENARIO 3: Guardrail Refusal -->
-            <div id="viewScenario3" class="hidden fade-in space-y-4">
+            <!-- ================= VIEW 3: AUDIENCES & CSVS ================= -->
+            <div id="navViewAudiences" class="hidden fade-in space-y-4">
                 <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
                     <div>
-                        <h2 class="text-base font-medium text-[#1f1f1f] google-font">Edge Case 2: Strict Refusal Guardrails (Billing & Permanent Bans)</h2>
-                        <p class="text-xs text-[#747775]">Demonstrates clear operational boundaries—preventing hallucinations on financial and compliance topics.</p>
+                        <h2 class="text-base font-medium text-[#1f1f1f] google-font">Audience Management & CSV Pre-Flight Sanitizer</h2>
+                        <p class="text-xs text-[#747775]">Automated sanitization of contact uploads to prevent Meta Cloud API broadcast rejections.</p>
                     </div>
-                    <span class="bg-[#fce8e6] text-[#b3261e] border border-[#fad2cf] text-xs font-medium px-3 py-1 rounded-full inline-flex items-center gap-1">
-                        <span class="material-symbols-outlined text-sm">verified_user</span>
-                        <span>Guardrail Enforced</span>
+                    <span class="bg-[#f0f4f9] text-[#0b57d0] border border-[#d3e3fd] px-3 py-1 rounded-full text-xs font-medium">
+                        Meta Broadcast Linter Active
+                    </span>
+                </div>
+
+                <div class="border border-[#e0e2ec] rounded-2xl p-5 bg-[#f8fafd] space-y-4">
+                    <div class="flex items-center justify-between bg-white p-3.5 rounded-xl border border-[#e0e2ec]">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-[#e6f4ea] text-[#137333] flex items-center justify-center font-bold">
+                                CSV
+                            </div>
+                            <div>
+                                <div class="font-medium text-xs text-[#1f1f1f]">diwali_vip_customers_oct2026.csv</div>
+                                <div class="text-[11px] text-[#747775]">1,240 rows • Uploaded by FabJewels Marketing Team</div>
+                            </div>
+                        </div>
+                        <span id="csvBadge" class="bg-[#fef7e0] text-[#7a4100] border border-[#fce8b2] text-xs font-medium px-3 py-1 rounded-full">
+                            48 Formatting Inconsistencies Found
+                        </span>
+                    </div>
+
+                    <div id="csvLinterReport" class="bg-white border border-[#e0e2ec] rounded-xl p-4 space-y-3">
+                        <div class="text-xs font-medium text-[#b3261e] flex items-center gap-1.5">
+                            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                            <span>Co-Pilot Pre-Flight Analysis: Broadcast Will Fail Without Sanitation</span>
+                        </div>
+                        <ul class="text-xs text-[#444746] space-y-1.5 pl-5 list-disc leading-relaxed">
+                            <li><strong>36 rows:</strong> Missing India international dial code (<code class="mono-font bg-[#f0f4f9] px-1 rounded text-[#1f1f1f]">9876543210</code> instead of <code class="mono-font bg-[#f0f4f9] px-1 rounded text-[#137333]">+919876543210</code>).</li>
+                            <li><strong>12 rows:</strong> Contain illegal whitespaces and hyphens in phone column.</li>
+                        </ul>
+
+                        <div class="pt-2">
+                            <button id="btnSanitizeCSV" onclick="sanitizeCSV()" class="px-5 py-2.5 bg-[#137333] hover:bg-[#0e5223] text-white rounded-full text-xs font-medium transition shadow-sm inline-flex items-center gap-2">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5z"/></svg>
+                                <span>1-Click Auto-Sanitize & Inject +91 Prefix</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= VIEW 4: AUTOMATED BOT FLOWS ================= -->
+            <div id="navViewFlows" class="hidden fade-in space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
+                    <div>
+                        <h2 class="text-base font-medium text-[#1f1f1f] google-font">Automated Bot Flow & Support Routing Logic</h2>
+                        <p class="text-xs text-[#747775]">Visual architecture showing autonomous resolution pathways and deterministic human handoffs.</p>
+                    </div>
+                    <span class="bg-[#e8f0fe] text-[#1967d2] border border-[#d2e3fc] px-3 py-1 rounded-full text-xs font-medium">
+                        Self-Healing Topology
+                    </span>
+                </div>
+
+                <div class="grid grid-cols-3 gap-4 text-xs">
+                    <!-- Step 1 -->
+                    <div class="border border-[#e0e2ec] rounded-2xl p-4.5 bg-[#f8fafd] space-y-2">
+                        <div class="text-[11px] font-bold text-[#0b57d0] uppercase tracking-wider">Step 1: Inbound Event</div>
+                        <div class="font-medium text-sm text-[#1f1f1f]">Merchant Interaction</div>
+                        <p class="text-[#747775] text-[11px] leading-relaxed">Merchant drafts a template, registers WABA phone number, or uploads customer CSV list.</p>
+                        <div class="bg-white p-2.5 rounded-lg border border-[#e0e2ec] mono-font text-[10px] text-[#444746]">
+                            Event: API_PRE_SUBMIT
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="border border-[#e0e2ec] rounded-2xl p-4.5 bg-[#f8fafd] space-y-2">
+                        <div class="text-[11px] font-bold text-[#ea8600] uppercase tracking-wider">Step 2: AI Pre-Flight Linter</div>
+                        <div class="font-medium text-sm text-[#1f1f1f]">Deterministic Validation</div>
+                        <p class="text-[#747775] text-[11px] leading-relaxed">Evaluates compliance rules against Meta Cloud API policies in 140ms before hitting remote servers.</p>
+                        <div class="bg-white p-2.5 rounded-lg border border-[#e0e2ec] mono-font text-[10px] text-[#444746]">
+                            Latency: 140ms | Cache: Redis
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="border border-[#e0e2ec] rounded-2xl p-4.5 bg-[#f8fafd] space-y-2">
+                        <div class="text-[11px] font-bold text-[#137333] uppercase tracking-wider">Step 3: Dual Action Branch</div>
+                        <div class="font-medium text-sm text-[#1f1f1f]">65% Autonomous / 35% Human</div>
+                        <p class="text-[#747775] text-[11px] leading-relaxed">Simple policy issues auto-fixed in 1-click. Complex exceptions packaged with full telemetry for humans.</p>
+                        <div class="bg-white p-2.5 rounded-lg border border-[#e0e2ec] mono-font text-[10px] text-[#137333] font-medium">
+                            Zero Infinite Bot Loops
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= VIEW 5: CLOUD INTEGRATIONS ================= -->
+            <div id="navViewIntegrations" class="hidden fade-in space-y-4">
+                <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
+                    <div>
+                        <h2 class="text-base font-medium text-[#1f1f1f] google-font">Cloud Integrations & Connected APIs</h2>
+                        <p class="text-xs text-[#747775]">Operational telemetry for Meta Cloud API, CRM webhooks, and billing gateways.</p>
+                    </div>
+                    <span class="bg-[#e6f4ea] text-[#137333] border border-[#ceead6] px-3 py-1 rounded-full text-xs font-medium">
+                        All Connectors Healthy
                     </span>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
-                    <!-- Case A: Invoicing Dispute -->
-                    <div class="border border-[#e0e2ec] bg-[#f8fafd] rounded-2xl p-4.5 space-y-3">
-                        <div class="font-medium text-xs text-[#1f1f1f] flex items-center gap-1.5">
-                            <span class="material-symbols-outlined text-base text-[#0b57d0]">credit_card</span>
-                            <span>Case A: Invoicing & Payment Dispute</span>
+                    <div class="border border-[#e0e2ec] rounded-2xl p-4.5 bg-white space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium text-xs text-[#1f1f1f]">Meta WhatsApp Cloud API (WABA)</span>
+                            <span class="text-[10px] bg-[#e6f4ea] text-[#137333] px-2 py-0.5 rounded-full font-medium">Connected</span>
                         </div>
-                        <div class="bg-white p-3 rounded-xl border border-[#e0e2ec] text-xs text-[#444746] italic">
-                            "I was overcharged ₹4,500 on my credit card this morning. Refund my money immediately!"
-                        </div>
-                        <div class="bg-[#fce8e6] border border-[#fad2cf] p-3.5 rounded-xl text-xs space-y-1.5">
-                            <div class="font-medium text-[#b3261e] flex items-center gap-1">
-                                <span class="material-symbols-outlined text-sm">block</span>
-                                <span>AI Action: Refuse & Reroute</span>
-                            </div>
-                            <p class="text-[#601410] text-[11px] leading-relaxed">
-                                Co-Pilot does not execute financial transactions or hallucinate refund guarantees. It routes directly to the Finance Desk:
-                            </p>
-                            <div class="bg-white p-2.5 rounded-lg border border-[#fad2cf] text-[11px] mono-font text-[#1f1f1f]">
-                                Routed to: finance@cheerio.in<br>
-                                Priority: HIGH (Billing Audit attached)
-                            </div>
-                        </div>
+                        <p class="text-xs text-[#747775]">Direct Graph API v19.0 endpoint for automated template submission and broadcast delivery.</p>
+                        <div class="text-[11px] mono-font text-[#0b57d0]">Latency: 82ms • SLA: 99.98%</div>
                     </div>
 
-                    <!-- Case B: Meta Spam Account Suspension -->
-                    <div class="border border-[#e0e2ec] bg-[#f8fafd] rounded-2xl p-4.5 space-y-3">
-                        <div class="font-medium text-xs text-[#1f1f1f] flex items-center gap-1.5">
-                            <span class="material-symbols-outlined text-base text-[#ea8600]">gavel</span>
-                            <span>Case B: Meta Spam Policy Suspension</span>
+                    <div class="border border-[#e0e2ec] rounded-2xl p-4.5 bg-white space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium text-xs text-[#1f1f1f]">Shopify D2C Storefront Webhook</span>
+                            <span class="text-[10px] bg-[#e6f4ea] text-[#137333] px-2 py-0.5 rounded-full font-medium">Active</span>
                         </div>
-                        <div class="bg-white p-3 rounded-xl border border-[#e0e2ec] text-xs text-[#444746] italic">
-                            "Meta disabled our WhatsApp API for spam. Unban us right now so we can send blasts!"
+                        <p class="text-xs text-[#747775]">Receives order creation, fulfillment, and abandoned checkout triggers in real time.</p>
+                        <div class="text-[11px] mono-font text-[#0b57d0]">12,410 Events Ingested Today</div>
+                    </div>
+
+                    <div class="border border-[#e0e2ec] rounded-2xl p-4.5 bg-white space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium text-xs text-[#1f1f1f]">Zendesk / Slack Support Bridge</span>
+                            <span class="text-[10px] bg-[#e6f4ea] text-[#137333] px-2 py-0.5 rounded-full font-medium">Escalation Ready</span>
                         </div>
-                        <div class="bg-[#fef7e0] border border-[#fce8b2] p-3.5 rounded-xl text-xs space-y-1.5">
-                            <div class="font-medium text-[#7a4100] flex items-center gap-1">
-                                <span class="material-symbols-outlined text-sm">shield</span>
-                                <span>AI Action: Policy Boundary Protection</span>
-                            </div>
-                            <p class="text-[#7a4100] text-[11px] leading-relaxed">
-                                Cheerio cannot override Meta compliance algorithms. Instead of false claims, Co-Pilot generates the official appeal dossier:
-                            </p>
-                            <div class="bg-white p-2.5 rounded-lg border border-[#fce8b2] text-[11px] mono-font text-[#1f1f1f]">
-                                Generated: Meta_WABA_Appeal_Dossier.pdf<br>
-                                Assigned to: Cheerio Meta Compliance Lead
-                            </div>
+                        <p class="text-xs text-[#747775]">Receives structured Diagnostic Packets when the 2-failure circuit breaker trips.</p>
+                        <div class="text-[11px] mono-font text-[#0b57d0]">Dispatches to #support-tier2</div>
+                    </div>
+
+                    <div class="border border-[#e0e2ec] rounded-2xl p-4.5 bg-white space-y-2">
+                        <div class="flex items-center justify-between">
+                            <span class="font-medium text-xs text-[#1f1f1f]">Stripe & Razorpay Billing Guardrail</span>
+                            <span class="text-[10px] bg-[#fef7e0] text-[#7a4100] px-2 py-0.5 rounded-full font-medium">Guarded</span>
                         </div>
+                        <p class="text-xs text-[#747775]">Directly enforces AI refusal on payment transactions, refunds, and plan modifications.</p>
+                        <div class="text-[11px] mono-font text-[#7a4100]">Strict Policy Enforcement</div>
                     </div>
                 </div>
             </div>
@@ -397,8 +644,42 @@
         </main>
     </div>
 
-    <!-- Scripts for Scenario Switching & Interactive Demonstrations -->
+    <!-- Interactive Navigation and Remediation Logic -->
     <script>
+        // Switch between the 5 Left Navigation Tabs
+        function switchNavTab(tabId) {
+            const tabs = ['analytics', 'audiences', 'templates', 'flows', 'integrations'];
+            
+            // Hide all views
+            tabs.forEach(t => {
+                const view = document.getElementById('navView' + t.charAt(0).toUpperCase() + t.slice(1));
+                if (view) view.classList.add('hidden');
+                
+                const btn = document.getElementById('navItem' + t.charAt(0).toUpperCase() + t.slice(1));
+                if (btn) {
+                    btn.className = "w-full text-left px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition font-medium";
+                }
+            });
+
+            // Show selected view
+            const activeView = document.getElementById('navView' + tabId.charAt(0).toUpperCase() + tabId.slice(1));
+            if (activeView) activeView.classList.remove('hidden');
+
+            const activeBtn = document.getElementById('navItem' + tabId.charAt(0).toUpperCase() + tabId.slice(1));
+            if (activeBtn) {
+                activeBtn.className = "w-full text-left px-3.5 py-2.5 rounded-full bg-[#d3e3fd] text-[#041e49] font-medium flex items-center gap-3 transition";
+            }
+
+            // Top scenario switcher visibility
+            const topBar = document.getElementById('topScenarioBar');
+            if (tabId === 'templates') {
+                topBar.style.display = 'flex';
+            } else {
+                topBar.style.display = 'none';
+            }
+        }
+
+        // Switch between the 3 Scenarios on WhatsApp Templates
         function switchScenario(scenarioId) {
             document.getElementById('viewScenario1').classList.add('hidden');
             document.getElementById('viewScenario2').classList.add('hidden');
@@ -421,59 +702,93 @@
             }
         }
 
+        // 1-Click Auto-Fix for Utility Category
         function applyUtilityFix() {
             const cleanText = "Hi {{1}}, your order #{{2}} is confirmed and will ship shortly. Track your package live here: https://fabjewels.in/track/{{2}}";
             document.getElementById('templateBody').value = cleanText;
-            document.getElementById('templateBody').className = "w-full text-xs p-3.5 border border-[#34a853] rounded-lg mono-font leading-relaxed bg-[#f0f9f4] text-[#1f1f1f] outline-none";
+            document.getElementById('templateBody').className = "w-full text-xs p-3.5 border border-[#1e8e3e] rounded-lg mono-font leading-relaxed bg-[#f0f9f4] text-[#1f1f1f] outline-none";
             
             document.getElementById('previewBubble').innerHTML = "Hi Priya, your order #FJ-9412 is confirmed and will ship shortly. Track your package live here: https://fabjewels.in/track/FJ-9412 <span class='block text-[9px] text-[#747775] text-right mt-1.5'>10:42 AM</span>";
             
             document.getElementById('validationPill').className = "bg-[#e6f4ea] text-[#137333] border border-[#ceead6] px-3 py-1 rounded-full font-medium inline-flex items-center gap-1.5";
-            document.getElementById('validationPill').innerHTML = `<span class="material-symbols-outlined text-sm text-[#137333]">check_circle</span><span>100% Meta Compliant (Utility)</span>`;
+            document.getElementById('validationPill').innerHTML = `
+                <svg class="w-3.5 h-3.5 text-[#137333] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>100% Meta Compliant (Utility)</span>
+            `;
             
             document.getElementById('linterStatus').className = "text-[#137333] font-medium inline-flex items-center gap-1";
-            document.getElementById('linterStatus').innerHTML = `<span class="material-symbols-outlined text-sm">verified</span><span>Meta Approval Probability: 99.4%</span>`;
+            document.getElementById('linterStatus').innerHTML = `
+                <svg class="w-3.5 h-3.5 text-[#137333] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Meta Approval Probability: 99.4%</span>
+            `;
 
             document.getElementById('copilotActionCards').innerHTML = `
                 <div class="col-span-2 bg-[#f0f9f4] border border-[#ceead6] rounded-xl p-4 text-center space-y-2.5">
                     <div class="flex items-center justify-center gap-1.5 font-medium text-[#137333] text-xs">
-                        <span class="material-symbols-outlined text-base">check_circle</span>
+                        <svg class="w-4 h-4 text-[#137333] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                         <span>Auto-Fix Applied: Template is 100% Compliant</span>
                     </div>
                     <p class="text-[11px] text-[#1e4620]">Offending promotional phrasing removed. Fallback variables properly mapped.</p>
                     <button onclick="alert('Template approved by Meta Cloud API. Zero support tickets raised. ZOCR metric achieved.')" class="bg-[#137333] hover:bg-[#0e5223] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-sm">send</span>
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                         <span>Submit Approved Template to Meta Cloud API</span>
                     </button>
                 </div>
             `;
         }
 
+        // 1-Click Reclassify to Marketing
         function applyMarketingFix() {
             document.getElementById('categorySelect').value = "MARKETING";
             document.getElementById('categorySelect').className = "w-full text-xs px-3.5 py-2.5 border border-[#0b57d0] rounded-lg bg-[#f0f4f9] text-[#0b57d0] font-medium outline-none";
             
             document.getElementById('validationPill').className = "bg-[#e8f0fe] text-[#1967d2] border border-[#d2e3fc] px-3 py-1 rounded-full font-medium inline-flex items-center gap-1.5";
-            document.getElementById('validationPill').innerHTML = `<span class="material-symbols-outlined text-sm text-[#1967d2]">check_circle</span><span>Compliant under Marketing Category</span>`;
+            document.getElementById('validationPill').innerHTML = `
+                <svg class="w-3.5 h-3.5 text-[#1967d2] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Compliant under Marketing Category</span>
+            `;
 
             document.getElementById('linterStatus').className = "text-[#137333] font-medium inline-flex items-center gap-1";
-            document.getElementById('linterStatus').innerHTML = `<span class="material-symbols-outlined text-sm">verified</span><span>Meta Approval Probability: 98.1%</span>`;
+            document.getElementById('linterStatus').innerHTML = `
+                <svg class="w-3.5 h-3.5 text-[#137333] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                <span>Meta Approval Probability: 98.1%</span>
+            `;
 
             document.getElementById('copilotActionCards').innerHTML = `
                 <div class="col-span-2 bg-[#f0f4f9] border border-[#d2e3fc] rounded-xl p-4 text-center space-y-2.5">
                     <div class="flex items-center justify-center gap-1.5 font-medium text-[#1967d2] text-xs">
-                        <span class="material-symbols-outlined text-base">check_circle</span>
+                        <svg class="w-4 h-4 text-[#1967d2] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                         <span>Category Switched to Marketing</span>
                     </div>
                     <p class="text-[11px] text-[#185abc]">Promotional discount copy is now fully valid under Meta Marketing rules.</p>
                     <button onclick="alert('Marketing template submitted to Meta API. Status: APPROVED')" class="bg-[#0b57d0] hover:bg-[#0842a0] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
-                        <span class="material-symbols-outlined text-sm">send</span>
+                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                         <span>Submit Approved Marketing Template</span>
                     </button>
                 </div>
             `;
         }
 
+        // CSV Sanitizer Demo Action
+        function sanitizeCSV() {
+            document.getElementById('csvBadge').className = "bg-[#e6f4ea] text-[#137333] border border-[#ceead6] text-xs font-medium px-3 py-1 rounded-full";
+            document.getElementById('csvBadge').innerText = "1,240 / 1,240 Contacts Cleaned & Verified";
+
+            document.getElementById('csvLinterReport').innerHTML = `
+                <div class="text-center py-4 space-y-2">
+                    <div class="w-10 h-10 rounded-full bg-[#e6f4ea] text-[#137333] mx-auto flex items-center justify-center">
+                        <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                    </div>
+                    <div class="font-medium text-xs text-[#137333]">All 1,240 Rows Sanitized Successfully!</div>
+                    <p class="text-[11px] text-[#747775]">Added +91 dial code to 36 rows and stripped illegal spaces from 12 rows. Ready for broadcast.</p>
+                    <button onclick="alert('Audience broadcast launched without error. Zero support queries triggered.')" class="mt-2 px-5 py-2 bg-[#0b57d0] hover:bg-[#0842a0] text-white rounded-full text-xs font-medium transition shadow-sm">
+                        Launch Broadcast Campaign
+                    </button>
+                </div>
+            `;
+        }
+
+        // Reset Demo
         function resetScenario1() {
             switchScenario('scenario1');
             location.reload();
