@@ -21,19 +21,28 @@
         .mono-font {
             font-family: 'Roboto Mono', monospace;
         }
-        .material-symbols-outlined {
-            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+        .material-symbols-outlined, .material-symbols-filled {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 20px;
             line-height: 1;
+            letter-spacing: normal;
+            text-transform: none;
             display: inline-flex;
             align-items: center;
             justify-content: center;
+            white-space: nowrap;
+            word-wrap: normal;
+            direction: ltr;
+            -webkit-font-feature-settings: 'liga';
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
         }
         .material-symbols-filled {
             font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
-            line-height: 1;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
         }
         .fade-in {
             animation: fadeIn 0.2s cubic-bezier(0.2, 0, 0, 1);
@@ -112,7 +121,7 @@
                 <span>Audiences & CSVs</span>
             </a>
             <a href="#" class="px-3.5 py-2.5 rounded-full bg-[#d3e3fd] text-[#041e49] font-medium flex items-center gap-3 transition">
-                <span class="material-symbols-filled text-lg text-[#0b57d0]">chat</span>
+                <span class="material-symbols-outlined text-lg text-[#0b57d0]">forum</span>
                 <span>WhatsApp Templates</span>
             </a>
             <a href="#" class="px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
