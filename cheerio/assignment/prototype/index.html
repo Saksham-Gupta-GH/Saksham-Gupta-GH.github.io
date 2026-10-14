@@ -3,265 +3,380 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cheerio AI — Co-Pilot Interactive Prototype</title>
+    <title>Cheerio AI — Co-Pilot Management Console</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&family=Google+Sans+Text:wght@400;500&family=Roboto:wght@400;500;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <style>
-        body { font-family: 'Inter', sans-serif; }
-        .fade-in { animation: fadeIn 0.25s ease-in-out; }
+        body {
+            font-family: 'Google Sans Text', 'Roboto', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #f8fafd;
+            color: #1f1f1f;
+        }
+        h1, h2, h3, .google-font {
+            font-family: 'Google Sans', sans-serif;
+        }
+        .mono-font {
+            font-family: 'Roboto Mono', monospace;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .material-symbols-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            line-height: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .fade-in {
+            animation: fadeIn 0.2s cubic-bezier(0.2, 0, 0, 1);
+        }
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(4px); }
+            from { opacity: 0; transform: translateY(3px); }
             to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col">
+<body class="min-h-screen flex flex-col bg-[#f8fafd] text-[#1f1f1f] antialiased">
 
-    <!-- Top Banner -->
-    <header class="bg-white border-b border-slate-200 px-4 md:px-6 py-2.5 flex items-center justify-between sticky top-0 z-30 shadow-sm gap-2 md:gap-4">
-        <div class="flex items-center gap-2.5 shrink-0">
-            <div class="bg-blue-600 text-white font-extrabold text-sm md:text-base px-2.5 py-1 rounded-lg tracking-tight">cheerio<span class="text-blue-200">.ai</span></div>
-            <span class="hidden sm:inline-flex text-[11px] md:text-xs bg-emerald-50 text-emerald-700 font-semibold px-2.5 py-0.5 rounded-full border border-emerald-200 items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Meta BSP Partner
+    <!-- Top Navigation Header (Google Workspace / Cloud Style) -->
+    <header class="bg-white border-b border-[#e0e2ec] px-4 md:px-6 py-2.5 flex items-center justify-between sticky top-0 z-30 shadow-[0_1px_2px_rgba(0,0,0,0.03)] gap-3">
+        <!-- Brand / Identity -->
+        <div class="flex items-center gap-3 shrink-0">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded-lg bg-[#0b57d0] text-white flex items-center justify-center font-bold text-base shadow-sm">
+                    C
+                </div>
+                <div class="flex flex-col">
+                    <span class="google-font text-base font-medium tracking-tight text-[#1f1f1f] leading-none">cheerio<span class="text-[#0b57d0]">.ai</span></span>
+                    <span class="text-[10px] text-[#747775] font-medium tracking-wide">Workspace Console</span>
+                </div>
+            </div>
+            <span class="hidden sm:inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full text-[11px] font-medium bg-[#e6f4ea] text-[#137333] border border-[#ceead6]">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#1e8e3e]"></span>
+                Meta Business Solution Provider
             </span>
         </div>
 
-        <!-- Scenario Switcher Bar (Assignment Brief Deliverable) -->
-        <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-semibold shrink-0">
-            <button id="tabScenario1" onclick="switchScenario('scenario1')" class="px-2.5 md:px-3 py-1.5 rounded-lg bg-white text-blue-700 shadow-sm transition">
-                ✨ <span class="hidden lg:inline">Scenario 1: </span>Pre-Flight Linter
+        <!-- Segmented Scenario Control (Google Material 3 Pill Tabs) -->
+        <div class="flex items-center bg-[#f0f4f9] p-1 rounded-full border border-[#e0e2ec] text-xs font-medium shrink-0">
+            <button id="tabScenario1" onclick="switchScenario('scenario1')" class="px-3.5 py-1.5 rounded-full bg-white text-[#0b57d0] shadow-sm transition inline-flex items-center gap-1.5 font-medium">
+                <span class="material-symbols-outlined text-sm">auto_awesome</span>
+                <span class="hidden md:inline">Scenario 1: </span>Pre-Flight Linter
             </button>
-            <button id="tabScenario2" onclick="switchScenario('scenario2')" class="px-2.5 md:px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">
-                🚨 <span class="hidden lg:inline">Scenario 2: </span>2-Failures Escalation
+            <button id="tabScenario2" onclick="switchScenario('scenario2')" class="px-3.5 py-1.5 rounded-full text-[#444746] hover:text-[#1f1f1f] transition inline-flex items-center gap-1.5 font-medium">
+                <span class="material-symbols-outlined text-sm">support_agent</span>
+                <span class="hidden md:inline">Scenario 2: </span>Escalation Circuit
             </button>
-            <button id="tabScenario3" onclick="switchScenario('scenario3')" class="px-2.5 md:px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition">
-                🛡️ <span class="hidden lg:inline">Scenario 3: </span>Guardrail Refusal
+            <button id="tabScenario3" onclick="switchScenario('scenario3')" class="px-3.5 py-1.5 rounded-full text-[#444746] hover:text-[#1f1f1f] transition inline-flex items-center gap-1.5 font-medium">
+                <span class="material-symbols-outlined text-sm">shield</span>
+                <span class="hidden md:inline">Scenario 3: </span>Guardrail Refusal
             </button>
         </div>
 
-        <div class="flex items-center gap-2 md:gap-3 text-xs shrink-0">
-            <span class="hidden xl:inline text-slate-500">Merchant: <strong class="text-slate-700">FabJewels (D2C)</strong></span>
-            <span class="bg-blue-50 text-blue-700 font-semibold px-2.5 py-1 rounded-md border border-blue-100">Saksham Gupta</span>
+        <!-- Profile & Account Info -->
+        <div class="flex items-center gap-2.5 text-xs shrink-0">
+            <div class="hidden xl:flex flex-col text-right">
+                <span class="font-medium text-[#1f1f1f]">FabJewels D2C</span>
+                <span class="text-[10px] text-[#747775]">Account #89104</span>
+            </div>
+            <div class="flex items-center gap-2 bg-[#f0f4f9] border border-[#e0e2ec] rounded-full pl-2.5 pr-1 py-1">
+                <span class="font-medium text-[#0b57d0] text-xs">Saksham Gupta</span>
+                <div class="w-6 h-6 rounded-full bg-[#0b57d0] text-white flex items-center justify-center font-medium text-[11px]">
+                    SG
+                </div>
+            </div>
         </div>
     </header>
 
-    <!-- Main Workspace -->
-    <div class="flex-1 flex max-w-7xl w-full mx-auto p-6 gap-6">
+    <!-- Main Content Layout -->
+    <div class="flex-1 flex max-w-7xl w-full mx-auto p-4 md:p-6 gap-6">
 
-        <!-- Sidebar Navigation -->
-        <aside class="w-56 shrink-0 bg-white border border-slate-200 rounded-xl p-4 flex flex-col gap-1 text-sm font-medium h-[620px]">
-            <div class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider px-3 py-2">Campaign Hub</div>
-            <a href="#" class="px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 flex items-center gap-2 text-xs">📊 Overview & Analytics</a>
-            <a href="#" class="px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 flex items-center gap-2 text-xs">👥 Audiences (CSV)</a>
-            <a href="#" class="px-3 py-2 rounded-lg bg-blue-50 text-blue-700 font-semibold flex items-center gap-2 text-xs">💬 WhatsApp Templates</a>
-            <a href="#" class="px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 flex items-center gap-2 text-xs">🤖 Bot Flows</a>
-            <a href="#" class="px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-100 flex items-center gap-2 text-xs">⚡ Integrations</a>
+        <!-- Left Navigation Drawer (Gmail / Cloud Console Style) -->
+        <aside class="w-60 shrink-0 bg-white border border-[#e0e2ec] rounded-2xl p-3 flex flex-col gap-1 text-xs font-medium h-[640px] shadow-sm">
+            <div class="text-[11px] font-medium text-[#747775] px-3 py-2 uppercase tracking-wider">Campaign Manager</div>
             
-            <div class="mt-auto pt-4 border-t border-slate-100 text-[11px] text-slate-400">
-                Diagnostic Agent: <span class="text-emerald-600 font-bold">Co-Pilot v1.2</span><br>
-                ZOCR Target: <strong class="text-slate-600">58% (+36%)</strong>
+            <a href="#" class="px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
+                <span class="material-symbols-outlined text-lg">insights</span>
+                <span>Overview & Analytics</span>
+            </a>
+            <a href="#" class="px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
+                <span class="material-symbols-outlined text-lg">group</span>
+                <span>Audiences & CSVs</span>
+            </a>
+            <a href="#" class="px-3.5 py-2.5 rounded-full bg-[#d3e3fd] text-[#041e49] font-medium flex items-center gap-3 transition">
+                <span class="material-symbols-filled text-lg text-[#0b57d0]">chat</span>
+                <span>WhatsApp Templates</span>
+            </a>
+            <a href="#" class="px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
+                <span class="material-symbols-outlined text-lg">account_tree</span>
+                <span>Automated Bot Flows</span>
+            </a>
+            <a href="#" class="px-3.5 py-2.5 rounded-full text-[#444746] hover:bg-[#f0f4f9] flex items-center gap-3 transition">
+                <span class="material-symbols-outlined text-lg">extension</span>
+                <span>Cloud Integrations</span>
+            </a>
+
+            <!-- System Telemetry Card -->
+            <div class="mt-auto pt-3 border-t border-[#e0e2ec] px-2 text-[11px] text-[#444746] space-y-1.5">
+                <div class="flex items-center justify-between">
+                    <span class="text-[#747775]">Autonomous Engine:</span>
+                    <span class="text-[#137333] font-medium">Co-Pilot v1.2</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-[#747775]">Zero-Touch (ZOCR):</span>
+                    <span class="font-medium text-[#1f1f1f]">58.0% (+36%)</span>
+                </div>
+                <div class="flex items-center justify-between">
+                    <span class="text-[#747775]">Model:</span>
+                    <span class="text-[#0b57d0] font-mono text-[10px]">GPT-4o-mini</span>
+                </div>
             </div>
         </aside>
 
-        <!-- Main Screen -->
-        <main class="flex-1 bg-white border border-slate-200 rounded-xl p-6 relative min-h-[620px]">
+        <!-- Primary Work Area -->
+        <main class="flex-1 bg-white border border-[#e0e2ec] rounded-2xl p-6 relative min-h-[640px] shadow-sm flex flex-col justify-between">
 
             <!-- SCENARIO 1: Template Editor & Auto-Fix -->
             <div id="viewScenario1" class="fade-in space-y-4">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
                     <div>
-                        <h2 class="text-base font-bold text-slate-900">Create WhatsApp Message Template</h2>
-                        <p class="text-xs text-slate-500">Draft your message for Meta Business review and automated messaging.</p>
+                        <h2 class="text-base font-medium text-[#1f1f1f] google-font">Create WhatsApp Message Template</h2>
+                        <p class="text-xs text-[#747775]">Draft and validate messages against Meta Business Cloud API compliance standards.</p>
                     </div>
                     <div class="flex items-center gap-2 text-xs">
-                        <span id="validationPill" class="bg-amber-50 text-amber-800 border border-amber-200 px-3 py-1 rounded-full font-medium flex items-center gap-1.5">
-                            ⚠️ Policy Risk Flagged by Co-Pilot
+                        <span id="validationPill" class="bg-[#fef7e0] text-[#7a4100] border border-[#fce8b2] px-3 py-1 rounded-full font-medium inline-flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-sm text-[#ea8600]">warning</span>
+                            <span>Policy Risk Flagged by Co-Pilot</span>
                         </span>
                     </div>
                 </div>
 
                 <div class="grid grid-cols-5 gap-6">
+                    <!-- Form Fields -->
                     <div class="col-span-3 space-y-3.5">
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Template Name</label>
-                            <input type="text" value="diwali_order_confirmation" class="w-full text-xs px-3 py-2 border border-slate-200 rounded-lg bg-slate-50 text-slate-700 font-mono" readonly>
+                            <label class="block text-xs font-medium text-[#444746] mb-1">Template Identifier</label>
+                            <input type="text" value="diwali_order_confirmation" class="w-full text-xs px-3.5 py-2.5 border border-[#c4c7c5] rounded-lg bg-[#f8fafd] text-[#1f1f1f] mono-font outline-none" readonly>
                         </div>
 
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Category Selected</label>
-                            <select id="categorySelect" class="w-full text-xs px-3 py-2 border border-amber-300 rounded-lg bg-amber-50 text-amber-900 font-medium">
+                            <label class="block text-xs font-medium text-[#444746] mb-1">Assigned Category</label>
+                            <select id="categorySelect" class="w-full text-xs px-3.5 py-2.5 border border-[#ea8600] rounded-lg bg-[#fff8e1] text-[#7a4100] font-medium outline-none">
                                 <option value="UTILITY" selected>Utility (Order updates, Shipping status)</option>
                                 <option value="MARKETING">Marketing (Promotions, Discounts)</option>
                             </select>
-                            <span class="text-[10px] text-amber-700 mt-1 block">Utility rate: ₹0.12/msg • Marketing rate: ₹0.78/msg.</span>
-                        </div>
-
-                        <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1">Message Body</label>
-                            <textarea id="templateBody" rows="4" class="w-full text-xs p-3 border border-amber-300 rounded-lg font-mono leading-relaxed bg-amber-50/40 text-slate-800">Hi {{1}}, your order #{{2}} is confirmed! HURRY! Get 50% OFF our Diwali Flash Sale with code FESTIVE50 on your next piece: https://fabjewels.in/sale</textarea>
-                            <div class="flex justify-between items-center text-[10px] text-slate-400 mt-1">
-                                <span>Character count: 168/1024</span>
-                                <span id="linterStatus" class="text-rose-600 font-bold">Meta Risk: 94% Rejection Probability (Category Mismatch)</span>
+                            <div class="flex items-center justify-between text-[11px] text-[#7a4100] mt-1">
+                                <span>Utility rate: ₹0.12/msg</span>
+                                <span>Marketing rate: ₹0.78/msg</span>
                             </div>
                         </div>
 
-                        <div class="pt-2 flex gap-3">
-                            <button id="btnSubmitMeta" onclick="alert('Submission intercepted: Co-Pilot is preventing a Meta rejection!')" class="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg text-xs font-semibold shadow-sm transition">
-                                Submit to Meta
+                        <div>
+                            <label class="block text-xs font-medium text-[#444746] mb-1">Message Body</label>
+                            <textarea id="templateBody" rows="4" class="w-full text-xs p-3.5 border border-[#ea8600] rounded-lg mono-font leading-relaxed bg-[#fffdf5] text-[#1f1f1f] outline-none">Hi {{1}}, your order #{{2}} is confirmed! HURRY! Get 50% OFF our Diwali Flash Sale with code FESTIVE50 on your next piece: https://fabjewels.in/sale</textarea>
+                            <div class="flex justify-between items-center text-[11px] text-[#747775] mt-1">
+                                <span>Character count: 168 / 1024</span>
+                                <span id="linterStatus" class="text-[#b3261e] font-medium inline-flex items-center gap-1">
+                                    <span class="material-symbols-outlined text-sm">report</span>
+                                    <span>Meta Risk: 94% Rejection Probability (Category Mismatch)</span>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="pt-1 flex gap-3">
+                            <button id="btnSubmitMeta" onclick="alert('Submission intercepted: Cheerio Co-Pilot prevented a Meta compliance failure.')" class="px-5 py-2 bg-[#0b57d0] hover:bg-[#0842a0] text-white rounded-full text-xs font-medium transition shadow-sm inline-flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">send</span>
+                                <span>Submit to Meta</span>
                             </button>
-                            <button onclick="resetScenario1()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-medium transition">
-                                Reset Demo
+                            <button onclick="resetScenario1()" class="px-4 py-2 bg-[#f0f4f9] hover:bg-[#e0e2ec] text-[#444746] rounded-full text-xs font-medium transition inline-flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm">restart_alt</span>
+                                <span>Reset Demo</span>
                             </button>
                         </div>
                     </div>
 
-                    <!-- Live WhatsApp Phone Preview -->
+                    <!-- Live WhatsApp Phone Preview (Clean Google-spec UI) -->
                     <div class="col-span-2 flex flex-col items-center">
-                        <div class="text-xs font-semibold text-slate-500 mb-2">Live WhatsApp Preview</div>
-                        <div class="w-64 bg-[#ECE5DD] border-4 border-slate-700 rounded-3xl p-3 shadow-md relative min-h-[350px] flex flex-col">
-                            <div class="bg-[#075E54] text-white p-2 rounded-t-xl -mx-3 -mt-3 mb-3 flex items-center gap-2">
-                                <div class="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center text-[10px] font-bold">FJ</div>
-                                <div>
-                                    <div class="text-[11px] font-bold leading-tight flex items-center gap-1">FabJewels <span class="text-emerald-300 text-[10px]">✓</span></div>
-                                    <div class="text-[8px] text-white/70">Official Business Account</div>
+                        <div class="text-xs font-medium text-[#747775] mb-2 flex items-center gap-1">
+                            <span class="material-symbols-outlined text-sm">smartphone</span>
+                            <span>Live WhatsApp Preview</span>
+                        </div>
+                        <div class="w-64 bg-[#f0f2f5] border border-[#c4c7c5] rounded-3xl p-3 shadow-md relative min-h-[350px] flex flex-col">
+                            <!-- Phone Top App Bar -->
+                            <div class="bg-[#008069] text-white p-2.5 rounded-t-2xl -mx-3 -mt-3 mb-3 flex items-center gap-2">
+                                <div class="w-7 h-7 rounded-full bg-white/20 flex items-center justify-center text-[10px] font-bold">FJ</div>
+                                <div class="flex-1">
+                                    <div class="text-xs font-medium leading-tight flex items-center gap-1">
+                                        <span>FabJewels</span>
+                                        <svg class="w-3.5 h-3.5 text-white fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+                                    </div>
+                                    <div class="text-[9px] text-white/80">Official Business Account</div>
                                 </div>
                             </div>
-                            <div id="previewBubble" class="bg-white p-2.5 rounded-lg rounded-tl-none shadow-sm text-[11px] leading-relaxed text-slate-800 max-w-[95%] relative">
+                            <!-- Message Bubble -->
+                            <div id="previewBubble" class="bg-white p-3 rounded-lg rounded-tl-none shadow-sm text-xs leading-relaxed text-[#1f1f1f] max-w-[95%] relative border border-[#e0e2ec]">
                                 Hi Priya, your order #FJ-9412 is confirmed! HURRY! Get 50% OFF our Diwali Flash Sale with code FESTIVE50 on your next piece: https://fabjewels.in/sale
-                                <span class="block text-[8px] text-slate-400 text-right mt-1">10:42 AM</span>
+                                <span class="block text-[9px] text-[#747775] text-right mt-1.5">10:42 AM</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Co-Pilot Drawer for Scenario 1 -->
-                <div class="bg-blue-50/70 border border-blue-200 rounded-xl p-4 mt-4">
+                <!-- Co-Pilot Diagnostic Box (Gemini / AI Studio Style) -->
+                <div class="bg-[#f0f4f9] border border-[#d3e3fd] rounded-2xl p-4.5 mt-2">
                     <div class="flex items-center justify-between mb-2">
                         <div class="flex items-center gap-2">
-                            <span class="text-lg">🤖</span>
-                            <span class="font-bold text-xs text-blue-900">Cheerio Co-Pilot Diagnostic</span>
-                            <span class="bg-rose-100 text-rose-700 text-[10px] font-bold px-2 py-0.5 rounded">Meta Code 132015 (Category Mismatch)</span>
+                            <span class="material-symbols-outlined text-[#0b57d0] text-lg">auto_awesome</span>
+                            <span class="font-medium text-xs text-[#0b57d0] google-font">Cheerio Co-Pilot Diagnostic</span>
+                            <span class="bg-[#fce8e6] text-[#b3261e] border border-[#fad2cf] text-[10px] font-medium px-2 py-0.5 rounded-full">Meta Code 132015 (Category Mismatch)</span>
                         </div>
-                        <span class="text-[10px] text-slate-500">Latency: 140ms</span>
+                        <span class="text-[11px] text-[#747775] mono-font">Latency: 140ms</span>
                     </div>
-                    <p class="text-xs text-slate-700 mb-3">
-                        You selected <strong>Utility</strong>, but phrases like <em>"HURRY! 50% OFF Diwali Flash Sale"</em> are promotional. Meta will reject this template immediately. Choose a 1-click remediation:
+                    <p class="text-xs text-[#444746] mb-3 leading-relaxed">
+                        You selected <strong>Utility</strong>, but phrases like <em>"HURRY! 50% OFF Diwali Flash Sale"</em> are promotional. Meta's automated compliance filter will reject this template immediately. Choose a 1-click remediation:
                     </p>
                     <div class="grid grid-cols-2 gap-3" id="copilotActionCards">
-                        <div onclick="applyUtilityFix()" class="border border-slate-200 hover:border-emerald-500 bg-white p-3 rounded-lg cursor-pointer transition hover:shadow-sm">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="font-bold text-xs text-emerald-700">Option A: Clean Utility (₹0.12/msg)</span>
-                                <span class="text-[10px] bg-emerald-100 text-emerald-800 px-1.5 py-0.2 rounded font-semibold">Recommended</span>
+                        <div onclick="applyUtilityFix()" class="border border-[#c4c7c5] hover:border-[#137333] bg-white p-3.5 rounded-xl cursor-pointer transition hover:shadow-sm">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <span class="font-medium text-xs text-[#137333]">Option A: Clean Utility (₹0.12/msg)</span>
+                                <span class="text-[10px] bg-[#e6f4ea] text-[#137333] border border-[#ceead6] px-2 py-0.5 rounded-full font-medium">Recommended</span>
                             </div>
-                            <p class="text-[10px] text-slate-500 mb-2">Strips promotional keywords, maintains pure delivery status & valid parameters.</p>
-                            <button class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-semibold text-[11px] py-1.5 rounded transition">
-                                ✨ 1-Click Auto-Fix & Resubmit
+                            <p class="text-[11px] text-[#747775] mb-3 leading-relaxed">Strips promotional text, preserves order tracking variables, satisfies 100% of Meta utility rules.</p>
+                            <button class="w-full bg-[#137333] hover:bg-[#0e5223] text-white font-medium text-xs py-2 rounded-full transition shadow-sm inline-flex items-center justify-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">auto_fix_high</span>
+                                <span>1-Click Auto-Fix & Resubmit</span>
                             </button>
                         </div>
-                        <div onclick="applyMarketingFix()" class="border border-slate-200 hover:border-blue-500 bg-white p-3 rounded-lg cursor-pointer transition hover:shadow-sm">
-                            <div class="flex items-center justify-between mb-1">
-                                <span class="font-bold text-xs text-blue-700">Option B: Switch to Marketing (₹0.78/msg)</span>
+                        <div onclick="applyMarketingFix()" class="border border-[#c4c7c5] hover:border-[#0b57d0] bg-white p-3.5 rounded-xl cursor-pointer transition hover:shadow-sm">
+                            <div class="flex items-center justify-between mb-1.5">
+                                <span class="font-medium text-xs text-[#0b57d0]">Option B: Switch to Marketing (₹0.78/msg)</span>
                             </div>
-                            <p class="text-[10px] text-slate-500 mb-2">Retains promotional discount copy, automatically updates template category to Marketing.</p>
-                            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-[11px] py-1.5 rounded transition">
-                                🔄 Reclassify to Marketing
+                            <p class="text-[11px] text-[#747775] mb-3 leading-relaxed">Retains 50% discount phrasing, automatically shifts template category to Marketing.</p>
+                            <button class="w-full bg-[#0b57d0] hover:bg-[#0842a0] text-white font-medium text-xs py-2 rounded-full transition shadow-sm inline-flex items-center justify-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">sync_alt</span>
+                                <span>Reclassify to Marketing</span>
                             </button>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- SCENARIO 2: Edge Case 1 — 2 Failed Attempts Escalation -->
+            <!-- SCENARIO 2: Circuit Breaker & Human Escalation -->
             <div id="viewScenario2" class="hidden fade-in space-y-4">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
                     <div>
-                        <h2 class="text-base font-bold text-slate-900">Edge Case 1: Automated Circuit Breaker & Human Escalation</h2>
-                        <p class="text-xs text-slate-500">Demonstrates the 2-failed-attempt guardrail preventing endless bot loops.</p>
+                        <h2 class="text-base font-medium text-[#1f1f1f] google-font">Edge Case 1: Automated Circuit Breaker & Human Escalation</h2>
+                        <p class="text-xs text-[#747775]">Demonstrates the 2-failed-attempt guardrail to prevent repetitive bot loops.</p>
                     </div>
-                    <span class="bg-amber-100 text-amber-800 text-xs font-bold px-2.5 py-1 rounded-full">
-                        Attempt 2 of 2 Failed
+                    <span class="bg-[#fef7e0] text-[#7a4100] border border-[#fce8b2] text-xs font-medium px-3 py-1 rounded-full inline-flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">schedule</span>
+                        <span>Attempt 2 of 2 Failed</span>
                     </span>
                 </div>
 
-                <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 space-y-3">
-                    <div class="flex items-center gap-2 text-rose-700 font-bold text-xs">
-                        <span>⚠️</span> Unresolved Technical Exception Detected
+                <div class="bg-[#f8fafd] border border-[#e0e2ec] rounded-2xl p-4.5 space-y-3.5">
+                    <div class="flex items-center gap-2 text-[#b3261e] font-medium text-xs">
+                        <span class="material-symbols-outlined text-base">error</span>
+                        <span>Unresolved Technical Exception Encountered</span>
                     </div>
-                    <p class="text-xs text-slate-600 leading-relaxed">
-                        Merchant attempted to register phone number <code>+91-98765-43210</code>, but Meta Cloud API returned <code>Code 133010: Phone number registered on two-factor consumer app</code> twice in a row. Co-Pilot's automated remediation threshold was reached.
+                    <p class="text-xs text-[#444746] leading-relaxed">
+                        Merchant attempted to link phone number <code class="mono-font bg-white px-1.5 py-0.5 rounded border border-[#c4c7c5] text-[#1f1f1f]">+91-98765-43210</code>, but Meta Cloud API returned <code class="mono-font bg-white px-1.5 py-0.5 rounded border border-[#c4c7c5] text-[#1f1f1f]">Code 133010: TWO_FACTOR_PHONE_LOCKED</code> twice consecutively. Co-Pilot's automated remediation threshold was safely triggered.
                     </p>
 
-                    <!-- Diagnostic Ticket Packet -->
-                    <div class="bg-slate-900 text-slate-100 p-4 rounded-xl font-mono text-xs space-y-1.5 border border-slate-800 shadow-inner">
-                        <div class="text-emerald-400 font-bold flex items-center justify-between pb-1 border-b border-slate-800">
-                            <span>📦 STRUCTURED DIAGNOSTIC TICKET PACKET</span>
-                            <span class="text-[10px] text-slate-400">Sent to Zendesk/Slack Queue #support-l2</span>
+                    <!-- Diagnostic Telemetry Packet (Google Cloud Logging Style) -->
+                    <div class="bg-[#1f1f1f] text-[#e3e3e3] p-4.5 rounded-xl mono-font text-xs space-y-1.5 border border-[#444746] shadow-sm">
+                        <div class="text-[#a8dab5] font-medium flex items-center justify-between pb-1.5 border-b border-[#444746]">
+                            <span class="inline-flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm text-[#a8dab5]">terminal</span>
+                                <span>STRUCTURED DIAGNOSTIC TELEMETRY PACKET</span>
+                            </span>
+                            <span class="text-[10px] text-[#8e918f]">Dispatched to Tier-2 Support Queue</span>
                         </div>
-                        <div class="text-slate-300 pt-1"><span class="text-blue-400">PACKET_UUID:</span> PKT-2026-CHRIO-8921</div>
-                        <div class="text-slate-300"><span class="text-blue-400">MERCHANT_ID:</span> FABJEWELS_D2C (Account #89104)</div>
-                        <div class="text-slate-300"><span class="text-blue-400">PHONE_TARGET:</span> +91-98765-43210 (WABA Unlinked)</div>
-                        <div class="text-slate-300"><span class="text-blue-400">META_ERROR:</span> 133010 (TWO_FACTOR_PHONE_LOCKED)</div>
-                        <div class="text-slate-300"><span class="text-blue-400">FAILED_ATTEMPTS:</span> 2 / 2 (Circuit breaker tripped)</div>
-                        <div class="text-amber-300 pt-1"><span class="text-amber-400">HUMAN_ACTION_RECOMMENDED:</span> "Guide user to WhatsApp Settings > Account > Delete Account to release 2FA lock from consumer app."</div>
+                        <div class="text-[#c4c7c5] pt-1"><span class="text-[#7cacf8]">PACKET_UUID:</span> PKT-2026-CHRIO-8921</div>
+                        <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">MERCHANT_ID:</span> FABJEWELS_D2C (Account #89104)</div>
+                        <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">PHONE_TARGET:</span> +91-98765-43210 (WABA Unlinked)</div>
+                        <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">META_ERROR:</span> 133010 (TWO_FACTOR_PHONE_LOCKED)</div>
+                        <div class="text-[#c4c7c5]"><span class="text-[#7cacf8]">FAILED_ATTEMPTS:</span> 2 / 2 (Circuit breaker tripped)</div>
+                        <div class="text-[#fdd663] pt-1"><span class="text-[#f9ab00]">RECOMMENDED_HUMAN_ACTION:</span> "Instruct merchant to navigate to WhatsApp Settings > Account > Delete Account to release 2FA lock from consumer application."</div>
                     </div>
 
-                    <div class="bg-emerald-50 border border-emerald-200 p-3 rounded-lg flex items-center justify-between">
+                    <div class="bg-[#e6f4ea] border border-[#ceead6] p-3.5 rounded-xl flex items-center justify-between">
                         <div>
-                            <div class="font-bold text-xs text-emerald-900">Seamless Human Hand-off Activated</div>
-                            <div class="text-[11px] text-emerald-700">Support agent connected with full telemetry. Merchant does not need to repeat themselves.</div>
+                            <div class="font-medium text-xs text-[#137333] flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-sm">support_agent</span>
+                                <span>Seamless Human Handoff Activated</span>
+                            </div>
+                            <div class="text-[11px] text-[#1e4620] mt-0.5">Support engineer connected with pre-filled context. Merchant never repeats questions.</div>
                         </div>
-                        <span class="bg-emerald-600 text-white font-bold text-xs px-3 py-1 rounded">Avg MTTR: &lt; 3 mins</span>
+                        <span class="bg-[#137333] text-white font-medium text-xs px-3 py-1 rounded-full">Avg MTTR: &lt; 3 mins</span>
                     </div>
                 </div>
             </div>
 
-            <!-- SCENARIO 3: Edge Case 2 — Guardrail Refusal -->
+            <!-- SCENARIO 3: Guardrail Refusal -->
             <div id="viewScenario3" class="hidden fade-in space-y-4">
-                <div class="flex items-center justify-between pb-3 border-b border-slate-100">
+                <div class="flex items-center justify-between pb-3 border-b border-[#e0e2ec]">
                     <div>
-                        <h2 class="text-base font-bold text-slate-900">Edge Case 2: Strict Refusal Guardrails (Billing & Permanent Suspensions)</h2>
-                        <p class="text-xs text-slate-500">Demonstrates what the AI will NOT do — preventing hallucinations on legal/financial issues.</p>
+                        <h2 class="text-base font-medium text-[#1f1f1f] google-font">Edge Case 2: Strict Refusal Guardrails (Billing & Permanent Bans)</h2>
+                        <p class="text-xs text-[#747775]">Demonstrates clear operational boundaries—preventing hallucinations on financial and compliance topics.</p>
                     </div>
-                    <span class="bg-rose-100 text-rose-800 text-xs font-bold px-2.5 py-1 rounded-full">
-                        Guardrail Enforced
+                    <span class="bg-[#fce8e6] text-[#b3261e] border border-[#fad2cf] text-xs font-medium px-3 py-1 rounded-full inline-flex items-center gap-1">
+                        <span class="material-symbols-outlined text-sm">verified_user</span>
+                        <span>Guardrail Enforced</span>
                     </span>
                 </div>
 
                 <div class="grid grid-cols-2 gap-4">
-                    <!-- Case A: Billing Dispute -->
-                    <div class="border border-slate-200 bg-slate-50 rounded-xl p-4 space-y-3">
-                        <div class="font-bold text-xs text-slate-800 flex items-center gap-1.5">
-                            <span>💳</span> Case A: Invoicing & Payment Dispute
+                    <!-- Case A: Invoicing Dispute -->
+                    <div class="border border-[#e0e2ec] bg-[#f8fafd] rounded-2xl p-4.5 space-y-3">
+                        <div class="font-medium text-xs text-[#1f1f1f] flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-base text-[#0b57d0]">credit_card</span>
+                            <span>Case A: Invoicing & Payment Dispute</span>
                         </div>
-                        <div class="bg-white p-2.5 rounded-lg border border-slate-200 text-xs text-slate-700">
-                            <em>Merchant: "I was overcharged ₹4,500 on my credit card this morning. Refund my money immediately!"</em>
+                        <div class="bg-white p-3 rounded-xl border border-[#e0e2ec] text-xs text-[#444746] italic">
+                            "I was overcharged ₹4,500 on my credit card this morning. Refund my money immediately!"
                         </div>
-                        <div class="bg-rose-50 border border-rose-200 p-3 rounded-lg text-xs space-y-1.5">
-                            <div class="font-bold text-rose-800">🚫 AI Action: Refuse & Reroute</div>
-                            <p class="text-rose-900 text-[11px] leading-snug">
-                                Co-Pilot does not execute financial transactions or hallucinate refund timelines. It immediately triggers the Finance Escalation Desk:
+                        <div class="bg-[#fce8e6] border border-[#fad2cf] p-3.5 rounded-xl text-xs space-y-1.5">
+                            <div class="font-medium text-[#b3261e] flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm">block</span>
+                                <span>AI Action: Refuse & Reroute</span>
+                            </div>
+                            <p class="text-[#601410] text-[11px] leading-relaxed">
+                                Co-Pilot does not execute financial transactions or hallucinate refund guarantees. It routes directly to the Finance Desk:
                             </p>
-                            <div class="bg-white p-2 rounded border border-rose-200 text-[11px] font-mono text-slate-700">
+                            <div class="bg-white p-2.5 rounded-lg border border-[#fad2cf] text-[11px] mono-font text-[#1f1f1f]">
                                 Routed to: finance@cheerio.in<br>
                                 Priority: HIGH (Billing Audit attached)
                             </div>
                         </div>
                     </div>
 
-                    <!-- Case B: Meta Permanent Suspension -->
-                    <div class="border border-slate-200 bg-slate-50 rounded-xl p-4 space-y-3">
-                        <div class="font-bold text-xs text-slate-800 flex items-center gap-1.5">
-                            <span>⚖️</span> Case B: Meta Spam Account Suspension
+                    <!-- Case B: Meta Spam Account Suspension -->
+                    <div class="border border-[#e0e2ec] bg-[#f8fafd] rounded-2xl p-4.5 space-y-3">
+                        <div class="font-medium text-xs text-[#1f1f1f] flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-base text-[#ea8600]">gavel</span>
+                            <span>Case B: Meta Spam Policy Suspension</span>
                         </div>
-                        <div class="bg-white p-2.5 rounded-lg border border-slate-200 text-xs text-slate-700">
-                            <em>Merchant: "Meta disabled our WhatsApp API for spam. Unban us right now so we can send blasts!"</em>
+                        <div class="bg-white p-3 rounded-xl border border-[#e0e2ec] text-xs text-[#444746] italic">
+                            "Meta disabled our WhatsApp API for spam. Unban us right now so we can send blasts!"
                         </div>
-                        <div class="bg-amber-50 border border-amber-200 p-3 rounded-lg text-xs space-y-1.5">
-                            <div class="font-bold text-amber-800">🛡️ AI Action: Policy Boundary Protection</div>
-                            <p class="text-amber-900 text-[11px] leading-snug">
-                                Cheerio cannot arbitrarily override Meta compliance algorithms. Instead of making false promises, Co-Pilot automatically compiles the official <strong>Meta Policy Appeal Dossier</strong> for human compliance review.
+                        <div class="bg-[#fef7e0] border border-[#fce8b2] p-3.5 rounded-xl text-xs space-y-1.5">
+                            <div class="font-medium text-[#7a4100] flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm">shield</span>
+                                <span>AI Action: Policy Boundary Protection</span>
+                            </div>
+                            <p class="text-[#7a4100] text-[11px] leading-relaxed">
+                                Cheerio cannot override Meta compliance algorithms. Instead of false claims, Co-Pilot generates the official appeal dossier:
                             </p>
-                            <div class="bg-white p-2 rounded border border-amber-200 text-[11px] font-mono text-slate-700">
+                            <div class="bg-white p-2.5 rounded-lg border border-[#fce8b2] text-[11px] mono-font text-[#1f1f1f]">
                                 Generated: Meta_WABA_Appeal_Dossier.pdf<br>
                                 Assigned to: Cheerio Meta Compliance Lead
                             </div>
@@ -273,48 +388,53 @@
         </main>
     </div>
 
-    <!-- Scripts for Scenario Toggling & Interactive Actions -->
+    <!-- Scripts for Scenario Switching & Interactive Demonstrations -->
     <script>
         function switchScenario(scenarioId) {
             document.getElementById('viewScenario1').classList.add('hidden');
             document.getElementById('viewScenario2').classList.add('hidden');
             document.getElementById('viewScenario3').classList.add('hidden');
 
-            document.getElementById('tabScenario1').className = "px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition";
-            document.getElementById('tabScenario2').className = "px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition";
-            document.getElementById('tabScenario3').className = "px-3 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition";
+            const inactiveClass = "px-3.5 py-1.5 rounded-full text-[#444746] hover:text-[#1f1f1f] transition inline-flex items-center gap-1.5 font-medium";
+            document.getElementById('tabScenario1').className = inactiveClass;
+            document.getElementById('tabScenario2').className = inactiveClass;
+            document.getElementById('tabScenario3').className = inactiveClass;
 
             if (scenarioId === 'scenario1') {
                 document.getElementById('viewScenario1').classList.remove('hidden');
-                document.getElementById('tabScenario1').className = "px-3 py-1.5 rounded-lg bg-white text-blue-700 shadow-sm transition font-bold";
+                document.getElementById('tabScenario1').className = "px-3.5 py-1.5 rounded-full bg-white text-[#0b57d0] shadow-sm transition inline-flex items-center gap-1.5 font-medium";
             } else if (scenarioId === 'scenario2') {
                 document.getElementById('viewScenario2').classList.remove('hidden');
-                document.getElementById('tabScenario2').className = "px-3 py-1.5 rounded-lg bg-white text-amber-700 shadow-sm transition font-bold";
+                document.getElementById('tabScenario2').className = "px-3.5 py-1.5 rounded-full bg-white text-[#7a4100] shadow-sm transition inline-flex items-center gap-1.5 font-medium";
             } else if (scenarioId === 'scenario3') {
                 document.getElementById('viewScenario3').classList.remove('hidden');
-                document.getElementById('tabScenario3').className = "px-3 py-1.5 rounded-lg bg-white text-rose-700 shadow-sm transition font-bold";
+                document.getElementById('tabScenario3').className = "px-3.5 py-1.5 rounded-full bg-white text-[#b3261e] shadow-sm transition inline-flex items-center gap-1.5 font-medium";
             }
         }
 
         function applyUtilityFix() {
             const cleanText = "Hi {{1}}, your order #{{2}} is confirmed and will ship shortly. Track your package live here: https://fabjewels.in/track/{{2}}";
             document.getElementById('templateBody').value = cleanText;
-            document.getElementById('templateBody').className = "w-full text-xs p-3 border border-emerald-400 rounded-lg font-mono leading-relaxed bg-emerald-50/20 text-slate-800";
+            document.getElementById('templateBody').className = "w-full text-xs p-3.5 border border-[#34a853] rounded-lg mono-font leading-relaxed bg-[#f0f9f4] text-[#1f1f1f] outline-none";
             
-            document.getElementById('previewBubble').innerHTML = "Hi Priya, your order #FJ-9412 is confirmed and will ship shortly. Track your package live here: https://fabjewels.in/track/FJ-9412 <span class='block text-[8px] text-slate-400 text-right mt-1'>10:42 AM</span>";
+            document.getElementById('previewBubble').innerHTML = "Hi Priya, your order #FJ-9412 is confirmed and will ship shortly. Track your package live here: https://fabjewels.in/track/FJ-9412 <span class='block text-[9px] text-[#747775] text-right mt-1.5'>10:42 AM</span>";
             
-            document.getElementById('validationPill').className = "bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full font-medium flex items-center gap-1.5";
-            document.getElementById('validationPill').innerHTML = "✅ 100% Meta Compliant (Utility)";
+            document.getElementById('validationPill').className = "bg-[#e6f4ea] text-[#137333] border border-[#ceead6] px-3 py-1 rounded-full font-medium inline-flex items-center gap-1.5";
+            document.getElementById('validationPill').innerHTML = `<span class="material-symbols-outlined text-sm text-[#137333]">check_circle</span><span>100% Meta Compliant (Utility)</span>`;
             
-            document.getElementById('linterStatus').className = "text-emerald-600 font-bold";
-            document.getElementById('linterStatus').innerText = "Meta Approval Probability: 99.4%";
+            document.getElementById('linterStatus').className = "text-[#137333] font-medium inline-flex items-center gap-1";
+            document.getElementById('linterStatus').innerHTML = `<span class="material-symbols-outlined text-sm">verified</span><span>Meta Approval Probability: 99.4%</span>`;
 
             document.getElementById('copilotActionCards').innerHTML = `
-                <div class="col-span-2 bg-emerald-50 border border-emerald-300 rounded-lg p-3 text-center space-y-2">
-                    <div class="font-bold text-emerald-800 text-xs">✨ Auto-Fix Applied: Template is 100% Compliant!</div>
-                    <p class="text-[11px] text-emerald-700">Offending promotional phrasing removed. Fallback variables properly mapped.</p>
-                    <button onclick="alert('✅ Template approved by Meta API! Zero tickets raised. ZOCR metric achieved!')" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-1.5 px-4 rounded text-xs transition">
-                        Submit Approved Template to Meta API
+                <div class="col-span-2 bg-[#f0f9f4] border border-[#ceead6] rounded-xl p-4 text-center space-y-2.5">
+                    <div class="flex items-center justify-center gap-1.5 font-medium text-[#137333] text-xs">
+                        <span class="material-symbols-outlined text-base">check_circle</span>
+                        <span>Auto-Fix Applied: Template is 100% Compliant</span>
+                    </div>
+                    <p class="text-[11px] text-[#1e4620]">Offending promotional phrasing removed. Fallback variables properly mapped.</p>
+                    <button onclick="alert('Template approved by Meta Cloud API. Zero support tickets raised. ZOCR metric achieved.')" class="bg-[#137333] hover:bg-[#0e5223] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">send</span>
+                        <span>Submit Approved Template to Meta Cloud API</span>
                     </button>
                 </div>
             `;
@@ -322,20 +442,24 @@
 
         function applyMarketingFix() {
             document.getElementById('categorySelect').value = "MARKETING";
-            document.getElementById('categorySelect').className = "w-full text-xs px-3 py-2 border border-blue-300 rounded-lg bg-blue-50 text-blue-900 font-medium";
+            document.getElementById('categorySelect').className = "w-full text-xs px-3.5 py-2.5 border border-[#0b57d0] rounded-lg bg-[#f0f4f9] text-[#0b57d0] font-medium outline-none";
             
-            document.getElementById('validationPill').className = "bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1 rounded-full font-medium flex items-center gap-1.5";
-            document.getElementById('validationPill').innerHTML = "✅ Compliant under Marketing Category";
+            document.getElementById('validationPill').className = "bg-[#e8f0fe] text-[#1967d2] border border-[#d2e3fc] px-3 py-1 rounded-full font-medium inline-flex items-center gap-1.5";
+            document.getElementById('validationPill').innerHTML = `<span class="material-symbols-outlined text-sm text-[#1967d2]">check_circle</span><span>Compliant under Marketing Category</span>`;
 
-            document.getElementById('linterStatus').className = "text-emerald-600 font-bold";
-            document.getElementById('linterStatus').innerText = "Meta Approval Probability: 98.1%";
+            document.getElementById('linterStatus').className = "text-[#137333] font-medium inline-flex items-center gap-1";
+            document.getElementById('linterStatus').innerHTML = `<span class="material-symbols-outlined text-sm">verified</span><span>Meta Approval Probability: 98.1%</span>`;
 
             document.getElementById('copilotActionCards').innerHTML = `
-                <div class="col-span-2 bg-blue-50 border border-blue-300 rounded-lg p-3 text-center space-y-2">
-                    <div class="font-bold text-blue-800 text-xs">Category Switched to Marketing!</div>
-                    <p class="text-[11px] text-blue-700">Your 50% discount and flash sale copy are now valid under Meta Marketing rules.</p>
-                    <button onclick="alert('✅ Marketing template submitted to Meta API! Status: APPROVED')" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-1.5 px-4 rounded text-xs transition">
-                        Submit Approved Marketing Template
+                <div class="col-span-2 bg-[#f0f4f9] border border-[#d2e3fc] rounded-xl p-4 text-center space-y-2.5">
+                    <div class="flex items-center justify-center gap-1.5 font-medium text-[#1967d2] text-xs">
+                        <span class="material-symbols-outlined text-base">check_circle</span>
+                        <span>Category Switched to Marketing</span>
+                    </div>
+                    <p class="text-[11px] text-[#185abc]">Promotional discount copy is now fully valid under Meta Marketing rules.</p>
+                    <button onclick="alert('Marketing template submitted to Meta API. Status: APPROVED')" class="bg-[#0b57d0] hover:bg-[#0842a0] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
+                        <span class="material-symbols-outlined text-sm">send</span>
+                        <span>Submit Approved Marketing Template</span>
                     </button>
                 </div>
             `;
