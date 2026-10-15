@@ -12,8 +12,8 @@
             font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             color: #0f172a;
             background: #ffffff;
-            font-size: 8.2pt;
-            line-height: 1.32;
+            font-size: 9.5pt;
+            line-height: 1.34;
             -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
         }
@@ -27,7 +27,7 @@
             width: 8.5in;
             height: 11in;
             max-height: 11in;
-            padding: 0.38in 0.46in;
+            padding: 0.42in 0.48in;
             page-break-after: always;
             break-after: page;
             position: relative;
@@ -53,8 +53,8 @@
             display: flex;
             justify-content: space-between;
             align-items: flex-start;
-            padding-bottom: 8px;
-            margin-bottom: 8px;
+            padding-bottom: 7px;
+            margin-bottom: 7px;
             border-bottom: 1.5px solid #0f172a;
         }
 
@@ -67,15 +67,15 @@
         .brand-badge {
             display: inline-flex;
             align-items: center;
-            gap: 6px;
-            font-size: 7pt;
+            gap: 5px;
+            font-size: 7.5pt;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.8px;
-            color: #2563eb;
+            letter-spacing: 0.6px;
+            color: #1d4ed8;
             background: #eff6ff;
             border: 1px solid #bfdbfe;
-            padding: 2px 7px;
+            padding: 1.5px 6px;
             border-radius: 9999px;
             width: fit-content;
         }
@@ -84,835 +84,1008 @@
             width: 5px;
             height: 5px;
             border-radius: 50%;
-            background: #2563eb;
+            background: #1d4ed8;
         }
 
         h1.doc-title {
-            font-size: 13.5pt;
+            font-size: 13pt;
             font-weight: 800;
             color: #0f172a;
-            letter-spacing: -0.3px;
-            line-height: 1.2;
-            margin-top: 3px;
+            letter-spacing: -0.2px;
+            line-height: 1.18;
+            margin-top: 2px;
         }
 
         .candidate-card {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 6px 10px;
-            font-size: 7.2pt;
-            line-height: 1.35;
+            border-radius: 6px;
+            padding: 5px 9px;
             text-align: right;
-            color: #475569;
+            font-size: 8pt;
+            line-height: 1.3;
         }
 
-        .candidate-card strong {
+        .candidate-name {
+            font-weight: 700;
             color: #0f172a;
+            font-size: 8.5pt;
         }
 
-        /* ── Quick Links Strip ── */
-        .quick-nav {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 8px;
+        /* ── Section Titles ── */
+        .section-title {
+            font-size: 9.8pt;
+            font-weight: 800;
+            color: #0f172a;
+            text-transform: uppercase;
+            letter-spacing: 0.4px;
+            margin: 6px 0 4px 0;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .section-num {
+            color: #2563eb;
+            font-weight: 800;
+        }
+
+        /* ── Typography & Grids ── */
+        p {
+            margin-bottom: 4px;
+            text-align: justify;
+            color: #334155;
+            font-size: 9.3pt;
+        }
+
+        .mono {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 8pt;
+        }
+
+        .highlight-box {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 6px 10px;
-            margin-bottom: 9px;
+            border-left: 3px solid #2563eb;
+            padding: 5px 8px;
+            border-radius: 0 5px 5px 0;
+            margin-bottom: 5px;
+            font-size: 8.8pt;
         }
 
-        .nav-tile {
-            display: flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 7.3pt;
-        }
-
-        .nav-icon {
-            width: 18px;
-            height: 18px;
-            border-radius: 4px;
-            background: #e0e7ff;
-            color: #3730a3;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 8pt;
-            flex-shrink: 0;
-        }
-
-        .nav-tile a {
-            color: #2563eb;
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        .nav-tile a:hover {
-            text-decoration: underline;
-        }
-
-        /* ── Section Headings ── */
-        .section-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 3px;
-            margin-top: 7px;
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 7px;
             margin-bottom: 5px;
         }
 
-        h2 {
-            font-size: 9.6pt;
-            font-weight: 700;
-            color: #0f172a;
-            letter-spacing: -0.2px;
-            display: flex;
-            align-items: center;
+        .grid-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
             gap: 6px;
+            margin-bottom: 5px;
         }
 
-        .sec-number {
-            background: #0f172a;
-            color: #ffffff;
-            font-size: 6.8pt;
+        .grid-4 {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 5px;
+            padding: 5px 7px;
+        }
+
+        .card-header {
             font-weight: 700;
-            padding: 1px 5px;
-            border-radius: 4px;
-        }
-
-        h3 {
-            font-size: 8.3pt;
-            font-weight: 700;
-            color: #1e293b;
-            margin-top: 5px;
+            font-size: 8.5pt;
+            color: #0f172a;
             margin-bottom: 2px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
-        p {
-            margin-bottom: 4px;
-            font-size: 7.9pt;
-            color: #334155;
-            line-height: 1.34;
+        /* ── Tables ── */
+        table.dense-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 8pt;
+            margin-bottom: 5px;
         }
 
-        ul, ol {
-            margin-left: 14px;
-            margin-bottom: 4px;
-            font-size: 7.7pt;
-            color: #334155;
-            line-height: 1.32;
-        }
-
-        li {
-            margin-bottom: 2px;
-        }
-
-        code, .mono {
-            font-family: 'JetBrains Mono', monospace;
-            font-size: 7.2pt;
+        table.dense-table th {
             background: #f1f5f9;
             color: #0f172a;
-            padding: 1px 4px;
-            border-radius: 3px;
-            border: 1px solid #e2e8f0;
-        }
-
-        /* ── Modern Executive Tables ── */
-        table.exec-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            overflow: hidden;
-            margin: 5px 0 7px 0;
-            font-size: 7.4pt;
-        }
-
-        table.exec-table thead th {
-            background: #f8fafc;
-            color: #475569;
             font-weight: 700;
-            text-transform: uppercase;
-            font-size: 6.7pt;
-            letter-spacing: 0.5px;
-            padding: 4.5px 7px;
-            border-bottom: 1px solid #e2e8f0;
             text-align: left;
-        }
-
-        table.exec-table tbody td {
-            padding: 4px 7px;
-            border-bottom: 1px solid #f1f5f9;
-            color: #334155;
-            vertical-align: top;
-            line-height: 1.28;
-        }
-
-        table.exec-table tbody tr:last-child td {
-            border-bottom: none;
-        }
-
-        table.exec-table tbody tr:hover {
-            background: #fafafa;
-        }
-
-        /* ── Status Pills ── */
-        .tag-pill {
-            display: inline-block;
-            font-size: 6.5pt;
-            font-weight: 700;
-            padding: 1.5px 5.5px;
-            border-radius: 9999px;
+            padding: 3.5px 6px;
+            border: 1px solid #cbd5e1;
+            font-size: 7.8pt;
             text-transform: uppercase;
             letter-spacing: 0.3px;
         }
 
-        .tag-green { background: #dcfce7; color: #15803d; border: 1px solid #bbf7d0; }
-        .tag-blue { background: #dbeafe; color: #1d4ed8; border: 1px solid #bfdbfe; }
-        .tag-amber { background: #fef3c7; color: #b45309; border: 1px solid #fde68a; }
-        .tag-rose { background: #ffe4e6; color: #be123c; border: 1px solid #fecdd3; }
-
-        /* ── Metric Stat Tiles ── */
-        .stat-grid-4 {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 7px;
-            margin: 5px 0 7px 0;
+        table.dense-table td {
+            padding: 3px 6px;
+            border: 1px solid #e2e8f0;
+            color: #334155;
+            vertical-align: top;
         }
 
-        .stat-tile {
+        table.dense-table tr:nth-child(even) td {
+            background: #f8fafc;
+        }
+
+        .badge-green {
+            background: #dcfce7;
+            color: #15803d;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 7pt;
+        }
+
+        .badge-blue {
+            background: #dbeafe;
+            color: #1e40af;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 7pt;
+        }
+
+        .badge-amber {
+            background: #fef3c7;
+            color: #92400e;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 7pt;
+        }
+
+        .badge-red {
+            background: #fee2e2;
+            color: #b91c1c;
+            font-weight: 700;
+            padding: 1px 4px;
+            border-radius: 3px;
+            font-size: 7pt;
+        }
+
+        /* ── KPI Metric Pill ── */
+        .kpi-pill {
             background: #f8fafc;
             border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            padding: 6px 8px;
-            display: flex;
-            flex-direction: column;
-            gap: 1px;
+            border-radius: 5px;
+            padding: 5px;
+            text-align: center;
         }
 
-        .stat-label {
-            font-size: 6.5pt;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.4px;
-            color: #64748b;
-        }
-
-        .stat-val {
-            font-size: 13pt;
+        .kpi-val {
+            font-size: 11pt;
             font-weight: 800;
             color: #0f172a;
             line-height: 1.1;
         }
 
-        .stat-sub {
-            font-size: 6.8pt;
-            color: #15803d;
+        .kpi-lbl {
+            font-size: 7pt;
+            color: #64748b;
+            text-transform: uppercase;
             font-weight: 600;
+            margin-top: 1px;
         }
 
-        /* ── North Star Highlight Callout ── */
-        .hero-callout {
-            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
-            border: 1px solid #86efac;
-            border-left: 4px solid #16a34a;
-            border-radius: 8px;
-            padding: 6px 10px;
-            margin: 5px 0;
+        .kpi-sub {
+            font-size: 7pt;
+            font-weight: 600;
+            margin-top: 1px;
         }
 
-        .hero-callout-title {
-            font-size: 8pt;
-            font-weight: 800;
-            color: #14532d;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            margin-bottom: 2px;
-        }
-
-        /* ── Prompt & AI Log Cards ── */
-        .prompt-card {
-            background: #f8fafc;
-            border: 1px solid #e2e8f0;
-            border-radius: 7px;
-            padding: 5.5px 8px;
-            margin-bottom: 4.5px;
-            font-size: 7.4pt;
-            line-height: 1.3;
-        }
-
-        .prompt-card strong.prompt-title {
-            color: #0f172a;
-            display: flex;
-            align-items: center;
-            gap: 4px;
-            margin-bottom: 2px;
-            font-size: 7.6pt;
-        }
-
-        .prompt-card em {
-            color: #334155;
-            font-style: italic;
-            display: block;
-            margin: 2px 0;
-            background: #ffffff;
-            padding: 2.5px 5px;
-            border-radius: 4px;
-            border-left: 2px solid #94a3b8;
+        /* ── Code / Telemetry Block ── */
+        .code-block {
+            background: #0f172a;
+            color: #e2e8f0;
+            padding: 6px 8px;
+            border-radius: 5px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 7.2pt;
+            line-height: 1.25;
+            margin-bottom: 5px;
         }
 
         /* ── Footer ── */
         .doc-footer {
+            border-top: 1px solid #cbd5e1;
+            padding-top: 4px;
             display: flex;
             justify-content: space-between;
+            font-size: 7.5pt;
+            color: #64748b;
             align-items: center;
-            font-size: 6.8pt;
-            color: #94a3b8;
-            border-top: 1px solid #e2e8f0;
-            padding-top: 4px;
-            margin-top: 4px;
         }
 
-        .footer-left {
+        .footer-links a {
+            color: #2563eb;
+            text-decoration: none;
             font-weight: 600;
-            color: #64748b;
         }
     </style>
 </head>
 <body>
 
-    <!-- ================= PAGE 1: EXECUTIVE PROBLEM & PRIORITIZATION ================= -->
+    <!-- ========================================================================== -->
+    <!-- PAGE 1: PROBLEM STATEMENT, USER PERSONA & SOLUTION SPACE EVALUATION       -->
+    <!-- ========================================================================== -->
     <div class="doc-page">
         <div class="page-content">
             <!-- Header -->
             <div class="exec-header">
                 <div class="brand-cluster">
-                    <div class="brand-badge">
-                        <span class="brand-dot"></span>
-                        Cheerio AI • Product Intern Strategy Case
-                    </div>
+                    <div class="brand-badge"><span class="brand-dot"></span> Cheerio AI • Product Strategy Memorandum</div>
                     <h1 class="doc-title">Assignment A: Scaling Customer Support for Non-Technical Users</h1>
                 </div>
                 <div class="candidate-card">
-                    <div><strong>Candidate:</strong> Saksham Gupta</div>
-                    <div>MIT Manipal • B.Tech IT '27 (CGPA: 9.12/10)</div>
-                    <div>saksham77779@gmail.com • +91-9354369079</div>
+                    <div class="candidate-name">Saksham Gupta</div>
+                    <div class="mono" style="color: #2563eb;">saksham77779@gmail.com</div>
+                    <div style="color: #64748b;">Product Intern (APM Track) • October 2026</div>
                 </div>
             </div>
 
-            <!-- Quick Navigation Strip -->
-            <div class="quick-nav">
-                <div class="nav-tile">
-                    <div class="nav-icon">📊</div>
-                    <div>
-                        <span style="color:#64748b; font-size:6.6pt; display:block;">FINANCIAL COST MODEL</span>
-                        <a href="https://docs.google.com/spreadsheets/d/1x901TsGA6bQcq16nByvZNFLLW3udb2BH/edit?usp=sharing" target="_blank">Google Sheet (5-Tab Model) ↗</a>
-                    </div>
-                </div>
-                <div class="nav-tile">
-                    <div class="nav-icon">✨</div>
-                    <div>
-                        <span style="color:#64748b; font-size:6.6pt; display:block;">CLICKABLE PROTOTYPE</span>
-                        <a href="https://saksham-gupta-gh.github.io/cheerio-copilot/" target="_blank">Cheerio Co-Pilot Console ↗</a>
-                    </div>
-                </div>
-                <div class="nav-tile">
-                    <div class="nav-icon">📝</div>
-                    <div>
-                        <span style="color:#64748b; font-size:6.6pt; display:block;">PROMPT REPOSITORY</span>
-                        <a href="#part3">AI Usage & Prompt Log ↗</a>
-                    </div>
-                </div>
+            <!-- Executive Context -->
+            <div class="highlight-box">
+                <strong>Executive Summary:</strong> Cheerio supports 5,000 active Indian SMB merchants generating ~17,500 inbound support queries/month. 
+                The core problem is not an FAQ deficiency; it is technical onboarding failure across Meta Cloud API compliance, phone binding, and CSV formatting. 
+                Instead of a conversational chatbot that requires users to explain technical errors, we designed <strong>Cheerio Co-Pilot</strong>: an embedded, state-aware widget providing 1-click deterministic remediations. 
+                This strategy reduces support cost per ticket by 62.4% (from ₹40.00 to ₹15.06), avoids 13 support hires as volume scales, generates ₹52.38L in net annual operational savings, and delivers a 50.4x net ROI on monthly AI spend by curbing merchant churn.
             </div>
 
-            <!-- Executive Summary Tiles -->
-            <div class="stat-grid-4">
-                <div class="stat-tile">
-                    <span class="stat-label">Autonomous Deflection</span>
-                    <span class="stat-val" style="color:#2563eb;">65.0%</span>
-                    <span class="stat-sub">11,375 tickets/mo</span>
-                </div>
-                <div class="stat-tile">
-                    <span class="stat-label">Net Monthly Savings</span>
-                    <span class="stat-val" style="color:#15803d;">₹4.51L</span>
-                    <span class="stat-sub">₹54.18L / year</span>
-                </div>
-                <div class="stat-tile">
-                    <span class="stat-label">Cost per Ticket</span>
-                    <span class="stat-val" style="color:#0f172a;">₹14.20</span>
-                    <span class="stat-sub">Down from ₹40.00</span>
-                </div>
-                <div class="stat-tile">
-                    <span class="stat-label">AI Operating ROI</span>
-                    <span class="stat-val" style="color:#b45309;">51.4x</span>
-                    <span class="stat-sub">60 merchants saved/mo</span>
-                </div>
-            </div>
+            <!-- Section 1.1: Business Problem -->
+            <div class="section-title"><span class="section-num">1.1</span> The Core Scaling Bottleneck for Non-Technical Merchants</div>
+            <p>
+                Cheerio empowers non-technical business owners (retail jewellers, direct-to-consumer apparel, clinics, and coaching institutes) to run WhatsApp marketing campaigns. 
+                However, these users struggle with strict developer platforms: Meta Business Manager, Cloud API error payloads, webhook handshakes, and strict CSV schemas. 
+                When a template is rejected or a phone number fails to bind, merchants cannot diagnose the issue. 
+                They submit repetitive, high-touch support tickets ("WhatsApp is broken", "My blast won't send"), overwhelming Cheerio's human support operations.
+            </p>
 
-            <!-- Part 1 Section -->
-            <div class="section-header">
-                <h2><span class="sec-number">1.0</span> User Persona & Top 5 Support Bottlenecks</h2>
-                <span class="tag-pill tag-blue">Target: Non-Technical SMBs</span>
-            </div>
-            <p><strong>The Target User:</strong> Non-technical business owners, boutique D2C founders, and offline retail marketing managers (e.g. jewellery brands on IndiaMART, boutique hotels on FabHotels). They excel at commerce and customer sales, but Meta developer permissions, WhatsApp Business API (WABA) verification, and JSON payload errors cause severe onboarding anxiety.</p>
-
-            <table class="exec-table">
+            <!-- Section 1.2: User Persona & Bottleneck Taxonomy -->
+            <div class="section-title"><span class="section-num">1.2</span> Onboarding Bottlenecks & Failure Taxonomy (5,000 Merchant Scale)</div>
+            <table class="dense-table">
                 <thead>
                     <tr>
-                        <th style="width: 26%;">Support Bottleneck</th>
-                        <th style="width: 44%;">Technical Failure Mode & Root Cause</th>
-                        <th style="width: 30%;">Strategic Prioritization Rationale</th>
+                        <th style="width: 24%;">Onboarding Bottleneck</th>
+                        <th style="width: 14%;">Est. Volume</th>
+                        <th style="width: 32%;">Underlying Technical Cause</th>
+                        <th style="width: 30%;">Merchant Experience & Failure Impact</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>1. Meta Template Rejections</strong><br><span class="mono">Cloud API 132015</span></td>
-                        <td>Merchant selects <em>Utility</em> rate (₹0.12), but includes promotional discount text or lacks required fallback parameter mapping (<span class="mono">{{1}}</span>).</td>
-                        <td><strong>35% of all support tickets.</strong> Blocks merchants right at the high-intent campaign launch phase.</td>
+                        <td><strong>Template Rejections</strong></td>
+                        <td>38% (6,650/mo)</td>
+                        <td>Meta rejection <code class="mono">INCORRECT_CATEGORY</code> (promotional discount copy submitted under Utility category).</td>
+                        <td>Template rejected by Meta; campaign delayed; merchant frustrated by perceived tool bug.</td>
                     </tr>
                     <tr>
-                        <td><strong>2. WABA Phone Number Binding</strong><br><span class="mono">Cloud API 133010</span></td>
-                        <td>Phone number is already locked to standard consumer WhatsApp or 2FA PIN is unreleased in Meta Business Manager.</td>
-                        <td><strong>#1 Blocker to First Value.</strong> Triggers immediate merchant churn within first 48 hours of signup.</td>
+                        <td><strong>WABA Phone Binding</strong></td>
+                        <td>27% (4,725/mo)</td>
+                        <td>Meta Error <code class="mono">133010</code> (Account not registered / phone locked to consumer WhatsApp 2FA).</td>
+                        <td>Merchant stuck on phone connection; cannot broadcast; high churn risk during Day 1-3.</td>
                     </tr>
                     <tr>
-                        <td><strong>3. CSV Audience Upload Errors</strong><br><span class="mono">CSV Dial Code Missing</span></td>
-                        <td>Broadcast lists fail upload due to missing country code (<span class="mono">+91</span> missing on domestic mobile numbers), special characters, or trailing spaces.</td>
-                        <td>High-frequency repetitive ticket before every broadcast blast; 100% deterministic to validate.</td>
+                        <td><strong>CSV Contact Uploads</strong></td>
+                        <td>19% (3,325/mo)</td>
+                        <td>Missing +91 international dialing prefixes; illegal spaces, hyphens, and empty rows.</td>
+                        <td>Broadcast campaign aborts on upload; merchant unable to fix 1,000+ Excel rows manually.</td>
                     </tr>
                     <tr>
-                        <td><strong>4. Bot Trigger & Loop Traps</strong><br><span class="mono">Fallback Recursion</span></td>
-                        <td>Conflicting keyword triggers or dead-end conversation paths causing infinite automated default fallback loops.</td>
-                        <td>Directly ruins the merchant's end-customer brand reputation, causing high-anxiety emergency escalations.</td>
+                        <td><strong>Meta Verification</strong></td>
+                        <td>11% (1,925/mo)</td>
+                        <td>Two-factor auth lockouts, missing GST business proofs, or rejected display names.</td>
+                        <td>Blocked by Meta Business Suite; merchant blames Cheerio for external Meta platform rules.</td>
                     </tr>
                     <tr>
-                        <td><strong>5. Integration & Webhook Drops</strong><br><span class="mono">OAuth Token Expiry</span></td>
-                        <td>Shopify or WooCommerce abandoned cart events disconnect after secret rotation or permissions changes.</td>
-                        <td>Silently causes lost revenue for the merchant; creates high perceived platform instability.</td>
+                        <td><strong>Webhook & Cloud Sync</strong></td>
+                        <td>5% (875/mo)</td>
+                        <td>Shopify / WooCommerce sync drops, expired access tokens, catalog synchronization lags.</td>
+                        <td>Abandoned cart triggers do not fire; attribution tracking breaks silently.</td>
                     </tr>
                 </tbody>
             </table>
-
-            <!-- Prioritization Matrix -->
-            <div class="section-header">
-                <h2><span class="sec-number">1.1</span> Solution Evaluation & Prioritization Matrix</h2>
+            <div style="font-size: 7.2pt; color: #64748b; margin-top: -2px; margin-bottom: 5px;">
+                <em>[Assumption: Query distribution benchmarked from Indian B2B WhatsApp BSP support tickets across onboarding and broadcast workflows; 3.5 queries/merchant/month across 5,000 businesses].</em>
             </div>
-            <p>We stress-tested 4 product approaches against autonomous deflection yield, user cognitive friction, and implementation complexity:</p>
-            
-            <table class="exec-table">
+
+            <!-- Section 1.3: Solution Space Evaluation -->
+            <div class="section-title"><span class="section-num">1.3</span> Solution Space Exploration: 8 Alternatives Evaluated & Scored</div>
+            <p>
+                To avoid premature convergence on a standard chatbot, 8 distinct operational interventions were scored across Deflection Potential, Engineering Effort, User Friction, and Operational Risk:
+            </p>
+            <table class="dense-table">
                 <thead>
                     <tr>
-                        <th style="width: 30%;">Candidate Solution</th>
-                        <th style="width: 15%;">Deflection %</th>
-                        <th style="width: 15%;">User Friction</th>
-                        <th style="width: 15%;">Feasibility</th>
-                        <th style="width: 25%;">Product Verdict</th>
+                        <th style="width: 30%;">Solution Alternative</th>
+                        <th style="width: 14%;">Deflection</th>
+                        <th style="width: 12%;">Dev Effort</th>
+                        <th style="width: 14%;">User Friction</th>
+                        <th style="width: 12%;">Risk</th>
+                        <th style="width: 18%;">Verdict / Strategic Fit</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>1. Static Help Center & Tooltips</strong></td>
-                        <td>Low (&lt;15%)</td>
-                        <td>High</td>
-                        <td>High</td>
-                        <td><span class="tag-pill tag-rose">Rejected</span> Non-technical merchants ignore docs when facing error codes.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>2. Passive Support Chatbot</strong></td>
-                        <td>Medium (25–35%)</td>
-                        <td>Medium</td>
-                        <td>High</td>
-                        <td><span class="tag-pill tag-amber">Insufficient</span> Pastes text links without live context or fixing account state.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>3. Hardcoded Step Wizards</strong></td>
-                        <td>Medium (30–40%)</td>
+                        <td><strong>1. In-App Context Co-Pilot</strong></td>
+                        <td><span class="badge-green">High (65%)</span></td>
+                        <td>Medium (1 mo)</td>
+                        <td><span class="badge-green">Near-Zero</span></td>
                         <td>Low</td>
+                        <td><strong>Selected (Primary Core Feature)</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Proactive Field Linter</strong></td>
+                        <td>Medium (35%)</td>
+                        <td>Low (2 wks)</td>
+                        <td><span class="badge-green">Near-Zero</span></td>
+                        <td>Very Low</td>
+                        <td><strong>Hybridized into Co-Pilot frontend</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Guided Onboarding Checklist</strong></td>
+                        <td>Low (15%)</td>
+                        <td>Low (1 wk)</td>
+                        <td>Low</td>
+                        <td>Low</td>
+                        <td>Helpful UX, but fails to fix broken inputs</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. WhatsApp Support Bot</strong></td>
+                        <td>Medium (40%)</td>
                         <td>Medium</td>
-                        <td><span class="tag-pill tag-amber">Brittle</span> Breaks on dynamic, asynchronous third-party Meta API errors.</td>
+                        <td>Medium</td>
+                        <td>High</td>
+                        <td>Forces copy-pasting errors between screens</td>
                     </tr>
                     <tr>
-                        <td><strong>4. Cheerio In-App Co-Pilot</strong></td>
-                        <td><strong>High (60–75%)</strong></td>
-                        <td><strong>Zero</strong></td>
-                        <td><strong>High</strong></td>
-                        <td><span class="tag-pill tag-green">Selected Solution</span> Intercepts live errors, provides 1-click auto-fixes.</td>
+                        <td><strong>5. Video & Community Library</strong></td>
+                        <td>Very Low (8%)</td>
+                        <td>Low</td>
+                        <td>High</td>
+                        <td>Low</td>
+                        <td>SMBs do not watch 10-minute documentation</td>
+                    </tr>
+                    <tr>
+                        <td><strong>6. Done-For-You (DFY) White-Glove</strong></td>
+                        <td>High (80%)</td>
+                        <td>None</td>
+                        <td><span class="badge-green">Zero</span></td>
+                        <td><span class="badge-red">Severe (Cost)</span></td>
+                        <td>Unscalable; unit economics collapse</td>
+                    </tr>
+                    <tr>
+                        <td><strong>7. Agent-Assist Internal Copilot</strong></td>
+                        <td>Zero (0%)</td>
+                        <td>Medium</td>
+                        <td>None</td>
+                        <td>Low</td>
+                        <td>Speeds agent MTTR, but defers zero tickets</td>
+                    </tr>
+                    <tr>
+                        <td><strong>8. Ticket-Form Deflection Step</strong></td>
+                        <td>Low (18%)</td>
+                        <td>Low (1 wk)</td>
+                        <td>High</td>
+                        <td>Medium</td>
+                        <td>Annoys users by gating human support access</td>
                     </tr>
                 </tbody>
             </table>
+            <p style="font-size: 8.8pt; color: #475569; margin-top: 2px;">
+                <strong>Strategic Choice:</strong> Alternative #1 (In-App Co-Pilot) combined with #2 (Client-Side Regex Linter) was chosen because non-technical merchants do not want documentation—they want their broken campaign fixed immediately with 1 click.
+            </p>
         </div>
 
         <div class="doc-footer">
-            <span class="footer-left">Cheerio AI • Product Management Take-Home Memorandum</span>
-            <span>Candidate: Saksham Gupta (saksham77779@gmail.com)</span>
+            <span>Cheerio AI Product Strategy Memo • Assignment A</span>
             <span>Page 1 of 4</span>
+            <span class="footer-links">Candidate: Saksham Gupta (<a href="mailto:saksham77779@gmail.com">saksham77779@gmail.com</a>)</span>
         </div>
     </div>
 
-    <!-- ================= PAGE 2: SOLUTION SPECIFICATION & ROADMAP ================= -->
+    <!-- ========================================================================== -->
+    <!-- PAGE 2: PRODUCT ARCHITECTURE, META COMPLIANCE & SAFETY GUARDRAILS         -->
+    <!-- ========================================================================== -->
     <div class="doc-page">
         <div class="page-content">
-            <div class="section-header">
-                <h2><span class="sec-number">2.0</span> Chosen Solution: "Cheerio Co-Pilot" System Architecture</h2>
-                <span class="tag-pill tag-green">In-App Diagnostic Agent</span>
+            <!-- Header -->
+            <div class="exec-header">
+                <div class="brand-cluster">
+                    <div class="brand-badge"><span class="brand-dot"></span> System Architecture & Compliance</div>
+                    <h1 class="doc-title">Cheerio Co-Pilot: Technical Architecture & Operational Guardrails</h1>
+                </div>
+                <div class="candidate-card">
+                    <div class="candidate-name">Saksham Gupta</div>
+                    <div class="mono">saksham77779@gmail.com</div>
+                    <div>Product Intern (APM Track)</div>
+                </div>
             </div>
-            <p><strong>Product Vision:</strong> Cheerio Co-Pilot is an embedded, state-aware copilot living natively in the merchant workflow. Rather than forcing the merchant to draft a support ticket, Co-Pilot automatically parses third-party API error responses, explains the issue in plain conversational language, and provides a <strong>single-click remediation button</strong>.</p>
 
-            <table class="exec-table">
+            <!-- Section 2.1: The Winning Solution -->
+            <div class="section-title"><span class="section-num">2.1</span> Product Specification: The In-App Context-Aware Co-Pilot</div>
+            <p>
+                Cheerio Co-Pilot is embedded directly into the campaign workspace (WhatsApp Templates, CSV Audiences, Phone Registration). 
+                Unlike conversational chatbots that live in a detached chat widget, Co-Pilot maintains complete real-time DOM telemetry: form field values, draft history, account verification status, and Meta Cloud API HTTP response headers. 
+                When a merchant makes an error, Co-Pilot provides two transparent, 1-click remediation paths on-screen:
+            </p>
+            <div class="grid-2">
+                <div class="card" style="border-left: 3px solid #16a34a;">
+                    <div class="card-header">
+                        <span>Remediation Path A: Clean Utility (1-Click Auto-Fix)</span>
+                        <span class="badge-green">Cost: ₹0.1150/msg</span>
+                    </div>
+                    <p style="font-size: 8.5pt;">
+                        Strips violating promotional phrases (e.g., <em>"HURRY! 50% OFF Diwali Sale"</em>) while preserving dynamic tracking variables (<code class="mono">{{1}}</code>, <code class="mono">{{2}}</code>). Rewrites the message into strict transactional compliance and updates both the template and live phone preview.
+                    </p>
+                </div>
+                <div class="card" style="border-left: 3px solid #2563eb;">
+                    <div class="card-header">
+                        <span>Remediation Path B: Reclassify to Marketing</span>
+                        <span class="badge-blue">Cost: ₹0.8631/msg</span>
+                    </div>
+                    <p style="font-size: 8.5pt;">
+                        Preserves the merchant's promotional discount copy, automatically reassigns the template category to Marketing, and alerts the merchant to the higher Meta delivery tariff (₹0.8631 vs. ₹0.1150 base rate), preventing surprise billing disputes.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Section 2.2: Multi-Tier Technical Architecture -->
+            <div class="section-title"><span class="section-num">2.2</span> Multi-Tier Resolution Engine & Cost-Optimized Routing</div>
+            <p>
+                To deliver sub-second user responsiveness and keep AI operating costs below ₹0.20 per query, Co-Pilot utilizes a 3-tier processing pipeline:
+            </p>
+            <div class="grid-3">
+                <div class="card">
+                    <div class="card-header">
+                        <span>Tier 1: Client-Side Regex</span>
+                        <span class="badge-green">0ms • Free</span>
+                    </div>
+                    <p style="font-size: 8.2pt;">
+                        Deterministic client-side checks evaluate variable counts, formatting whitespace, and promotional keyword triggers. Traps 100% of missing country codes on CSV uploads without making an LLM API call.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span>Tier 2: Semantic Cache</span>
+                        <span class="badge-blue">25ms • ₹0.02</span>
+                    </div>
+                    <p style="font-size: 8.2pt;">
+                        An Upstash Redis semantic vector cache matches inbound template copy against 2,000+ previously verified compliant templates. Returns instant cached rephrasings for standard Indian festive campaigns.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span>Tier 3: GPT-4o-mini</span>
+                        <span class="badge-amber">450ms • ₹0.18</span>
+                    </div>
+                    <p style="font-size: 8.2pt;">
+                        Invoked only for novel, complex copy rephrasing or Hinglish intent parsing. Uses structured JSON outputs with prompt caching (50% input discount) to deliver exact replacement payloads.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Section 2.3: Meta API Compliance & Error Mapping -->
+            <div class="section-title"><span class="section-num">2.3</span> Verified Meta Cloud API Error Taxonomies & India Rate Cards</div>
+            <p>
+                As an official Meta Business Solution Provider (BSP), Cheerio must adhere strictly to Meta Cloud API specifications:
+            </p>
+            <table class="dense-table">
                 <thead>
                     <tr>
-                        <th style="width: 28%;">Co-Pilot Module</th>
-                        <th style="width: 44%;">Operational Mechanism & Autonomous Action</th>
-                        <th style="width: 28%;">Impact on Support Deflection</th>
+                        <th style="width: 22%;">Meta Error / Reason</th>
+                        <th style="width: 28%;">Official Meta Specification</th>
+                        <th style="width: 26%;">Verified Rate / Reference</th>
+                        <th style="width: 24%;">Co-Pilot Autonomous Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Pre-Flight Template Linter</strong></td>
-                        <td>Real-time syntax & policy validator running on draft templates. Detects promotional wording in utility categories, suggests 1-click compliant rewrites, and maps fallback variables before calling Meta API.</td>
-                        <td>Eliminates 94% of template rejection tickets before submission occurs.</td>
+                        <td><strong>INCORRECT_CATEGORY</strong><br><span class="mono" style="font-size: 7pt;">Tag: CONTENT_MISMATCH</span></td>
+                        <td>Template submitted as Utility contains promotional phrases or commercial CTAs.</td>
+                        <td>India Utility: <strong>₹0.1150/msg</strong><br>India Marketing: <strong>₹0.8631/msg</strong><br><em>Source: developers.facebook.com</em></td>
+                        <td>Pre-flight linter intercepts template prior to submission; offers 1-click copy strip or category shift.</td>
                     </tr>
                     <tr>
-                        <td><strong>1-Click CSV Sanitizer</strong></td>
-                        <td>Validates uploaded CSV contact files on the client side. Automatically formats numbers to E.164 standard (<span class="mono">+91</span> prefix), deduplicates records, and cleans invalid characters.</td>
-                        <td>Converts 20-minute manual support formatting inquiries into an instant 1-click operation.</td>
+                        <td><strong>Code 133010</strong><br><span class="mono" style="font-size: 7pt;">ACCOUNT_NOT_REGISTERED</span></td>
+                        <td>Phone Number ID not registered on Cloud API; coexistence lock with mobile WhatsApp app.</td>
+                        <td>Meta Registration Endpoint:<br><code class="mono" style="font-size: 7pt;">POST /{phone-id}/register</code><br>Requires 6-digit PIN</td>
+                        <td>Guides merchant through 2-step verification PIN registration; triggers cloud handshake.</td>
                     </tr>
                     <tr>
-                        <td><strong>Bot Flow Loop Simulator</strong></td>
-                        <td>Synthetically runs test trajectories through drag-and-drop chatbot trees to detect orphaned branches, recursive fallback loops, or broken triggers before activation.</td>
-                        <td>Prevents live customer-facing dead ends that create high-urgency merchant panic tickets.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Integration Self-Healer</strong></td>
-                        <td>Continuously monitors webhook health with Shopify/WooCommerce. Detects auth token expirations and provides a 1-click OAuth reconnection prompt.</td>
-                        <td>Eliminates silent data drops and restores automated order alerts autonomously.</td>
+                        <td><strong>Code 132015</strong><br><span class="mono" style="font-size: 7pt;">TEMPLATE_PAUSED</span></td>
+                        <td>Template paused by Meta algorithms due to low recipient quality rating or spam flags.</td>
+                        <td>3 to 6 hour cooling-off period before permanent disablement (Code 132016).</td>
+                        <td>Informs merchant of cooling period; enforces audience segment exclusion for opt-outs.</td>
                     </tr>
                 </tbody>
             </table>
 
-            <div class="section-header">
-                <h2><span class="sec-number">2.1</span> Operational Boundaries: What the Co-Pilot Will NOT Do</h2>
-                <span class="tag-pill tag-rose">Strict Guardrails</span>
-            </div>
-            <ul>
-                <li><strong>No Financial Transactions or Billing Disputes:</strong> The Co-Pilot strictly refuses to handle credit card disputes, refund calculations, or plan cancellations. These are immediately routed to human billing specialists.</li>
-                <li><strong>No Hallucinated Compliance Overrides:</strong> If Meta permanently disables an account for severe spam violations, Co-Pilot does not make false promises; it automatically compiles an official <strong>Meta Policy Appeal Dossier</strong> for human review.</li>
-                <li><strong>Zero Infinite Bot Loops (2-Attempt Circuit Breaker):</strong> If an automated remediation fails <strong>2 consecutive times</strong>, Co-Pilot halts automated retries and executes a warm hand-off to human support.</li>
-            </ul>
-
-            <div class="section-header">
-                <h2><span class="sec-number">2.2</span> Human Hand-Off Protocol: "Diagnostic Ticket Packets"</h2>
-            </div>
-            <p>When human intervention is mandatory, the merchant is never forced to repeat themselves. Co-Pilot automatically dispatches a structured <strong>Diagnostic Telemetry Packet</strong> directly into the support agent's Zendesk/Slack queue containing:</p>
-            <ul>
-                <li><strong>Diagnostic Telemetry:</strong> Exact Meta Cloud API error code, raw JSON payload, Account ID, WABA status, and timestamp.</li>
-                <li><strong>History:</strong> Actions already attempted by merchant and specific failure trigger.</li>
-                <li><strong>Recommended Human Remediation:</strong> Exact steps for agent (e.g. <em>"Advise user to navigate to WhatsApp Settings > Account > Delete Account to release 2FA lock"</em>). <strong>Cuts Mean Time to Resolution (MTTR) by 70%.</strong></li>
-            </ul>
-
-            <div class="section-header">
-                <h2><span class="sec-number">2.3</span> North Star Metric & 3-Month Implementation Roadmap</h2>
-            </div>
-            
-            <div class="hero-callout">
-                <div class="hero-callout-title">
-                    <span>NORTH STAR METRIC: Zero-Touch Onboarding Completion Rate (ZOCR)</span>
-                    <span class="tag-pill tag-green">Primary APM Target</span>
-                </div>
-                <p style="margin:0; font-size:7.5pt; color:#1e293b;"><strong>Definition:</strong> % of newly registered businesses that link their WABA phone number, get their first template approved, and launch their first broadcast campaign <strong>without raising a single human support ticket</strong>.</p>
-                <p style="margin:2px 0 0 0; font-size:7.6pt; font-weight:700; color:#14532d;">Target: Increase ZOCR from an estimated 22% baseline to 58% (+36% absolute improvement) in 90 days.</p>
+            <!-- Section 2.4: Circuit Breaker & Structured Escalation -->
+            <div class="section-title"><span class="section-num">2.4</span> 2-Failure Escalation Circuit & Structured Diagnostic Telemetry Packet</div>
+            <p>
+                If a merchant struggles or the automated fix fails <strong>twice consecutively</strong>, Co-Pilot trips a deterministic circuit breaker. 
+                Instead of trapping the user in an infinite loop or asking "How can I help you?", Co-Pilot compiles a structured JSON Diagnostic Packet directly to the human support queue:
+            </p>
+            <div class="code-block">
+{
+  "packet_uuid": "PKT-2026-CHRIO-8921",
+  "merchant_id": "FABJEWELS_D2C", "waba_id": "99182310892", "phone_id": "109923812903",
+  "meta_error_code": 133010, "meta_error_subcode": "ACCOUNT_NOT_REGISTERED",
+  "failed_attempts": 2, "circuit_breaker_tripped": true,
+  "client_state": { "target_phone": "+919876543210", "pin_submitted": true, "mobile_deregistration_pending": true },
+  "suggested_human_action": "Initiate Meta backend provisioning reset to clear SMB coexistence lock on phone_id 109923812903."
+}
             </div>
 
-            <div class="stat-grid-4">
-                <div class="stat-tile">
-                    <span class="stat-label">Support Deflection</span>
-                    <span class="stat-val" style="color:#2563eb;">65%</span>
-                    <span class="stat-sub">Baseline: ~12%</span>
+            <!-- Section 2.5: Operational Guardrails & Policy Boundaries -->
+            <div class="section-title"><span class="section-num">2.5</span> Operational Guardrails & Explicit Refusal Boundaries</div>
+            <div class="grid-2">
+                <div class="card" style="border-left: 3px solid #dc2626;">
+                    <div class="card-header">
+                        <span>Financial & Invoicing Disputes</span>
+                        <span class="badge-red">Hard Refusal</span>
+                    </div>
+                    <p style="font-size: 8.5pt;">
+                        <strong>Policy:</strong> Co-Pilot is strictly prohibited from executing financial adjustments or issuing refund guarantees. Any query regarding credit card overcharges, failed renewals, or invoice adjustments routes instantly to <code class="mono">finance@cheerio.in</code> with account billing telemetry.
+                    </p>
                 </div>
-                <div class="stat-tile">
-                    <span class="stat-label">Time to First Campaign</span>
-                    <span class="stat-val" style="color:#15803d;">&lt;4 hrs</span>
-                    <span class="stat-sub">Baseline: 3.2 days</span>
-                </div>
-                <div class="stat-tile">
-                    <span class="stat-label">Cost / Active Merchant</span>
-                    <span class="stat-val" style="color:#0f172a;">₹49.70</span>
-                    <span class="stat-sub">Baseline: ₹140.00</span>
-                </div>
-                <div class="stat-tile">
-                    <span class="stat-label">Day-14 Retention Gain</span>
-                    <span class="stat-val" style="color:#b45309;">+18%</span>
-                    <span class="stat-sub">Frictionless Activation</span>
+                <div class="card" style="border-left: 3px solid #ea580c;">
+                    <div class="card-header">
+                        <span>Meta Ban & License Boundaries</span>
+                        <span class="badge-amber">Zero-Override</span>
+                    </div>
+                    <p style="font-size: 8.5pt;">
+                        <strong>Policy:</strong> Cheerio cannot arbitrarily override Meta's compliance servers. When accounts are flagged for spam, Co-Pilot refuses to promise an unban. It generates the official <code class="mono">Meta_WABA_Appeal_Dossier.pdf</code> and assigns it directly to Cheerio's Meta Compliance Lead.
+                    </p>
                 </div>
             </div>
-
-            <table class="exec-table">
-                <thead>
-                    <tr>
-                        <th style="width: 20%;">Milestone Phase</th>
-                        <th style="width: 45%;">Shipped Capabilities</th>
-                        <th style="width: 35%;">Cumulative Metric Target</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Month 1 (P0)</strong></td>
-                        <td>Ship Template Pre-Flight Linter & 1-Click CSV Sanitizer.</td>
-                        <td>Deflect 25% of queries; unblock campaign broadcasts.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Month 2 (P1)</strong></td>
-                        <td>Deploy WABA Phone Number Diagnostic Assistant & 2FA Resolver.</td>
-                        <td>Deflect 45% of queries; increase ZOCR to 42%.</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Month 3 (P2)</strong></td>
-                        <td>Roll out Webhook Health Probes, Flow Loop Simulator & Slack Handoff.</td>
-                        <td>Achieve target <strong>65% deflection</strong>; reach <strong>58% ZOCR</strong>.</td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
 
         <div class="doc-footer">
-            <span class="footer-left">Cheerio AI • Product Management Take-Home Memorandum</span>
-            <span>Candidate: Saksham Gupta (saksham77779@gmail.com)</span>
+            <span>Cheerio AI Product Strategy Memo • Assignment A</span>
             <span>Page 2 of 4</span>
+            <span class="footer-links">Candidate: Saksham Gupta (<a href="mailto:saksham77779@gmail.com">saksham77779@gmail.com</a>)</span>
         </div>
     </div>
 
-    <!-- ================= PAGE 3: UNIT ECONOMICS & AUDIT ================= -->
+    <!-- ========================================================================== -->
+    <!-- PAGE 3: METRICS, PACKAGING STRATEGY & GOVERNANCE AUDIT PROTOCOL            -->
+    <!-- ========================================================================== -->
     <div class="doc-page">
         <div class="page-content">
-            <div class="section-header">
-                <h2><span class="sec-number">3.0</span> Financial Modeling: Unit Economics, Staffing & ROI</h2>
-                <span class="tag-pill tag-blue">5,000 Merchant Scale</span>
+            <!-- Header -->
+            <div class="exec-header">
+                <div class="brand-cluster">
+                    <div class="brand-badge"><span class="brand-dot"></span> Strategy, Packaging & Governance</div>
+                    <h1 class="doc-title">Metrics Framework, Monetization Strategy & Audit Protocols</h1>
+                </div>
+                <div class="candidate-card">
+                    <div class="candidate-name">Saksham Gupta</div>
+                    <div class="mono">saksham77779@gmail.com</div>
+                    <div>Product Intern (APM Track)</div>
+                </div>
             </div>
-            <p><strong>Baseline Volume Guesstimate:</strong> Cheerio supports 5,000 active businesses. Benchmarking against comparable Indian B2B SaaS onboarding funnels, accounts generate an average of <strong>3.5 technical support queries / business / month</strong>, resulting in a total monthly volume of <strong>17,500 queries/month</strong>.</p>
 
-            <table class="exec-table">
+            <!-- Section 3.1: North Star & Target Trajectory -->
+            <div class="section-title"><span class="section-num">3.1</span> North Star Metric & Realistic 90-Day Trajectory</div>
+            <p>
+                Rather than chasing vanity chatbot engagement ("messages sent"), Cheerio Co-Pilot optimizes for a single customer success metric: 
+                <strong>Zero-Touch Onboarding Completion Rate (ZOCR)</strong>—the percentage of newly registered merchants who successfully connect their WABA, verify an audience, and schedule their first campaign without raising a human support ticket.
+            </p>
+            <div class="grid-4" style="margin-bottom: 5px;">
+                <div class="kpi-pill">
+                    <div class="kpi-val" style="color: #64748b;">22.0%</div>
+                    <div class="kpi-lbl">Baseline ZOCR</div>
+                    <div class="kpi-sub" style="color: #64748b;">[Assumed Status Quo]</div>
+                </div>
+                <div class="kpi-pill">
+                    <div class="kpi-val" style="color: #2563eb;">33.0%</div>
+                    <div class="kpi-lbl">Day 90 Target</div>
+                    <div class="kpi-sub" style="color: #2563eb;">+11.0% Realistic Gain</div>
+                </div>
+                <div class="kpi-pill">
+                    <div class="kpi-val" style="color: #16a34a;">58.0%</div>
+                    <div class="kpi-lbl">Day 180 Target</div>
+                    <div class="kpi-sub" style="color: #16a34a;">Mature Product Suite</div>
+                </div>
+                <div class="kpi-pill">
+                    <div class="kpi-val" style="color: #0f172a;">&lt; 5.0%</div>
+                    <div class="kpi-lbl">7-Day Reopen Rate</div>
+                    <div class="kpi-sub" style="color: #16a34a;">Quality Guardrail</div>
+                </div>
+            </div>
+
+            <table class="dense-table">
                 <thead>
                     <tr>
-                        <th style="width: 25%;">Resolution Tier</th>
-                        <th style="width: 25%;">Monthly Query Volume</th>
-                        <th style="width: 25%;">Blended Cost / Query</th>
-                        <th style="width: 25%;">Total Monthly Cost</th>
+                        <th style="width: 32%;">Co-Pilot Product Intervention</th>
+                        <th style="width: 20%;">Target ZOCR Lift</th>
+                        <th style="width: 48%;">Underlying Operational Mechanism & Verification</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Autonomous AI Co-Pilot (65%)</strong></td>
-                        <td>11,375 queries / month</td>
-                        <td>₹0.20 / query (GPT-4o-mini + infra)</td>
-                        <td><strong>₹2,275 / month</strong></td>
+                        <td><strong>Template Pre-Flight Linter</strong></td>
+                        <td><span class="badge-green">+5.5%</span></td>
+                        <td>Eliminates 1st-attempt template rejections via real-time regex & category correction.</td>
                     </tr>
                     <tr>
-                        <td><strong>Assisted Human Support (35%)</strong></td>
-                        <td>6,125 queries / month</td>
-                        <td>₹40.00 / query (Assisted by AI packets)</td>
-                        <td><strong>₹2,45,000 / month</strong> (7 agents)</td>
+                        <td><strong>CSV Audience Sanitizer</strong></td>
+                        <td><span class="badge-blue">+3.0%</span></td>
+                        <td>Fixes missing +91 dial codes and spacing errors in browser before broadcast launch.</td>
                     </tr>
                     <tr>
-                        <td><strong>Total Blended Operations</strong></td>
-                        <td><strong>17,500 queries / month</strong></td>
-                        <td><strong>₹14.20 / query</strong></td>
-                        <td><strong>₹2,48,500 / month</strong></td>
+                        <td><strong>WABA Phone Registration Diagnostic</strong></td>
+                        <td><span class="badge-amber">+2.5%</span></td>
+                        <td>Guides 2-step verification PIN setup; unblocks SMB mobile coexistence traps.</td>
+                    </tr>
+                    <tr style="font-weight: 700; background: #eff6ff;">
+                        <td>Total 90-Day Achievable Expansion</td>
+                        <td>+11.0% (22% &rarr; 33%)</td>
+                        <td>Directly unblocks 550 additional merchants during Day 1-7 onboarding.</td>
                     </tr>
                 </tbody>
             </table>
 
-            <div class="section-header">
-                <h2><span class="sec-number">3.1</span> Token Economics & AI Infrastructure Cost Breakdown</h2>
+            <!-- Section 3.2: Deflection Definition & Guardrails -->
+            <div class="section-title"><span class="section-num">3.2</span> Strict Deflection Definition & Customer Quality Guardrails</div>
+            <p>
+                <strong>Audit-Proof Deflection Standard:</strong> A support interaction is counted as "Deflected" <em>only</em> if the merchant completes their workflow in-app and <strong>raises no human ticket or reopened inquiry within 7 calendar days</strong>. 
+                Users who abandon the workflow in frustration are explicitly categorized as "Failed Deflections" to prevent false reporting.
+            </p>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <span>Guardrail Metric 1: Post-Remediation CSAT</span>
+                        <span class="badge-green">Target: &ge; 4.5 / 5.0</span>
+                    </div>
+                    <p style="font-size: 8.5pt;">
+                        1-click rating ("Was this auto-fix helpful?") displayed immediately after remediation. If a specific linter rule falls below 4.0 CSAT, it is demoted to "Human Review Only" automatically.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span>Guardrail Metric 2: Escalation Telemetry Completeness</span>
+                        <span class="badge-blue">Target: &ge; 95%</span>
+                    </div>
+                    <p style="font-size: 8.5pt;">
+                        Monitors the percentage of human-escalated tickets that contain a valid Diagnostic Telemetry Packet. Ensures support reps never ask merchants for account ID, WABA ID, or error screenshots.
+                    </p>
+                </div>
             </div>
-            <ul>
-                <li><strong>Selected Foundation Model:</strong> <strong>OpenAI GPT-4o-mini</strong> (Chosen for sub-200ms latency, 99.4% syntax adherence, and cost efficiency).</li>
-                <li><strong>Official API Pricing (Oct 2024 / USD:INR = 84.0):</strong> Input: $0.15 / 1M tokens (~₹12.60) • Output: $0.60 / 1M tokens (~₹50.40).</li>
-                <li><strong>Tokens per Troubleshooting Session (3-turn conversational diagnostic):</strong>
-                    <ul>
-                        <li>Input (System instructions + live account state + user message): 2,500 tokens = $0.000375 (~₹0.0315).</li>
-                        <li>Output (Targeted diagnostic reasoning + template re-write): 500 tokens = $0.000300 (~₹0.0252).</li>
-                        <li>Raw LLM API Cost: <strong>$0.000675 (~₹0.057 per session)</strong>.</li>
-                        <li>Infrastructure Overhead Buffer (Redis semantic cache + serverless compute): ₹0.143 / query.</li>
-                        <li><strong>Blended Cost per Query:</strong> <strong>₹0.20 / query</strong>.</li>
-                    </ul>
-                </li>
-                <li><strong>Total Monthly AI Operating Spend:</strong> 17,500 queries × ₹0.20 = <strong>₹3,500 / month ($41.67 / month)</strong>.</li>
-                <li><strong>AI Cost per Active Merchant:</strong> ₹3,500 ÷ 5,000 businesses = <strong>₹0.70 / merchant / month</strong>.</li>
-            </ul>
 
-            <div class="section-header">
-                <h2><span class="sec-number">3.2</span> Human Support Team vs. Cheerio Co-Pilot Comparison</h2>
-            </div>
-
-            <table class="exec-table">
+            <!-- Section 4.1: Monetization & Packaging Strategy -->
+            <div class="section-title"><span class="section-num">4.1</span> Monetization & Billing Strategy Options (Evaluated from Financial Model)</div>
+            <table class="dense-table">
                 <thead>
                     <tr>
-                        <th>Metric</th>
-                        <th>Pure Human Model (Baseline)</th>
-                        <th>Cheerio Co-Pilot Model</th>
-                        <th>Operational Savings</th>
+                        <th style="width: 28%;">Packaging Model</th>
+                        <th style="width: 14%;">Price</th>
+                        <th style="width: 18%;">Fully Loaded Cost</th>
+                        <th style="width: 14%;">Margin (%)</th>
+                        <th style="width: 26%;">Recommendation & Strategic Rationale</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style="background: #f0fdf4;">
+                        <td><strong>1. 100% Free Core Feature</strong></td>
+                        <td>₹0 / mo</td>
+                        <td>₹6.26 / resolved query</td>
+                        <td><span class="badge-green">Subsidized</span></td>
+                        <td><strong>Recommended:</strong> Maximizes ZOCR; fully funded by ₹1.76L/mo net retention revenue (50.4x ROI).</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Per-Resolution Micro-Fee</strong></td>
+                        <td>₹5.00 / fix</td>
+                        <td>₹0.30 (LLM+Cache)</td>
+                        <td>+94.0%</td>
+                        <td>Creates onboarding barrier; disincentivizes self-service; provokes SMB backlash.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Prepaid AI Credits Pack</strong></td>
+                        <td>₹199 / 50 fixes</td>
+                        <td>₹15.00 / pack</td>
+                        <td>+92.5%</td>
+                        <td>High gross margin, but adds wallet friction during the critical first campaign setup.</td>
+                    </tr>
+                    <tr>
+                        <td><strong>4. Dedicated Support Add-On</strong></td>
+                        <td>₹499 / mo</td>
+                        <td>₹22.50 / merchant</td>
+                        <td>+95.5%</td>
+                        <td>Viable optional upsell for high-volume enterprise senders needing priority SLAs.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div style="font-size: 7.2pt; color: #64748b; margin-top: -2px; margin-bottom: 5px;">
+                <em>[Fully loaded unit cost (₹6.26) = LLM token inference (₹0.20) + Observability & cache overhead (₹0.10) + Amortized human escalation share across unassisted tickets (₹5.96)].</em>
+            </div>
+
+            <!-- Section 4.2: Observability & Monthly Audit Cadence -->
+            <div class="section-title"><span class="section-num">4.2</span> Observability, Safety Thresholds & Monthly Audit Protocol</div>
+            <table class="dense-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Audit Metric / Check</th>
+                        <th style="width: 24%;">Alert Threshold</th>
+                        <th style="width: 14%;">Severity</th>
+                        <th style="width: 15%;">Assigned Owner</th>
+                        <th style="width: 22%;">Remediation Action</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Support Agent Headcount</strong></td>
-                        <td>20 Full-Time Support Reps</td>
-                        <td>7 Full-Time Support Reps</td>
-                        <td><strong>-13 Reps (-65% headcount)</strong></td>
+                        <td><strong>Cost per Resolved Query</strong></td>
+                        <td>&gt; 2x Baseline (&gt; ₹0.40)</td>
+                        <td><span class="badge-amber">High</span></td>
+                        <td>Lead APM / ML Eng</td>
+                        <td>Audit prompt token usage; revert to client regex linter.</td>
                     </tr>
                     <tr>
-                        <td><strong>Agent Monthly Capacity</strong></td>
-                        <td>880 tickets/mo (40/day × 22 workdays)</td>
-                        <td>880 tickets/mo (Assisted by telemetry)</td>
-                        <td>MTTR dropped from 42m to &lt;3m</td>
+                        <td><strong>Session Token Expansion</strong></td>
+                        <td>&gt; 140% of 7-day avg</td>
+                        <td><span class="badge-blue">Medium</span></td>
+                        <td>Backend Lead</td>
+                        <td>Prune conversation history; compress error JSON payloads.</td>
                     </tr>
                     <tr>
-                        <td><strong>Monthly Team Payroll</strong></td>
-                        <td>₹7,00,000 / month (at ₹35,000/rep)</td>
-                        <td>₹2,45,000 / month (at ₹35,000/rep)</td>
-                        <td>₹4,55,000 / month saved</td>
+                        <td><strong>Merchant Session Spikes</strong></td>
+                        <td>&gt; 50 sessions / 24 hrs</td>
+                        <td><span class="badge-amber">High</span></td>
+                        <td>SecOps / Support Lead</td>
+                        <td>Rate-limit merchant; initiate proactive account audit.</td>
                     </tr>
                     <tr>
-                        <td><strong>AI Infrastructure Cost</strong></td>
-                        <td>₹0 / month</td>
-                        <td>₹3,500 / month (17.5k queries)</td>
-                        <td>+₹3,500 / month invested</td>
+                        <td><strong>Zero-Touch Deflection Rate</strong></td>
+                        <td>&lt; 40% (Target: 65%)</td>
+                        <td><span class="badge-red">Critical</span></td>
+                        <td>Product Manager</td>
+                        <td>Audit Meta API error changes; update linter taxonomies.</td>
                     </tr>
                     <tr>
-                        <td><strong>Total Net Monthly Operating Cost</strong></td>
-                        <td><strong>₹7,00,000 / month</strong></td>
-                        <td><strong>₹2,48,500 / month</strong></td>
-                        <td><span class="tag-pill tag-green">Net Savings: ₹4,51,500 / mo</span></td>
+                        <td><strong>7-Day Ticket Reopen Rate</strong></td>
+                        <td>&gt; 5.0% of deflections</td>
+                        <td><span class="badge-amber">High</span></td>
+                        <td>QA / Support Lead</td>
+                        <td>Investigate auto-fix false positives; refine regex patterns.</td>
                     </tr>
                     <tr>
-                        <td><strong>Cost per Resolved Ticket</strong></td>
-                        <td><strong>₹40.00 / ticket</strong></td>
-                        <td><strong>₹14.20 / ticket</strong></td>
-                        <td><strong>-64.5% Cost Reduction</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Annualized Bottom-Line Value</strong></td>
-                        <td>₹84,00,000 / year</td>
-                        <td>₹29,82,000 / year</td>
-                        <td><strong style="color:#15803d;">₹54,18,000 / year saved</strong></td>
+                        <td><strong>Invoice Reconciliation</strong></td>
+                        <td>OpenAI bill vs logs &gt; &plusmn;2%</td>
+                        <td><span class="badge-blue">Medium</span></td>
+                        <td>Finance / Tech Lead</td>
+                        <td>Reconcile dropped webhooks, retries, or orphaned sessions.</td>
                     </tr>
                 </tbody>
             </table>
-
-            <div class="section-header">
-                <h2><span class="sec-number">3.3</span> Packaging, Billing Strategy & Retention ROI</h2>
-            </div>
-            <ul>
-                <li><strong>Packaging Recommendation: 100% Free Core Feature Across All Tiers.</strong> At ₹0.70/business/month, charging for Co-Pilot creates friction at the exact moment a merchant is struggling, inducing churn.</li>
-                <li><strong>Retention ROI Justification:</strong> Assuming an average plan price of ₹2,999/month, reducing monthly merchant churn by just <strong>1.2% absolute</strong> (saving 60 businesses/month) preserves <strong>₹1,79,940/month in recurring revenue</strong>. Net financial value generated is ₹1,76,440/month, delivering an astounding <strong>51.4x ROI on AI spend</strong>.</li>
-                <li><strong>Audit & Financial Guardrails:</strong> Set up a Slack alert at 140% rolling token baseline, enforce a strict 6-turn session limit, and run an automated monthly script reconciling OpenAI invoice token counts against Cheerio internal session IDs.</li>
-            </ul>
         </div>
 
         <div class="doc-footer">
-            <span class="footer-left">Cheerio AI • Product Management Take-Home Memorandum</span>
-            <span>Candidate: Saksham Gupta (saksham77779@gmail.com)</span>
+            <span>Cheerio AI Product Strategy Memo • Assignment A</span>
             <span>Page 3 of 4</span>
+            <span class="footer-links">Candidate: Saksham Gupta (<a href="mailto:saksham77779@gmail.com">saksham77779@gmail.com</a>)</span>
         </div>
     </div>
 
-    <!-- ================= PAGE 4: TRANSPARENT AI LOG & REFLECTIONS ================= -->
+    <!-- ========================================================================== -->
+    <!-- PAGE 4: UNIT ECONOMICS, ENGINEERING RETROSPECTIVE & DELIVERABLES          -->
+    <!-- ========================================================================== -->
     <div class="doc-page">
         <div class="page-content">
-            <div class="section-header">
-                <h2><span class="sec-number">4.0</span> Transparent AI Usage Log & Engineering Reflections</h2>
-                <span class="tag-pill tag-blue">Prompt Log & Self-Audit</span>
-            </div>
-            
-            <p><strong>AI Tools Orchestration:</strong> We adopted a multi-model workflow: <strong>Claude 3.5 Sonnet</strong> for architectural edge-case modeling and Meta Cloud API error taxonomy extraction; <strong>Cursor / v0</strong> for rapid frontend prototyping of the Google Material 3 console; and <strong>ChatGPT (GPT-4o)</strong> for stress-testing SaaS support staffing calculations.</p>
-
-            <div class="section-header">
-                <h2><span class="sec-number">4.1</span> Prompts That Worked Well</h2>
-            </div>
-
-            <div class="prompt-card">
-                <strong class="prompt-title">
-                    <span class="tag-pill tag-green">Success</span> Prompt 1: Meta Business API Error Taxonomy Extraction
-                </strong>
-                <em>"Act as an engineering lead at an official Meta Business Solution Provider like Cheerio. Break down the top technical failure codes that non-technical SMB merchants trigger when submitting WhatsApp templates (such as Cloud API Code 132015 Category Mismatch, Code 132000 Parameter Count Mismatch, and REJECTED_CATEGORY_MISMATCH). For each, explain why the user triggered it in plain business terms and what programmatic action can fix it."</em>
-                <p><strong>Why it succeeded:</strong> Grounded the product in verified Meta Graph API error taxonomies rather than generic chatbot advice, yielding the deterministic basis for our 1-click remediation engine.</p>
+            <!-- Header -->
+            <div class="exec-header">
+                <div class="brand-cluster">
+                    <div class="brand-badge"><span class="brand-dot"></span> Financial Model & Engineering Log</div>
+                    <h1 class="doc-title">Financial Defensibility, Retrospective & Deliverables</h1>
+                </div>
+                <div class="candidate-card">
+                    <div class="candidate-name">Saksham Gupta</div>
+                    <div class="mono">saksham77779@gmail.com</div>
+                    <div>Product Intern (APM Track)</div>
+                </div>
             </div>
 
-            <div class="prompt-card">
-                <strong class="prompt-title">
-                    <span class="tag-pill tag-green">Success</span> Prompt 2: SaaS Staffing Capacity & Token Economics
-                </strong>
-                <em>"Calculate the exact token cost for an AI support copilot serving 5,000 active businesses with 17,500 queries/month using GPT-4o-mini pricing ($0.15/1M input, $0.60/1M output, USD:INR=84). Model average 3-turn sessions with 2,500 input and 500 output tokens. Compare this against Indian customer support rep salaries (₹35,000/mo) at 40 tickets/day. Show explicit formulas."</em>
-                <p><strong>Why it succeeded:</strong> Generated defensible unit economics and realistic Indian B2B SaaS agent productivity numbers without theoretical hand-waving.</p>
-            </div>
-
-            <div class="prompt-card">
-                <strong class="prompt-title">
-                    <span class="tag-pill tag-green">Success</span> Prompt 3: Prototype Component Architecture & Edge Cases
-                </strong>
-                <em>"Create a single-page interactive HTML/Tailwind demo representing Cheerio's template creation UI. Include an AI Copilot side-drawer with three testable scenarios: (1) Happy path 1-click auto-fix for promotional content in utility templates, (2) Human escalation after 2 failed attempts with pre-filled Diagnostic Packet, and (3) Refusal guardrail for billing and account suspensions."</em>
-                <p><strong>Why it succeeded:</strong> Built clean, testable UI states covering both the core journey and non-happy-path operational boundary conditions.</p>
-            </div>
-
-            <div class="section-header">
-                <h2><span class="sec-number">4.2</span> Prompts That Failed & Iterative Refinements</h2>
-            </div>
-
-            <div class="prompt-card">
-                <strong class="prompt-title">
-                    <span class="tag-pill tag-rose">Failed Initial Attempt</span> Generic Support Automation
-                </strong>
-                <em>"How can Cheerio AI use AI to reduce customer support tickets?"</em>
-                <p><strong>Why it failed:</strong> Returned superficial generic advice (<em>"Build a chatbot, create a better FAQ search, send auto-emails"</em>). It failed to address the core problem: Cheerio users get blocked by strict Meta developer rules and data formatting, not a lack of help text.</p>
-                <p><strong>Iterative Refinement:</strong> Switched to a <strong>persona-anchored, state-aware prompt</strong> defining Cheerio's user as a non-technical SMB merchant in India facing WhatsApp API verification drops, and mandated programmatic in-app auto-remediation rather than passive text.</p>
-            </div>
-
-            <div class="section-header">
-                <h2><span class="sec-number">4.3</span> Hallucinations Caught & Manual Human Contributions</h2>
-            </div>
-
-            <table class="exec-table">
+            <!-- Section 5.1: Financial Model Summary -->
+            <div class="section-title"><span class="section-num">5.1</span> Financial Model & Avoided Headcount Economics (5,000 Merchants)</div>
+            <table class="dense-table">
                 <thead>
                     <tr>
-                        <th style="width: 25%;">Area</th>
-                        <th style="width: 38%;">AI Proposed Output (Flawed)</th>
-                        <th style="width: 37%;">Human Verification & Engineering Correction</th>
+                        <th style="width: 25%;">Financial Parameter</th>
+                        <th style="width: 17%;">Pure Human Model</th>
+                        <th style="width: 20%;">With Cheerio Co-Pilot</th>
+                        <th style="width: 18%;">Net Delta / Impact</th>
+                        <th style="width: 20%;">Model Reference / Formula</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><strong>Meta Compliance Override</strong></td>
-                        <td>AI suggested: <em>"Have the AI override Meta's categorization and approve the template directly on WhatsApp's backend."</em></td>
-                        <td><strong>Caught compliance violation:</strong> As an official Meta BSP, Cheerio cannot override Meta servers. Pivoted to a <strong>pre-flight linter</strong> modifying text <em>before</em> API submission.</td>
+                        <td><strong>Inbound Query Volume</strong></td>
+                        <td>17,500 queries / mo</td>
+                        <td>17,500 queries / mo</td>
+                        <td>0 (Constant)</td>
+                        <td>Volume_Model!B7 (5,000 &times; 3.5)</td>
                     </tr>
                     <tr>
-                        <td><strong>Support Capacity Benchmark</strong></td>
-                        <td>AI initially assumed 100 tickets/day per human support agent.</td>
-                        <td><strong>Corrected to reality:</strong> Indian B2B SaaS complex WhatsApp API tickets max out at 40 tickets/day. Corrected model to 20 agents baseline.</td>
+                        <td><strong>Autonomous Deflection</strong></td>
+                        <td>12.0% (FAQ baseline)</td>
+                        <td>65.0% (Co-Pilot target)</td>
+                        <td>+53.0% Deflected</td>
+                        <td>11,375 queries resolved by AI</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Human Headcount Required</strong></td>
+                        <td>20 Support Agents</td>
+                        <td>7 Support Agents</td>
+                        <td><strong>-13 Avoided Hires</strong></td>
+                        <td>Avoided hiring as volume expands</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly Human Payroll (₹)</strong></td>
+                        <td>₹7,00,000 / mo</td>
+                        <td>₹2,45,000 / mo</td>
+                        <td>-₹4,55,000 / mo</td>
+                        <td>Human_Comparison!B11 vs B17 (@ ₹35k)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Monthly AI & Tooling Cost (₹)</strong></td>
+                        <td>₹0 / mo</td>
+                        <td>₹18,500 / mo</td>
+                        <td>+₹18,500 / mo</td>
+                        <td>LLM tokens (₹3,500) + Tooling (₹15,000)</td>
+                    </tr>
+                    <tr style="font-weight: 700; background: #f0fdf4;">
+                        <td><strong>Net Monthly Support Cost (₹)</strong></td>
+                        <td>₹7,00,000 / mo</td>
+                        <td>₹2,63,500 / mo</td>
+                        <td><strong>-₹4,36,500 / mo</strong></td>
+                        <td><strong>₹52.38 Lakhs / year savings</strong></td>
+                    </tr>
+                    <tr style="font-weight: 700;">
+                        <td><strong>Cost per Resolved Ticket (₹)</strong></td>
+                        <td>₹40.00 / ticket</td>
+                        <td>₹15.06 / ticket</td>
+                        <td><strong>-₹24.94 (-62.4%)</strong></td>
+                        <td>Human_Comparison!B12 vs B22</td>
+                    </tr>
+                    <tr>
+                        <td><strong>CapEx Dev Build & Payback</strong></td>
+                        <td>-</td>
+                        <td>₹2,50,000 build cost</td>
+                        <td><strong>0.57 Months Payback</strong></td>
+                        <td>~17 days payback period on build</td>
                     </tr>
                 </tbody>
             </table>
 
-            <div class="section-header">
-                <h2><span class="sec-number">4.4</span> What I Did 100% Manually (Without AI)</h2>
+            <!-- Section 5.2: Churn & Retention ROI -->
+            <div class="section-title"><span class="section-num">5.2</span> Separated Churn Economics & Net Retention ROI (No Double Counting)</div>
+            <p style="font-size: 8.8pt;">
+                To maintain mathematical integrity, support operational savings and retention revenue are modeled separately. 
+                With 5,000 active businesses paying ₹2,999/mo (₹1.50 Cr MRR) experiencing 5.0% baseline monthly churn (250 lost merchants):
+            </p>
+            <div class="grid-3" style="margin-bottom: 5px;">
+                <div class="kpi-pill">
+                    <div class="kpi-val" style="color: #0f172a;">60 Merchants</div>
+                    <div class="kpi-lbl">Retained / Month</div>
+                    <div class="kpi-sub" style="color: #16a34a;">1.2% Churn Reduction</div>
+                </div>
+                <div class="kpi-pill">
+                    <div class="kpi-val" style="color: #16a34a;">₹1,76,440</div>
+                    <div class="kpi-lbl">Net Preserved MRR</div>
+                    <div class="kpi-sub" style="color: #16a34a;">Gross ₹1.79L less ₹3.5k AI</div>
+                </div>
+                <div class="kpi-pill">
+                    <div class="kpi-val" style="color: #2563eb;">50.4x Net ROI</div>
+                    <div class="kpi-lbl">Return on AI Spend</div>
+                    <div class="kpi-sub" style="color: #2563eb;">Gross ROI = 51.4x</div>
+                </div>
             </div>
-            <ul>
-                <li><strong>Problem Selection & Strategic Focus:</strong> Chose Assignment A (Support Scaling) over Assignment B because support resolution directly unblocks Time-to-First-Campaign and enterprise expansion.</li>
-                <li><strong>North Star Metric Formulation:</strong> Formulated <strong>Zero-Touch Onboarding Completion Rate (ZOCR)</strong> uniting usability, third-party API reliability, and customer retention.</li>
-                <li><strong>Escalation Protocol Architecture:</strong> Designed the 2-failure circuit breaker threshold and the structured <strong>Diagnostic Ticket Packet</strong> handoff structure.</li>
-            </ul>
+
+            <!-- Sensitivity Table -->
+            <table class="dense-table">
+                <thead>
+                    <tr>
+                        <th style="width: 25%;">Model Stress-Test Scenario</th>
+                        <th style="width: 22%;">Churn Reduction</th>
+                        <th style="width: 25%;">Net Preserved MRR (₹)</th>
+                        <th style="width: 28%;">Net ROI Multiple (on ₹3.5k spend)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Conservative (Low)</strong></td>
+                        <td>0.5% absolute</td>
+                        <td>₹71,475 / month</td>
+                        <td><strong>20.4x Net ROI</strong></td>
+                    </tr>
+                    <tr style="background: #eff6ff; font-weight: 700;">
+                        <td><strong>Expected (Base)</strong></td>
+                        <td>1.2% absolute</td>
+                        <td>₹1,76,440 / month</td>
+                        <td><strong>50.4x Net ROI (Gross: 51.4x)</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Aggressive (High)</strong></td>
+                        <td>2.0% absolute</td>
+                        <td>₹2,96,400 / month</td>
+                        <td><strong>84.7x Net ROI</strong></td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- Section 6.1: Engineering Retrospective -->
+            <div class="section-title"><span class="section-num">6.1</span> Engineering Retrospective & Prompt Engineering Log</div>
+            <div class="grid-2">
+                <div class="card">
+                    <div class="card-header">
+                        <span>Real Prompt Iterations & Caught Failures</span>
+                        <span class="badge-blue">Audit Log</span>
+                    </div>
+                    <p style="font-size: 8.2pt;">
+                        <strong>Iteration 1:</strong> Initial prompt asked for "generic chatbot ideas"—produced superficial FAQ advice. Pivoted to persona-anchored prompt on Meta BSP API failure taxonomies.<br>
+                        <strong>Iteration 2:</strong> Model hallucinatory output suggested overriding Meta's backend approval status. Caught and corrected: Cheerio as a BSP must lint on the frontend prior to API submission.
+                    </p>
+                </div>
+                <div class="card">
+                    <div class="card-header">
+                        <span>Candidate Plain-Voice Reflection</span>
+                        <span class="badge-green">Candidate Voice</span>
+                    </div>
+                    <p style="font-size: 8.2pt;">
+                        "I initially debated whether to charge merchants ₹5 per AI resolution to create a new profit center. However, modeling the unit economics proved that monetizing support creates friction during onboarding, causing more churn than it earns. Subsidizing Co-Pilot as a free core feature delivers a 50.4x net return through retention."
+                    </p>
+                </div>
+            </div>
+
+            <!-- Section 6.2: Verified Deliverables & Links -->
+            <div class="section-title"><span class="section-num">6.2</span> Verified Assignment Deliverables & Artifact Access</div>
+            <table class="dense-table">
+                <thead>
+                    <tr>
+                        <th style="width: 28%;">Deliverable Artifact</th>
+                        <th style="width: 42%;">Description & Technical Scope</th>
+                        <th style="width: 30%;">Access Link / Location</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>1. Interactive Web Prototype</strong></td>
+                        <td>4 Scenarios: Pre-Flight Linter, Circuit Breaker, Refusal, WABA Phone Binding (Code 133010) + Edge cases.</td>
+                        <td><a href="https://saksham-gupta-gh.github.io/cheerio-copilot/" target="_blank" style="color: #2563eb; font-weight: 700;">saksham-gupta-gh.github.io/cheerio-copilot/</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>2. Financial Model (Google Sheet)</strong></td>
+                        <td>8-tab formulaic model: Assumptions, Volume, Tokens, Headcount, Churn ROI, Billing, and Auditing.</td>
+                        <td><a href="https://docs.google.com/spreadsheets/d/1x901TsGA6bQcq16nByvZNFLLW3udb2BH/edit?usp=sharing" target="_blank" style="color: #2563eb; font-weight: 700;">Google Sheets Live Formula Model</a></td>
+                    </tr>
+                    <tr>
+                        <td><strong>3. Engineering Prompt Log</strong></td>
+                        <td>Complete transparent engineering log of prompts, token costs, hallucinations caught, and iterations.</td>
+                        <td><a href="https://github.com/Saksham-Gupta-GH/Saksham-Gupta-GH.github.io/blob/main/cheerio/assignment/prompt_log.md" target="_blank" style="color: #2563eb; font-weight: 700;">prompt_log.md (GitHub Source)</a></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
 
         <div class="doc-footer">
-            <span class="footer-left">Cheerio AI • Product Management Take-Home Memorandum</span>
-            <span>Candidate: Saksham Gupta (saksham77779@gmail.com)</span>
+            <span>Cheerio AI Product Strategy Memo • Assignment A</span>
             <span>Page 4 of 4</span>
+            <span class="footer-links">Candidate: Saksham Gupta (<a href="mailto:saksham77779@gmail.com">saksham77779@gmail.com</a>)</span>
         </div>
     </div>
 
