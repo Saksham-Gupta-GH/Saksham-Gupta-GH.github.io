@@ -189,7 +189,7 @@
                             </div>
 
                             <div class="pt-1 flex gap-3">
-                                <button id="btnSubmitMeta" onclick="alert('Submission intercepted: Cheerio Co-Pilot prevented a Meta compliance failure.')" class="px-5 py-2 bg-[#0b57d0] hover:bg-[#0842a0] text-white rounded-full text-xs font-medium transition shadow-sm inline-flex items-center gap-1.5">
+                                <button id="btnSubmitMeta" onclick="showModal('Pre-Flight Compliance Interception', 'Cheerio Co-Pilot intercepted your template submission because it contains promotional phrasing under a Utility category. Review the 1-click remediation in the Co-Pilot drawer below to prevent a Meta API rejection.', 'warning')" class="px-5 py-2 bg-[#0b57d0] hover:bg-[#0842a0] text-white rounded-full text-xs font-medium transition shadow-sm inline-flex items-center gap-1.5">
                                     <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                                     <span>Submit to Meta</span>
                                 </button>
@@ -729,7 +729,7 @@
                         <span>Auto-Fix Applied: Template is 100% Compliant</span>
                     </div>
                     <p class="text-[11px] text-[#1e4620]">Offending promotional phrasing removed. Fallback variables properly mapped.</p>
-                    <button onclick="alert('Template approved by Meta Cloud API. Zero support tickets raised. ZOCR metric achieved.')" class="bg-[#137333] hover:bg-[#0e5223] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
+                    <button onclick="showModal('Template Approved & Synced', 'Template approved by Meta Cloud API without human intervention. Zero support tickets raised. ZOCR metric achieved!', 'success')" class="bg-[#137333] hover:bg-[#0e5223] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
                         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                         <span>Submit Approved Template to Meta Cloud API</span>
                     </button>
@@ -761,7 +761,7 @@
                         <span>Category Switched to Marketing</span>
                     </div>
                     <p class="text-[11px] text-[#185abc]">Promotional discount copy is now fully valid under Meta Marketing rules.</p>
-                    <button onclick="alert('Marketing template submitted to Meta API. Status: APPROVED')" class="bg-[#0b57d0] hover:bg-[#0842a0] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
+                    <button onclick="showModal('Marketing Template Approved', 'Template successfully submitted and approved under Meta Marketing category at standard rate.', 'success')" class="bg-[#0b57d0] hover:bg-[#0842a0] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
                         <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
                         <span>Submit Approved Marketing Template</span>
                     </button>
@@ -781,7 +781,7 @@
                     </div>
                     <div class="font-medium text-xs text-[#137333]">All 1,240 Rows Sanitized Successfully!</div>
                     <p class="text-[11px] text-[#747775]">Added +91 dial code to 36 rows and stripped illegal spaces from 12 rows. Ready for broadcast.</p>
-                    <button onclick="alert('Audience broadcast launched without error. Zero support queries triggered.')" class="mt-2 px-5 py-2 bg-[#0b57d0] hover:bg-[#0842a0] text-white rounded-full text-xs font-medium transition shadow-sm">
+                    <button onclick="showModal('Broadcast Campaign Scheduled', 'All 1,240 verified contacts scheduled for WhatsApp broadcast delivery. Zero support tickets generated.', 'success')" class="mt-2 px-5 py-2 bg-[#0b57d0] hover:bg-[#0842a0] text-white rounded-full text-xs font-medium transition shadow-sm">
                         Launch Broadcast Campaign
                     </button>
                 </div>
@@ -793,6 +793,59 @@
             switchScenario('scenario1');
             location.reload();
         }
+
+        // Custom Modal Logic (Replaces Native Browser Alerts)
+        function showModal(title, message, type = 'info') {
+            const modal = document.getElementById('customModal');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalMessage = document.getElementById('modalMessage');
+            const modalIconContainer = document.getElementById('modalIconContainer');
+
+            modalTitle.innerText = title;
+            modalMessage.innerText = message;
+
+            if (type === 'warning') {
+                modalIconContainer.className = "w-10 h-10 rounded-full bg-[#fef7e0] text-[#ea8600] flex items-center justify-center shrink-0";
+                modalIconContainer.innerHTML = `<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>`;
+            } else if (type === 'success') {
+                modalIconContainer.className = "w-10 h-10 rounded-full bg-[#e6f4ea] text-[#137333] flex items-center justify-center shrink-0";
+                modalIconContainer.innerHTML = `<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>`;
+            } else {
+                modalIconContainer.className = "w-10 h-10 rounded-full bg-[#e8f0fe] text-[#0b57d0] flex items-center justify-center shrink-0";
+                modalIconContainer.innerHTML = `<svg class="w-5 h-5 fill-current" viewBox="0 0 24 24"><path d="M19 9l1.25-2.75L23 5l-2.75-1.25L19 1l-1.25 2.75L15 5l2.75 1.25L19 9zm-7.5.5L9 4 6.5 9.5 1 12l5.5 2.5L9 20l2.5-5.5L17 12l-5.5-2.5z"/></svg>`;
+            }
+
+            modal.classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+
+        // Close on Escape key
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') closeModal();
+        });
     </script>
+
+    <!-- Google Workspace Style Custom Modal Component -->
+    <div id="customModal" onclick="if(event.target === this) closeModal()" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-sm hidden fade-in">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 shadow-2xl border border-[#e0e2ec] space-y-4">
+            <div class="flex items-start gap-3.5">
+                <div id="modalIconContainer" class="w-10 h-10 rounded-full flex items-center justify-center shrink-0">
+                    <!-- Icon dynamically injected -->
+                </div>
+                <div class="flex-1">
+                    <h3 id="modalTitle" class="text-sm font-bold text-[#1f1f1f] google-font"></h3>
+                    <p id="modalMessage" class="text-xs text-[#444746] mt-1.5 leading-relaxed"></p>
+                </div>
+            </div>
+            <div class="flex justify-end pt-3 border-t border-[#f1f5f9]">
+                <button onclick="closeModal()" class="px-5 py-2 bg-[#0b57d0] hover:bg-[#0842a0] text-white rounded-full text-xs font-medium transition shadow-sm inline-flex items-center gap-1.5">
+                    Got it
+                </button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
