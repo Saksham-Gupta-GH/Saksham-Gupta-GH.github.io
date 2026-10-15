@@ -9,11 +9,7 @@
 
 ## 1. Candidate Plain-Voice Reflection & Strategy Retrospective
 
-> *"When I first approached Cheerio's support bottleneck, my initial instinct was to explore an AI support chatbot or even a monetization model charging merchants ₹5 per automated resolution. 
-> 
-> However, when I modeled the unit economics and reflected on Cheerio's user persona—non-technical SMB merchants in India like retail jewelers and clinics—I realized that charging for support creates immediate friction during onboarding, causing churn that far outweighs any micro-fee revenue. 
-> 
-> Furthermore, merchants don't want to chat about API errors; they want their campaigns to launch. That realization led me to pivot from a conversational bot to an **in-app, deterministic Co-Pilot** that lints inputs on the frontend before calling Meta's API. Subsidizing this as a 100% free core feature delivers a 50.4x net return through preserved MRR, making it a powerful growth engine rather than a support cost center."*
+[WRITE 4-5 SENTENCES IN YOUR OWN WORDS: Why you chose this solution, what you were unsure about, and one decision you changed your mind on].
 
 ---
 

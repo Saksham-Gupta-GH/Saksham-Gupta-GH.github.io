@@ -6,7 +6,7 @@
 ---
 
 ## Google Sheet Live Access
-The spreadsheet is available as `cheerio_cost_model.xlsx` in this repository and can be opened in Google Sheets. All numbers are dynamically driven by formulas from the central `Assumptions` tab.
+The spreadsheet is available as `cheerio_cost_model.xlsx` in this repository and can be opened in Google Sheets or LibreOffice with zero formula errors. All outputs are dynamically linked to the central `Assumptions` tab.
 
 ---
 
@@ -14,7 +14,7 @@ The spreadsheet is available as `cheerio_cost_model.xlsx` in this repository and
 
 ### Tab 1: `Assumptions` (Single Source of Truth)
 * Centralized input repository containing all parameters with explicit type labels (`Given in Brief`, `Verified API Pricing`, `Verified Meta Doc`, `Industry Benchmark`, or `Stated Assumption`).
-* Includes exact source URLs and verification dates (e.g., OpenAI API Pricing, Meta Cloud API Pricing for India Utility ₹0.1150 and Marketing ₹0.8631, and RBI USD:INR exchange rate = 84.0).
+* Includes exact source URLs and verification dates (OpenAI API Pricing for GPT-4o-mini, Meta Cloud API Pricing for India Utility ₹0.1150 and Marketing ₹0.8631, and RBI USD:INR exchange rate = 84.0).
 
 ### Tab 2: `Executive_Summary`
 * High-level KPI scorecard comparing Baseline (Pure Human) vs. Cheerio Co-Pilot.
@@ -39,10 +39,10 @@ The spreadsheet is available as `cheerio_cost_model.xlsx` in this repository and
 
 ### Tab 5: `Human_Comparison` (Avoided Headcount & Payback)
 * **Agent Salary:** ₹35,000/month (Indian B2B SaaS Support standard).
-* **Agent Monthly Capacity:** 40 tickets/day × 22 workdays = **880 tickets/month**.
+* **Agent Monthly Capacity:** 40 tickets/day × 22 workdays = **880 tickets/month** (`=B6*B7`).
 * **Pure Human Model (Avoided Baseline):** 17,500 tickets ÷ 880 = **20 Agents** = **₹7,00,000/month** (Cost/ticket: ₹40.00).
 * **Cheerio Co-Pilot Model:** 6,125 human tickets ÷ 880 = **7 Agents** (₹2,45,000 payroll) + ₹3,500 AI + ₹15,000 Observability Tooling (LangSmith/Datadog) = **₹2,63,500/month** (Blended Cost/ticket: ₹15.06).
-* **Avoided Headcount:** 13 agents avoided as volume scales.
+* **Avoided Headcount:** 13 agents avoided as volume scales (`=B11-B17`).
 * **Net Monthly Operational Savings:** **₹4,36,500 / month** (`=B12-B21`).
 * **Net Annual Operational Savings:** **₹52.38 Lakhs / year** (`=B25*12`).
 * **CapEx Build Cost:** ₹2,50,000 (1 engineer for 1 month).
@@ -62,11 +62,18 @@ The spreadsheet is available as `cheerio_cost_model.xlsx` in this repository and
 
 ### Tab 7: `Billing_Strategy` (Pricing & Margins)
 * Evaluates 4 monetization options with fully-loaded unit costs:
-  1. **100% Free / Core Feature (Recommended):** Subsidized by 50.4x Retention ROI.
-  2. **Per-Resolution Fee (₹5.00):** +94.0% margin.
-  3. **AI Credit Pack (₹199 for 50):** +92.5% margin.
-  4. **Premium Support Add-on (₹499/mo):** +95.5% margin.
-* Fully loaded cost breakdown per resolution: LLM token (₹0.20) + Observability (₹0.10) + Amortized human escalation share (₹5.96) = **₹6.26**.
+  1. **Model 1: Free Core Co-Pilot (Recommended Base):** Price = ₹0. Fully Loaded AI Cost/Query = ₹1.20 (LLM ₹0.20 + Cache ₹0.14 + Tooling ₹0.86). Delivers **₹1,57,940/month net surplus** (Net Retention MRR ₹1.76L minus AI cost ₹18.5k).
+  2. **Model 2: Priority Support Add-on (Recommended Upsell):** Price = ₹499/mo for priority routing, SLA < 15 mins, and dedicated agent support. Cost to serve = ₹21.00. **Gross Margin = +95.8%** (`=ROUND((B6-D6)/B6, 3)`).
+  3. **Model 3: Per-Resolution Micro-Fee:** Price = ₹5.00/resolution. Cost = ₹1.20. Gross Margin = +76.0%.
+  4. **Model 4: Prepaid AI Resolution Pack:** Price = ₹199 for 50 resolutions. Cost = ₹60.00. Gross Margin = +69.8%.
+* Amortized Human Escalation Share (₹14.00/query) is displayed as a separate operational line to avoid double-charging payroll.
 
 ### Tab 8: `Audit_Governance` (Observability Checklist & Owners)
-* Defines monthly operational audit checks, alert thresholds, assigned owners, and automated remediation triggers across cost spikes, token expansion, merchant abuse, deflection drops, and 7-day reopen rates.
+* Defines monthly operational audit checks, alert thresholds, assigned owners, and automated remediation triggers across:
+  - Cost per Resolved Query (>2x baseline, Alert: High, Owner: Lead APM / ML Eng)
+  - Session Token Expansion (>140% 7-day avg, Alert: Medium, Owner: Backend Lead)
+  - Single-Merchant Session Spikes (>50 sessions / 24h, Alert: High, Owner: SecOps / Support Lead)
+  - **Deflection Rate (7-day verified):** Target 65%, Alert: <40%, Severity: Critical, Owner: Product Manager
+  - **Zero-Touch Onboarding Rate (ZOCR):** Target 33% at Day 90, Alert: <25%, Severity: High, Owner: Onboarding & Growth Lead
+  - 7-Day Ticket Reopen Rate (>5.0% of deflections, Alert: High, Owner: QA Lead / Support Lead)
+  - Monthly Token Invoice Reconciliation (variance > ±2%, Alert: Medium, Owner: Finance / Tech Lead)
