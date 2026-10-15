@@ -809,6 +809,32 @@
             }
         }
 
+        // 1-Click Rollback / Undo Fix
+        function rollbackFix() {
+            const originalText = "Hi {{1}}, your order #{{2}} is confirmed! HURRY! Get 50% OFF our Diwali Flash Sale with code FESTIVE50 on your next piece: https://fabjewels.in/sale";
+            document.getElementById('templateBody').value = originalText;
+            document.getElementById('templateBody').className = "w-full text-xs p-3.5 border border-[#ea8600] rounded-lg mono-font leading-relaxed bg-[#fffdf5] text-[#1f1f1f] outline-none";
+            document.getElementById('categorySelect').value = "UTILITY";
+            document.getElementById('categorySelect').className = "w-full text-xs px-3.5 py-2.5 border border-[#ea8600] rounded-lg bg-[#fff8e1] text-[#7a4100] font-medium outline-none";
+            
+            document.getElementById('previewBubble').innerHTML = "Hi Priya, your order #FJ-9412 is confirmed! HURRY! Get 50% OFF our Diwali Flash Sale with code FESTIVE50 on your next piece: https://fabjewels.in/sale <span class='block text-[9px] text-[#747775] text-right mt-1.5'>10:42 AM</span>";
+            
+            document.getElementById('validationPill').className = "bg-[#fef7e0] text-[#7a4100] border border-[#fce8b2] px-3 py-1 rounded-full font-medium inline-flex items-center gap-1.5";
+            document.getElementById('validationPill').innerHTML = `
+                <svg class="w-3.5 h-3.5 text-[#ea8600] fill-current" viewBox="0 0 24 24"><path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/></svg>
+                <span>Policy Risk Flagged by Co-Pilot</span>
+            `;
+            
+            document.getElementById('linterStatus').className = "text-[#b3261e] font-medium inline-flex items-center gap-1";
+            document.getElementById('linterStatus').innerHTML = `
+                <svg class="w-3.5 h-3.5 text-[#b3261e] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg>
+                <span>Meta Risk: INCORRECT_CATEGORY (Tag: TAG_CONTENT_MISMATCH)</span>
+            `;
+
+            resetScenario1();
+            showModal('Changes Rolled Back', 'Template restored to your original draft. Co-Pilot pre-flight compliance warnings re-enabled.', 'info');
+        }
+
         // 1-Click Auto-Fix for Utility Category
         function applyUtilityFix() {
             const cleanText = "Hi {{1}}, your order #{{2}} is confirmed and will ship shortly. Track your package live here: https://fabjewels.in/track/{{2}}";
@@ -833,13 +859,19 @@
                 <div class="col-span-2 bg-[#f0f9f4] border border-[#ceead6] rounded-xl p-4 text-center space-y-2.5">
                     <div class="flex items-center justify-center gap-1.5 font-medium text-[#137333] text-xs">
                         <svg class="w-4 h-4 text-[#137333] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
-                        <span>Auto-Fix Applied: Template is 100% Compliant</span>
+                        <span>Auto-Fix Applied: Transactional Utility Structure Verified</span>
                     </div>
-                    <p class="text-[11px] text-[#1e4620]">Offending promotional phrasing removed. Fallback variables properly mapped.</p>
-                    <button onclick="showModal('Template Approved & Synced', 'Template approved by Meta Cloud API without human intervention. Zero support tickets raised. ZOCR metric achieved!', 'success')" class="bg-[#137333] hover:bg-[#0e5223] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
-                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                        <span>Submit Approved Template to Meta Cloud API</span>
-                    </button>
+                    <p class="text-[11px] text-[#1e4620]">Offending promotional phrasing removed. Fallback variables mapped. Final approval rests with Meta.</p>
+                    <div class="flex justify-center gap-2">
+                        <button onclick="showModal('Ready for Meta Submission', 'Remediation applied. Template satisfies pre-flight compliance checks. Note: Pre-flight linter minimizes rejection risk; final approval is determined by Meta automated compliance systems.', 'success')" class="bg-[#137333] hover:bg-[#0e5223] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                            <span>Submit to Meta Cloud API</span>
+                        </button>
+                        <button onclick="rollbackFix()" class="bg-white hover:bg-[#f1f5f9] text-[#444746] border border-[#c4c7c5] font-medium py-2 px-4 rounded-full text-xs transition inline-flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
+                            <span>Rollback Changes</span>
+                        </button>
+                    </div>
                 </div>
             `;
         }
@@ -867,11 +899,17 @@
                         <svg class="w-4 h-4 text-[#1967d2] fill-current" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
                         <span>Category Switched to Marketing</span>
                     </div>
-                    <p class="text-[11px] text-[#185abc]">Promotional discount copy is now fully valid under Meta Marketing rules.</p>
-                    <button onclick="showModal('Marketing Template Approved', 'Template successfully submitted and approved under Meta Marketing category at standard rate.', 'success')" class="bg-[#0b57d0] hover:bg-[#0842a0] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
-                        <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
-                        <span>Submit Approved Marketing Template</span>
-                    </button>
+                    <p class="text-[11px] text-[#185abc]">Promotional discount copy preserved. Meta Marketing delivery tariff (₹0.8631/msg) applies.</p>
+                    <div class="flex justify-center gap-2">
+                        <button onclick="showModal('Marketing Template Submitted', 'Template submitted under Meta Marketing category at official rate (₹0.8631/msg). Note: Final approval determined by Meta automated systems.', 'success')" class="bg-[#0b57d0] hover:bg-[#0842a0] text-white font-medium py-2 px-5 rounded-full text-xs transition shadow-sm inline-flex items-center gap-1.5">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg>
+                            <span>Submit to Meta Cloud API</span>
+                        </button>
+                        <button onclick="rollbackFix()" class="bg-white hover:bg-[#f1f5f9] text-[#444746] border border-[#c4c7c5] font-medium py-2 px-4 rounded-full text-xs transition inline-flex items-center gap-1">
+                            <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 24 24"><path d="M12.5 8c-2.65 0-5.05.99-6.9 2.6L2 7v9h9l-3.62-3.62c1.39-1.16 3.16-1.88 5.12-1.88 3.54 0 6.55 2.31 7.6 5.5l2.37-.78C21.08 11.03 17.15 8 12.5 8z"/></svg>
+                            <span>Rollback</span>
+                        </button>
+                    </div>
                 </div>
             `;
         }
@@ -976,6 +1014,13 @@
         // Close on Escape key
         window.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') closeModal();
+        });
+
+        // Scenario deep-linking support (e.g. ?scenario=scenario2)
+        window.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const scenario = urlParams.get('scenario');
+            if (scenario) switchScenario(scenario);
         });
     </script>
 

@@ -120,8 +120,9 @@ kpi_data = [
     ("Net Monthly Operational Cost Savings (₹)", 0, "=Human_Comparison!B25", "+₹4,36,500 / mo", "Human_Comparison!B25 (₹52.38L / yr)"),
     ("One-Time Development Build Cost (₹)", 0, "=Assumptions!C22", "₹2,50,000", "Assumptions!C22 (1 Eng for 1 Month)"),
     ("CapEx Payback Period (Months)", "-", "=ROUND(Assumptions!C22/Human_Comparison!B25, 2)", "0.57 Months (~17 Days)", "Build Cost / Net Monthly Savings"),
-    ("Gross Merchant Retention ROI", "-", "=Retention_ROI!B16", "51.4x Return", "Retention_ROI!B16 (Gross MRR / AI Spend)"),
-    ("Net Merchant Retention ROI", "-", "=Retention_ROI!B17", "50.4x Return", "Retention_ROI!B17 (Net MRR / AI Spend)"),
+    ("Gross Merchant Retention ROI (Direct Tokens)", "-", "=Retention_ROI!B18", "51.4x Return", "Retention_ROI!B18 (Gross MRR / AI Tokens)"),
+    ("Net Merchant Retention ROI (Direct Tokens)", "-", "=Retention_ROI!B19", "50.4x Return", "Retention_ROI!B19 (Net MRR / AI Tokens)"),
+    ("Net Merchant Retention ROI (Total Program)", "-", "=Retention_ROI!B21", "8.7x Return", "Retention_ROI!B21 (Net MRR / ₹18.5k Total AI+Tooling)"),
 ]
 
 for row_idx, row in enumerate(kpi_data, start=5):
@@ -377,10 +378,14 @@ retention_rows = [
     ("Preserved Businesses per Month", "=ROUND(B5*B10, 0)", "Businesses / mo", "Calc: 5,000 * 1.2% = 60 merchants retained every month"),
     ("Gross Preserved Monthly Recurring Revenue (MRR)", "=B11*B6", "INR / mo", "Calc: 60 merchants * ₹2,999 = ₹1,79,940 / month"),
     ("Gross Preserved Annual Recurring Revenue (ARR)", "=B12*12", "INR / yr", "Calc: ₹1,79,940 * 12 = ₹21.59 Lakhs / year"),
-    ("Monthly Cheerio Co-Pilot AI Token Cost (₹)", "=Token_Economics!B18", "INR / mo", "Token_Economics!B18 (₹3,500 total monthly AI spend)"),
-    ("Net Monthly Retained Financial Value (₹)", "=B12-B14", "INR / mo", "Calc: Gross Preserved MRR - AI Spend = ₹1,76,440 / month"),
-    ("Gross ROI on AI Spend", "=ROUND(B12/B14, 1)", "x Return", "Calc: Gross Preserved MRR / AI Spend = ₹1,79,940 / ₹3,500 = 51.4x"),
-    ("Net ROI on AI Spend", "=ROUND(B15/B14, 1)", "x Return", "Calc: Net Retained MRR / AI Spend = ₹1,76,440 / ₹3,500 = 50.4x"),
+    ("Direct Monthly AI Token Cost (₹)", "=Token_Economics!B18", "INR / mo", "Token_Economics!B18 (₹3,500 direct LLM API spend)"),
+    ("Total Monthly Program Cost (Tokens + Tooling) (₹)", "=Human_Comparison!B20", "INR / mo", "Human_Comparison!B20 (₹3,500 tokens + ₹15,000 Redis/observability)"),
+    ("Net Monthly Preserved MRR (vs Direct Tokens) (₹)", "=B12-B14", "INR / mo", "Calc: Gross Preserved MRR - Direct Token Spend = ₹1,76,440 / mo"),
+    ("Net Monthly Preserved MRR (vs Total Program Cost) (₹)", "=B12-B15", "INR / mo", "Calc: Gross Preserved MRR - Total Program Cost = ₹1,61,440 / mo"),
+    ("Gross ROI Multiple on Direct Token Spend", "=ROUND(B12/B14, 1)", "x Return", "Calc: Gross Preserved MRR / Direct Tokens = ₹1,79,940 / ₹3,500 = 51.4x"),
+    ("Net ROI Multiple on Direct Token Spend", "=ROUND(B16/B14, 1)", "x Return", "Calc: Net Preserved MRR / Direct Tokens = ₹1,76,440 / ₹3,500 = 50.4x"),
+    ("Gross ROI Multiple on Total Program Cost", "=ROUND(B12/B15, 1)", "x Return", "Calc: Gross Preserved MRR / Total Program = ₹1,79,940 / ₹18,500 = 9.7x"),
+    ("Net ROI Multiple on Total Program Cost", "=ROUND(B17/B15, 1)", "x Return", "Calc: Net Preserved MRR / Total Program = ₹1,61,440 / ₹18,500 = 8.7x"),
 ]
 
 for row_idx, (param, val, unit, notes) in enumerate(retention_rows, start=5):
@@ -401,27 +406,27 @@ for row_idx, (param, val, unit, notes) in enumerate(retention_rows, start=5):
         c_val.number_format = "#,##0"
 
 # Churn Sensitivity Scenarios (Low 0.5% / Base 1.2% / High 2.0%)
-ws5["A20"] = "CHURN REDUCTION SENSITIVITY TABLE (Low / Base / High)"
-ws5["A20"].font = bold_font
-ws5["A20"].fill = sub_header_fill
+ws5["A23"] = "CHURN REDUCTION SENSITIVITY TABLE (Low / Base / High)"
+ws5["A23"].font = bold_font
+ws5["A23"].fill = sub_header_fill
 
-churn_headers = ["Scenario", "Absolute Churn Reduction", "Retained Merchants/Mo", "Gross Preserved MRR (₹)", "Net Preserved MRR (₹)", "Net ROI Multiple"]
+churn_headers = ["Scenario", "Absolute Churn Reduction", "Retained Merchants/Mo", "Gross Preserved MRR (₹)", "Net MRR vs Tokens (₹)", "Net ROI (Tokens)", "Net MRR vs Total Spend (₹)", "Net ROI (Total Spend)"]
 for col_idx, h in enumerate(churn_headers, start=1):
-    c = ws5.cell(row=21, column=col_idx, value=h)
+    c = ws5.cell(row=24, column=col_idx, value=h)
     c.fill = header_fill
     c.font = header_font
     c.alignment = Alignment(horizontal="center")
 
 churn_scenarios = [
-    ("Conservative (Low)", 0.005, "=ROUND(5000*B22,0)", "=C22*2999", "=D22-3500", "=ROUND(E22/3500,1)"),
-    ("Expected (Base)", 0.012, "=ROUND(5000*B23,0)", "=C23*2999", "=D23-3500", "=ROUND(E23/3500,1)"),
-    ("Aggressive (High)", 0.020, "=ROUND(5000*B24,0)", "=C24*2999", "=D24-3500", "=ROUND(E24/3500,1)"),
+    ("Conservative (Low)", 0.005, "=ROUND(5000*B25,0)", "=C25*2999", "=D25-3500", "=ROUND(E25/3500,1)", "=D25-18500", "=ROUND(G25/18500,1)"),
+    ("Expected (Base)", 0.012, "=ROUND(5000*B26,0)", "=C26*2999", "=D26-3500", "=ROUND(E26/3500,1)", "=D26-18500", "=ROUND(G26/18500,1)"),
+    ("Aggressive (High)", 0.020, "=ROUND(5000*B27,0)", "=C27*2999", "=D27-3500", "=ROUND(E27/3500,1)", "=D27-18500", "=ROUND(G27/18500,1)"),
 ]
 
-for row_idx, row in enumerate(churn_scenarios, start=22):
+for row_idx, row in enumerate(churn_scenarios, start=25):
     for col_idx, val in enumerate(row, start=1):
         cell = ws5.cell(row=row_idx, column=col_idx, value=val)
-        cell.font = bold_font if col_idx in [1, 6] else regular_font
+        cell.font = bold_font if col_idx in [1, 6, 8] else regular_font
         cell.border = thin_border
         if col_idx == 2:
             cell.alignment = Alignment(horizontal="right")
@@ -429,10 +434,10 @@ for row_idx, row in enumerate(churn_scenarios, start=22):
         elif col_idx == 3:
             cell.alignment = Alignment(horizontal="right")
             cell.number_format = "#,##0"
-        elif col_idx in [4, 5]:
+        elif col_idx in [4, 5, 7]:
             cell.alignment = Alignment(horizontal="right")
             cell.number_format = "₹#,##0"
-        elif col_idx == 6:
+        elif col_idx in [6, 8]:
             cell.alignment = Alignment(horizontal="right")
             cell.number_format = '0.0"x"'
 

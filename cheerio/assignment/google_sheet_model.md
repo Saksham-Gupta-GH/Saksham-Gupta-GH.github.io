@@ -49,16 +49,21 @@ The spreadsheet is available as `cheerio_cost_model.xlsx` in this repository and
 * **Payback Period:** **0.57 months (~17 days)** (`=B27/B25`).
 * **Deflection Scenario Sensitivity:** Conservative (45% deflection → ₹3.31L/mo savings), Expected (65% deflection → ₹4.36L/mo savings), Aggressive (75% deflection → ₹5.06L/mo savings).
 
-### Tab 6: `Retention_ROI` (Separated Churn Economics)
+### Tab 6: `Retention_ROI` (Separated Churn Economics & Cost Reconciliation)
 * **Average Plan Price (ARPU):** ₹2,999 / month.
 * **Baseline Monthly Churn:** 5.0% (250 churning businesses/month).
-* **Estimated Churn Reduction via Zero-Touch Onboarding (ZOCR):** 1.2% absolute (60 businesses saved/month).
+* **Estimated Churn Reduction via Zero-Touch Onboarding (ZOCR):** 1.2% absolute pilot target (60 businesses saved/month).
 * **Gross Preserved Recurring Revenue (MRR):** 60 × ₹2,999 = **₹1,79,940 / month** (`=B11*B6`).
-* **Monthly AI Operating Cost:** **₹3,500 / month**.
-* **Net Monthly Retained Value:** **₹1,76,440 / month** (`=B12-B14`).
-* **Gross ROI on AI Spend:** **51.4x Return** (`=B12/B14`).
-* **Net ROI on AI Spend:** **50.4x Return** (`=B15/B14`).
-* **Churn Sensitivity Table:** Low (0.5% saved → 20.4x Net ROI), Base (1.2% saved → 50.4x Net ROI), High (2.0% saved → 84.7x Net ROI).
+* **Cost Bases Reconciled:**
+  - **Direct AI Token Cost:** **₹3,500 / month** (`=Token_Economics!B18`).
+  - **Total Program Budget (Tokens + Tooling/Redis):** **₹18,500 / month** (`=Human_Comparison!B20`).
+* **Net Retained Value & ROI Multiples:**
+  - **Net Retained MRR (vs. Direct Tokens):** **₹1,76,440 / month** (`=B12-B14`) → **50.4x Net ROI** (`=ROUND(B16/B14, 1)`).
+  - **Net Retained MRR (vs. Total Program Budget):** **₹1,61,440 / month** (`=B12-B15`) → **8.7x Net ROI** (`=ROUND(B17/B15, 1)`).
+* **Churn Sensitivity Table:** 
+  - Conservative (0.5% saved): 25 merchants → Gross ₹74,975 → Net vs. Tokens ₹71,475 (20.4x) | Net vs. Program ₹56,475 (3.1x).
+  - Expected (1.2% saved): 60 merchants → Gross ₹1,79,940 → Net vs. Tokens ₹1,76,440 (50.4x) | Net vs. Program ₹1,61,440 (8.7x).
+  - Aggressive (2.0% saved): 100 merchants → Gross ₹2,99,900 → Net vs. Tokens ₹2,96,400 (84.7x) | Net vs. Program ₹2,81,400 (15.2x).
 
 ### Tab 7: `Billing_Strategy` (Pricing & Margins)
 * Evaluates 4 monetization options with fully-loaded unit costs:

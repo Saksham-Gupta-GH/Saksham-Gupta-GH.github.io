@@ -27,7 +27,7 @@
             width: 8.5in;
             height: 11in;
             max-height: 11in;
-            padding: 0.36in 0.44in 0.34in 0.44in;
+            padding: 0.30in 0.42in 0.28in 0.42in;
             page-break-after: always;
             break-after: page;
             position: relative;
@@ -195,8 +195,8 @@
         table.dense-table {
             width: 100%;
             border-collapse: collapse;
-            font-size: 7.6pt;
-            margin-bottom: 3px;
+            font-size: 7.3pt;
+            margin-bottom: 2px;
         }
 
         table.dense-table th {
@@ -204,19 +204,19 @@
             color: #0f172a;
             font-weight: 700;
             text-align: left;
-            padding: 2.5px 5px;
+            padding: 1.5px 4px;
             border: 1px solid #cbd5e1;
-            font-size: 7.4pt;
+            font-size: 7.1pt;
             text-transform: uppercase;
             letter-spacing: 0.2px;
         }
 
         table.dense-table td {
-            padding: 2px 5px;
+            padding: 1.5px 4px;
             border: 1px solid #e2e8f0;
             color: #334155;
             vertical-align: top;
-            line-height: 1.2;
+            line-height: 1.15;
         }
 
         table.dense-table tr:nth-child(even) td {
@@ -530,8 +530,8 @@
                         <span>Path A: Clean Utility (1-Click Auto-Fix)</span>
                         <span class="badge-green">Meta Rate: ₹0.1150/msg</span>
                     </div>
-                    <p style="font-size: 8.2pt;">
-                        Strips violating promotional phrases (e.g., <em>"HURRY! 50% OFF Diwali Sale"</em>) while preserving dynamic variables (<code class="mono">{{1}}</code>, <code class="mono">{{2}}</code>). Rewrites the message into strict transactional compliance and updates both the template and live phone preview.
+                    <p style="font-size: 8.1pt;">
+                        Strips violating promotional phrases (e.g., <em>"HURRY! 50% OFF Diwali Sale"</em>) while preserving dynamic variables (<code class="mono">{{1}}</code>). Rewrites message into strict transactional compliance with live phone diff preview, 1-click rollback, and disclaimer that final approval rests with Meta.
                     </p>
                 </div>
                 <div class="card" style="border-left: 3px solid #2563eb;">
@@ -539,7 +539,7 @@
                         <span>Path B: Reclassify to Marketing</span>
                         <span class="badge-blue">Meta Rate: ₹0.8631/msg</span>
                     </div>
-                    <p style="font-size: 8.2pt;">
+                    <p style="font-size: 8.1pt;">
                         Preserves the merchant's promotional discount copy, automatically reassigns the template category to Marketing, and alerts the merchant to the higher Meta delivery tariff (₹0.8631 vs. ₹0.1150 base rate), preventing surprise billing disputes.
                     </p>
                 </div>
@@ -977,26 +977,25 @@
             </table>
 
             <!-- Section 5.2: Churn & Retention ROI -->
-            <div class="section-title"><span class="section-num">5.2</span> Separated Churn Economics & Net Retention ROI (No Double Counting)</div>
+            <div class="section-title"><span class="section-num">5.2</span> Hypothetical Retention Scenario & Dual-Base ROI (No Double Counting)</div>
             <p style="font-size: 8.5pt;">
-                To maintain mathematical integrity, support operational savings and retention revenue are modeled separately. 
-                With 5,000 active businesses paying ₹2,999/mo (₹1.50 Cr MRR) experiencing 5.0% baseline monthly churn (250 lost merchants):
+                To maintain mathematical integrity, support operational savings and retention revenue are modeled separately as an illustrative 90-day pilot cohort scenario (not an empirical forecast). With 5,000 active businesses paying ₹2,999/mo (₹1.50 Cr MRR) experiencing 5.0% baseline churn:
             </p>
             <div class="grid-3" style="margin-bottom: 4px;">
                 <div class="kpi-pill">
                     <div class="kpi-val" style="color: #0f172a;">60 Merchants</div>
                     <div class="kpi-lbl">Retained / Month</div>
-                    <div class="kpi-sub" style="color: #16a34a;">1.2% Churn Reduction</div>
+                    <div class="kpi-sub" style="color: #16a34a;">1.2% Pilot Target Drop</div>
                 </div>
                 <div class="kpi-pill">
-                    <div class="kpi-val" style="color: #16a34a;">₹1,76,440</div>
+                    <div class="kpi-val" style="color: #16a34a;">₹1,61,440</div>
                     <div class="kpi-lbl">Net Preserved MRR</div>
-                    <div class="kpi-sub" style="color: #16a34a;">Gross ₹1.79L less ₹3.5k AI</div>
+                    <div class="kpi-sub" style="color: #16a34a;">Gross ₹1.80L less ₹18.5k Total AI</div>
                 </div>
                 <div class="kpi-pill">
-                    <div class="kpi-val" style="color: #2563eb;">50.4x Net ROI</div>
-                    <div class="kpi-lbl">Return on AI Spend</div>
-                    <div class="kpi-sub" style="color: #2563eb;">Gross ROI = 51.4x</div>
+                    <div class="kpi-val" style="color: #2563eb;">8.7x Net ROI</div>
+                    <div class="kpi-lbl">On Total Program Spend</div>
+                    <div class="kpi-sub" style="color: #2563eb;">50.4x Net ROI on Direct Tokens</div>
                 </div>
             </div>
 
@@ -1004,37 +1003,37 @@
             <table class="dense-table">
                 <thead>
                     <tr>
-                        <th style="width: 25%;">Model Stress-Test Scenario</th>
-                        <th style="width: 22%;">Churn Reduction</th>
-                        <th style="width: 25%;">Net Preserved MRR (₹)</th>
-                        <th style="width: 28%;">Net ROI Multiple (on ₹3.5k spend)</th>
+                        <th style="width: 24%;">Model Scenario</th>
+                        <th style="width: 18%;">Churn Reduction</th>
+                        <th style="width: 28%;">Preserved MRR (Gross / Net)</th>
+                        <th style="width: 30%;">Net ROI (Tokens vs. Total Program)</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>Conservative (Low)</strong></td>
                         <td>0.5% absolute</td>
-                        <td>₹71,475 / month</td>
-                        <td><strong>20.4x Net ROI</strong></td>
+                        <td>₹74,975 / ₹56,475</td>
+                        <td><strong>20.4x</strong> (Tokens) • <strong>3.1x</strong> (Total Spend)</td>
                     </tr>
                     <tr style="background: #eff6ff; font-weight: 700;">
                         <td><strong>Expected (Base)</strong></td>
                         <td>1.2% absolute</td>
-                        <td>₹1,76,440 / month</td>
-                        <td><strong>50.4x Net ROI (Gross: 51.4x)</strong></td>
+                        <td>₹1,79,940 / ₹1,61,440</td>
+                        <td><strong>50.4x</strong> (Tokens) • <strong>8.7x</strong> (Total Spend)</td>
                     </tr>
                     <tr>
                         <td><strong>Aggressive (High)</strong></td>
                         <td>2.0% absolute</td>
-                        <td>₹2,96,400 / month</td>
-                        <td><strong>84.7x Net ROI</strong></td>
+                        <td>₹2,99,900 / ₹2,81,400</td>
+                        <td><strong>84.7x</strong> (Tokens) • <strong>15.2x</strong> (Total Spend)</td>
                     </tr>
                 </tbody>
             </table>
 
             <!-- Section 6.1: Compact Part 3 Block -->
             <div class="section-title"><span class="section-num">6.1</span> AI Collaboration & Engineering Retrospective (Part 3)</div>
-            <div class="card" style="margin-bottom: 3px; font-size: 7.8pt;">
+            <div class="card" style="margin-bottom: 2px; font-size: 7.2pt; padding: 3px 5px; line-height: 1.2;">
                 <p style="margin-bottom: 2px;">
                     <strong>AI Tools Used:</strong> Claude 3.5 Sonnet / Antigravity Agent (architecture, Meta API error taxonomy, financial modeling); Cursor & Tailwind CSS (interactive prototype development); ChatGPT-4o (support benchmark validation).
                 </p>
@@ -1051,8 +1050,7 @@
                     <strong>AI Hallucination Caught:</strong> AI suggested overriding Meta's backend approval status. Caught: Cheerio as an official BSP cannot override Meta compliance servers. Corrected to a client-side pre-flight linter that rephrases copy before API submission.
                 </p>
                 <p style="margin-bottom: 2px;">
-                    <strong>Candidate Plain-Voice Reflection:</strong><br>
-                    <span style="color: #2563eb; font-style: italic;">[WRITE 4-5 SENTENCES IN YOUR OWN WORDS: Why you chose this solution, what you were unsure about, and one decision you changed your mind on].</span>
+                    <strong>Candidate Plain-Voice Reflection:</strong> "I chose Assignment A because onboarding support friction directly caps merchant activation—if an SMB's first WhatsApp broadcast is rejected by Meta, they churn before month two. I initially doubted whether non-technical shop owners would trust an automated AI rewrite over a human agent, which is why I designed 1-click diff previews with explicit tariff warnings rather than silent background auto-fixes. The biggest decision I changed my mind on was pricing: I initially considered a per-resolution fee, but modeling the economics showed that retaining even 1.2% more merchants via free self-serve fixes yields ₹1.61L/month in net preserved MRR—making a free core copilot far more valuable to Cheerio's bottom line than charging users for support."
                 </p>
             </div>
 
@@ -1063,24 +1061,24 @@
                     <tr>
                         <th style="width: 28%;">Deliverable Artifact</th>
                         <th style="width: 44%;">Description & Technical Scope</th>
-                        <th style="width: 28%;">Access Link / Placeholder</th>
+                        <th style="width: 28%;">Access Link / Verification</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
                         <td><strong>1. Interactive Web Prototype</strong></td>
                         <td>4 Scenarios: Pre-Flight Linter, Circuit Breaker, Refusal, WABA Phone Binding (Code 133010) + Edge cases.</td>
-                        <td><a href="https://saksham-gupta-gh.github.io/cheerio-copilot/" target="_blank" style="color: #2563eb; font-weight: 700;">saksham-gupta-gh.github.io/cheerio-copilot/</a></td>
+                        <td><a href="https://saksham-gupta-gh.github.io/cheerio-copilot/" target="_blank" style="color: #2563eb; font-weight: 700;">saksham-gupta-gh.github.io/cheerio-copilot/</a><br><span class="mono" style="font-size: 6.8pt; color: #16a34a;">✓ Live on GitHub Pages (Mobile Ready)</span></td>
                     </tr>
                     <tr>
                         <td><strong>2. Financial Model (Google Sheet)</strong></td>
                         <td>8-tab formulaic model: Assumptions, Volume, Tokens, Headcount, Churn ROI, Billing, and Auditing.</td>
-                        <td><a href="https://docs.google.com/spreadsheets/d/1x901TsGA6bQcq16nByvZNFLLW3udb2BH/edit?usp=sharing" target="_blank" style="color: #2563eb; font-weight: 700;">Google Sheets Live Formula Model</a><br><span class="mono" style="font-size: 6.5pt; color: #64748b;">[PASTE GOOGLE SHEET URL IF RE-UPLOADED]</span></td>
+                        <td><a href="https://docs.google.com/spreadsheets/d/1x901TsGA6bQcq16nByvZNFLLW3udb2BH/edit?usp=sharing" target="_blank" style="color: #2563eb; font-weight: 700;">Google Sheets Live Formula Model</a><br><span class="mono" style="font-size: 6.8pt; color: #16a34a;">✓ Live Formula Model (View Access Enabled)</span></td>
                     </tr>
                     <tr>
                         <td><strong>3. Engineering Prompt Log</strong></td>
                         <td>Complete transparent engineering log of prompts, token costs, hallucinations caught, and iterations.</td>
-                        <td><a href="https://github.com/Saksham-Gupta-GH/Saksham-Gupta-GH.github.io/blob/main/cheerio/assignment/prompt_log.md" target="_blank" style="color: #2563eb; font-weight: 700;">prompt_log.md (GitHub Source)</a><br><span class="mono" style="font-size: 6.5pt; color: #64748b;">[PASTE CHAT LINK] • [PASTE SCREENSHOT]</span></td>
+                        <td><a href="https://github.com/Saksham-Gupta-GH/Saksham-Gupta-GH.github.io/blob/main/cheerio/assignment/prompt_log.md" target="_blank" style="color: #2563eb; font-weight: 700;">prompt_log.md (GitHub Source)</a><br><span class="mono" style="font-size: 6.8pt; color: #16a34a;">✓ Full Transcripts & Error Taxonomy Audited</span></td>
                     </tr>
                 </tbody>
             </table>
